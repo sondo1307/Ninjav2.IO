@@ -10,7 +10,7 @@ public class Flame : MonoBehaviour
     public GameObject trigger;
     private void Start()
     {
-        for (int i = 0; i < transform.childCount; i++)
+        for (int i = 0; i < transform.childCount-1; i++)
         {
             list.Add(transform.GetChild(i));
         }

@@ -52,7 +52,6 @@ public class EnemyDodge : MonoBehaviour
                     DOTween.Kill(transform);
 
                     transform.GetComponent<EnemyMovement>().enabled = false;
-                    //transform.GetComponent<NavMeshAgent>().enabled = false;
                     StartCoroutine(enemyManager.EnemySkin1ToSkin2());
                     enemyManager.StartParticleSystem();
                 }
@@ -62,7 +61,6 @@ public class EnemyDodge : MonoBehaviour
                 rb.velocity = Vector3.zero;
                 DOTween.Kill(transform);
                 transform.GetComponent<EnemyMovement>().enabled = false;
-                //transform.GetComponent<NavMeshAgent>().enabled = false;
                 StartCoroutine(enemyManager.EnemySkin1ToSkin2());
                 enemyManager.StartParticleSystem();
             }
@@ -81,7 +79,6 @@ public class EnemyDodge : MonoBehaviour
             {
                 StartCoroutine(enemyManager.EnemySkin2ToSkin1());
                 transform.GetComponent<EnemyMovement>().enabled = true;
-                //transform.GetComponent<NavMeshAgent>().enabled = true;
             }
             oneTime = true;
         }
@@ -92,7 +89,5 @@ public class EnemyDodge : MonoBehaviour
         yield return new WaitForSeconds(a);
         StartCoroutine(enemyManager.EnemySkin2ToSkin1());
         transform.GetComponent<EnemyMovement>().enabled = true;
-        //transform.GetComponent<NavMeshAgent>().enabled = true;
-        //transform.GetComponent<EnemyManager>().agent.velocity = new Vector3(0, 0, GetComponent<EnemyMovement>().rbSpeed);
     }
 }

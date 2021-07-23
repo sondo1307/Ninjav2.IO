@@ -13,6 +13,7 @@ public class FinishLine : MonoBehaviour
             MyScene.Instance.StartVibrate();
             other.GetComponentInParent<PlayerMovement>().enabled = false;
             other.GetComponentInParent<PlayerInput>().enabled = false;
+            other.GetComponentInParent<PlayerManager>().DisableAllCapsuleCollider();
             StartCoroutine(other.GetComponentInParent<PlayerDoEndRun>().PlayerEndRun());
             Collider[] list = other.GetComponentsInChildren<CapsuleCollider>();
             for (int i = 0; i < list.Length; i++)
@@ -23,6 +24,7 @@ public class FinishLine : MonoBehaviour
             int a =  MyScene.Instance.placeCount;
             PlayerData.Instance.place = a;
             PlayerData.Instance.CoinEarnThisRun(a);
+            UIManager.Instance.SlidersOff();
 
         }
         else if (other.transform.tag == "Enemy")

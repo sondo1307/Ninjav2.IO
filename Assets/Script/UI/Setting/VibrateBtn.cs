@@ -7,20 +7,32 @@ public class VibrateBtn : MonoBehaviour
 {
     public Sprite defaultSprite1;
     public Sprite spriteMute;
-    private bool check = true;
+
+    private void Start()
+    {
+        if (GameDataManager.Instance.gameDataScrObj.vibrateOn)
+        {
+            transform.GetComponent<Image>().sprite = defaultSprite1;
+        }
+        else
+        {
+            transform.GetComponent<Image>().sprite = spriteMute;
+        }
+    }
 
     public void Click()
     {
-        GameDataManager.Instance.SetVibrate();
-        if (check)
+        MyScene.Instance.StartVibrate();
+
+        if (GameDataManager.Instance.gameDataScrObj.vibrateOn)
         {
             transform.GetComponent<Image>().sprite = spriteMute;
-            check = false;
         }
-        else if (!check)
+        else if (!GameDataManager.Instance.gameDataScrObj.vibrateOn)
         {
             transform.GetComponent<Image>().sprite = defaultSprite1;
-            check = true;
         }
+        GameDataManager.Instance.SetVibrate();
+
     }
 }

@@ -88,6 +88,11 @@ public class UIManager : MonoBehaviour
         Tween d = nextLevelBtn.GetComponentInChildren<Text>().DOFade(1, 1).SetEase(Ease.Linear);
     }
 
+    public void SlidersOff()
+    {
+        sliders.SetActive(false);
+    }
+
     public void SetNextLevelTxt()
     {
         adsBtn.GetComponentInChildren<Text>().text = PlayerData.Instance.coinEarnThisRun * 5 + "";

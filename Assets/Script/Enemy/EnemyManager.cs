@@ -7,11 +7,12 @@ using DG.Tweening;
 public class EnemyManager : MonoBehaviour
 {
     public float scaleTime = 0.15f;
-    public float percentToSmart;
-    public float percentToStupid;
+    public float smartThreshHold;
+    public float stupidThreshHold;
     public float timeBetweenInvoke;
     public Transform player;
     private PlayerManager playerManager;
+    private EnemyMovement enemyMovement;
     private Vector3 skin1OriginSize;
     private Vector3 skin2OriginSize;
     public Animator animator { get; set; }
@@ -19,29 +20,35 @@ public class EnemyManager : MonoBehaviour
     {
         animator = GetComponentInChildren<Animator>();
         playerManager = GetComponent<PlayerManager>();
+        enemyMovement = GetComponent<EnemyMovement>();
         skin1OriginSize = playerManager.skin1.transform.localScale;
         skin2OriginSize = playerManager.skin2.transform.localScale;
-        InvokeRepeating("SmartStupidControl", 3, timeBetweenInvoke);
+        InvokeRepeating("SmartStupidControl", 0, timeBetweenInvoke);
     }
 
-    private void Update()
-    {
-    }
 
     public void SmartStupidControl()
     {
+        // enemy dang sau hoac bang vi tri nguoi choi
         if (Mathf.Abs(MyScene.Instance.finishZ - transform.position.z) >= Mathf.Abs(MyScene.Instance.finishZ - player.position.z))
         {
             int a = Random.Range(0, 100);
-            if (a < percentToSmart)
+            if (a >= smartThreshHold)
             {
+                enemyMovement.intelligent = 7;
             }
         }
+        // enemy di truoc
         else if (Mathf.Abs(MyScene.Instance.finishZ - transform.position.z) < Mathf.Abs(MyScene.Instance.finishZ - player.position.z))
         {
             int a = Random.Range(0, 100);
-            if (a > percentToSmart && a < percentToStupid)
+            if (a<smartThreshHold && a > stupidThreshHold)
             {
+                enemyMovement.intelligent = 5;
+            }
+            else if (a <= stupidThreshHold)
+            {
+                enemyMovement.intelligent = 3;
             }
         }
     }
