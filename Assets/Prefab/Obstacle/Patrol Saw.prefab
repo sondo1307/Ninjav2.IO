@@ -246,5 +246,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   X1: 2
   X2: -2
-  patrolTime: 1.5
-  speedSaw: 400
+  patrolTime: 1
+  speedSaw: 600
+  particle: {fileID: 6838427520917698762, guid: 3cf8ecc457470f74cafce908690a9a50, type: 3}

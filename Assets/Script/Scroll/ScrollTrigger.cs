@@ -5,9 +5,10 @@ using DG.Tweening;
 
 public class ScrollTrigger : MonoBehaviour
 {
+    public GameObject grandPa;
     private void OnTriggerEnter(Collider other)
     {
         DOTween.Kill(transform.parent);
-        Destroy(transform.parent.gameObject);
+        Destroy(grandPa.gameObject);
     }
 }

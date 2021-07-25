@@ -41,7 +41,7 @@ public class EnemyDodge : MonoBehaviour
             return;
         }
         if (Vector3.Angle((transform.position - teacher.transform.position), fov.transform.forward) < fov.viewAngle / 2 + 5
-            && Vector3.Distance(transform.position, teacher.transform.position) <= fov.viewRadius && oneTime)
+            && Vector3.Distance(transform.position, teacher.transform.position) <= fov.viewRadius && oneTime && playerManager.isSkin1)
         {
             if (enemyMovement.intelligent <=5)
             {
@@ -66,10 +66,9 @@ public class EnemyDodge : MonoBehaviour
             }
             oneTime = false;
         }
-        else if (Vector3.Angle((transform.position - teacher.transform.position), fov.transform.forward) > fov.viewAngle / 2 + 5
-            && Vector3.Distance(transform.position, teacher.transform.position) <= fov.viewRadius && !oneTime)
+        else if (Vector3.Angle((transform.position - teacher.transform.position), fov.transform.forward) > fov.viewAngle / 2 + 6
+            /*&& Vector3.Distance(transform.position, teacher.transform.position) <= fov.viewRadius*/ && !oneTime && playerManager.isSkin2)
         {
-
             if (enemyMovement.intelligent <= 5)
             {
                 int a = Random.Range(0, 3);

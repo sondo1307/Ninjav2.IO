@@ -16,7 +16,7 @@ public class Key : MonoBehaviour
         {
             GameDataManager.Instance.SetKey();
             DOTween.Kill(transform);
-            Destroy(gameObject);
+            Destroy(gameObject.transform.parent);
         }
     }
 }

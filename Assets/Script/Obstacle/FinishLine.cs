@@ -14,7 +14,6 @@ public class FinishLine : MonoBehaviour
             other.GetComponentInParent<PlayerMovement>().enabled = false;
             other.GetComponentInParent<PlayerInput>().enabled = false;
             other.GetComponentInParent<PlayerManager>().DisableAllCapsuleCollider();
-            StartCoroutine(other.GetComponentInParent<PlayerDoEndRun>().PlayerEndRun());
             Collider[] list = other.GetComponentsInChildren<CapsuleCollider>();
             for (int i = 0; i < list.Length; i++)
             {
@@ -26,14 +25,24 @@ public class FinishLine : MonoBehaviour
             PlayerData.Instance.CoinEarnThisRun(a);
             UIManager.Instance.SlidersOff();
 
+            StartCoroutine(other.GetComponentInParent<PlayerDoEndRun>().PlayerEndRun());
+
+            //if (a == 1)
+            //{
+            //    StartCoroutine(other.GetComponentInParent<PlayerDoEndRun>().PlayerEndRun());
+            //}
+            //else
+            //{
+            //    other.GetComponent<PlayerInput>().StartParticleSystem();
+            //}
         }
         else if (other.transform.tag == "Enemy")
         {
             other.GetComponentInParent<EnemyMovement>().rb.velocity = Vector3.zero;
             other.GetComponentInParent<EnemyMovement>().rb.isKinematic = true;
             //other.GetComponentInParent<EnemyMovement>().animator.SetTrigger("victory");
-            other.GetComponent<EnemyManager>().StartParticleSystem();
-            Destroy(other.gameObject);
+            other.GetComponentInParent<EnemyManager>().StartParticleSystem();
+            Destroy(other.transform.parent.gameObject);
             other.GetComponentInParent<EnemyMovement>().enabled = false;
             Collider[] list = other.GetComponentsInChildren<CapsuleCollider>();
             for (int i = 0; i < list.Length; i++)

@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
-
+using DG.Tweening;
 
 
 public class PlayerManager : MonoBehaviour
@@ -126,6 +126,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (enemyIsDead)
         {
+            DOTween.Kill(transform);
             enemyIsDead = false;
             gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Default");
 
