@@ -41,7 +41,7 @@ public class EnemyDodge : MonoBehaviour
             return;
         }
         if (Vector3.Angle((transform.position - teacher.transform.position), fov.transform.forward) < fov.viewAngle / 2 + 5
-            && Vector3.Distance(transform.position, teacher.transform.position) <= fov.viewRadius && oneTime)
+            && Vector3.Distance(transform.position, teacher.transform.position) <= fov.viewRadius && oneTime && playerManager.isSkin1)
         {
             if (enemyMovement.intelligent <=5)
             {
@@ -52,7 +52,6 @@ public class EnemyDodge : MonoBehaviour
                     DOTween.Kill(transform);
 
                     transform.GetComponent<EnemyMovement>().enabled = false;
-                    //transform.GetComponent<NavMeshAgent>().enabled = false;
                     StartCoroutine(enemyManager.EnemySkin1ToSkin2());
                     enemyManager.StartParticleSystem();
                 }
@@ -62,16 +61,14 @@ public class EnemyDodge : MonoBehaviour
                 rb.velocity = Vector3.zero;
                 DOTween.Kill(transform);
                 transform.GetComponent<EnemyMovement>().enabled = false;
-                //transform.GetComponent<NavMeshAgent>().enabled = false;
                 StartCoroutine(enemyManager.EnemySkin1ToSkin2());
                 enemyManager.StartParticleSystem();
             }
             oneTime = false;
         }
-        else if (Vector3.Angle((transform.position - teacher.transform.position), fov.transform.forward) > fov.viewAngle / 2 + 5
-            && Vector3.Distance(transform.position, teacher.transform.position) <= fov.viewRadius && !oneTime)
+        else if (Vector3.Angle((transform.position - teacher.transform.position), fov.transform.forward) > fov.viewAngle / 2 + 6
+            /*&& Vector3.Distance(transform.position, teacher.transform.position) <= fov.viewRadius*/ && !oneTime && playerManager.isSkin2)
         {
-
             if (enemyMovement.intelligent <= 5)
             {
                 int a = Random.Range(0, 3);
@@ -81,7 +78,6 @@ public class EnemyDodge : MonoBehaviour
             {
                 StartCoroutine(enemyManager.EnemySkin2ToSkin1());
                 transform.GetComponent<EnemyMovement>().enabled = true;
-                //transform.GetComponent<NavMeshAgent>().enabled = true;
             }
             oneTime = true;
         }
@@ -92,7 +88,5 @@ public class EnemyDodge : MonoBehaviour
         yield return new WaitForSeconds(a);
         StartCoroutine(enemyManager.EnemySkin2ToSkin1());
         transform.GetComponent<EnemyMovement>().enabled = true;
-        //transform.GetComponent<NavMeshAgent>().enabled = true;
-        //transform.GetComponent<EnemyManager>().agent.velocity = new Vector3(0, 0, GetComponent<EnemyMovement>().rbSpeed);
     }
 }

@@ -24,6 +24,8 @@ public class TeacherAI : MonoBehaviour
     private bool stopToCheckPlayer;
     public LayerMask layer;
 
+    [Header("Signal")]
+    public GameObject dangerSignal;
     private void Start()
     {
         defaultTargetPosition = target.position;
@@ -59,6 +61,7 @@ public class TeacherAI : MonoBehaviour
 
     IEnumerator StartPatrol()
     {
+        dangerSignal.SetActive(true);
         transform.DORotate(new Vector3(0, 180, 0), 2).SetEase(Ease.Linear);
         animator.SetBool("turn", true);
         yield return new WaitForSeconds(2);
@@ -156,10 +159,10 @@ public class TeacherAI : MonoBehaviour
 
     public void ReachEndOfList()
     {
+        dangerSignal.SetActive(false);
         //fieldOfView.viewAngle = Mathf.Lerp(0, fieldOfView.viewAngle, 0.9f);
-        //fieldOfView.viewAngle = Mathf.SmoothStep(0, fieldOfView.viewAngle, 0.93f);
+        //fieldOfView.viewAngle = Mathf.SmoothStep(0, fieldOfView.viewAngle, 0.1f);
         fieldOfView.viewRadius = Mathf.SmoothStep(0, fieldOfView.viewRadius, 0.8f);
-        //LerpFieldOfView(0, 0.93f);
         allowPatrol = false;
         if (oneTime)
         {

@@ -208,8 +208,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleTime: 0.15
-  percentToSmart: 10
-  percentToStupid: 100
+  smartThreshHold: 0
+  stupidThreshHold: 0
   timeBetweenInvoke: 3
   player: {fileID: 0}
 --- !u!114 &807574068009359362
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f9e63f70760d04448e0ca6ae1130805, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rbSpeed: 0
+  rbSpeed: 7
   rbSpeedOrigin: 7
   jumpForce: 6
   child: {fileID: 727145190}
@@ -235,9 +235,12 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 3328
+  roadLayer:
+    serializedVersion: 2
+    m_Bits: 512
   wallLayer:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 1216
   Y1Rotation: -15
   raycastLength: 5
   numerOfRay: 19

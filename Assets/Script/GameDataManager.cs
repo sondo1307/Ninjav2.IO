@@ -25,6 +25,11 @@ public class GameDataManager : MonoBehaviour
         return true;
     }
 
+    public void ChestThreeKeyOpen()
+    {
+
+    }
+
     public void SetKey()
     {
         gameDataScrObj.keys++;
@@ -32,12 +37,12 @@ public class GameDataManager : MonoBehaviour
 
     public bool SetMusic()
     {
-        return !gameDataScrObj.musicOn;
+        return gameDataScrObj.vibrateOn = !gameDataScrObj.musicOn;
     }
 
     public bool SetVibrate()
     {
-        return !gameDataScrObj.vibrateOn;
+        return gameDataScrObj.vibrateOn = !gameDataScrObj.vibrateOn;
     }
 
     public void SetLevel()

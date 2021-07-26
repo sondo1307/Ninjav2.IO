@@ -20,7 +20,7 @@ public class MySlider : MonoBehaviour
 
     private void Update()
     {
-        slider.value = (player.position.z - startPosition.z) / (sliderParent.finishLine.position.z - player.position.z);
+        slider.value = Mathf.Abs(player.position.z - startPosition.z) / Mathf.Abs(sliderParent.finishLine.position.z - startPosition.z);
     }
 
 }

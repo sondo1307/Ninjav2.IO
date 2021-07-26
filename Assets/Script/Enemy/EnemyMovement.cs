@@ -23,6 +23,7 @@ public class EnemyMovement : MonoBehaviour
     public float slideForce;
     [Header("CheckForward")]
     public LayerMask obstacleLayer;
+    public LayerMask roadLayer;
     public LayerMask wallLayer;
     public float Y1Rotation;
     private float Y2Rotation;
@@ -80,11 +81,20 @@ public class EnemyMovement : MonoBehaviour
             Vector3[] a = new Vector3[numerOfRay];
             float tempRotation = Y1Rotation;
             float step = Mathf.Abs(Y1Rotation - Y2Rotation) / (numerOfRay - 1);
+            RaycastHit forwardCheck;
+            float angle = 0;
+            if (Physics.Raycast(child.transform.position- new Vector3(0,0,0.1f), transform.forward, out forwardCheck, 1, roadLayer))
+            {
+                angle = Vector3.Angle(forwardCheck.normal,transform.forward)-90;
+                //Debug.Log("true");
+            }
+            Physics.Raycast(child.transform.position, transform.forward, out forwardCheck, raycastLength, roadLayer);
             for (int i = 0; i < numerOfRay; i++)
             {
                 Vector3 dir = Quaternion.Euler(0, tempRotation, 0) * Vector3.forward;
+                Vector3 dir2 = Quaternion.Euler(-angle,0,0) * dir;
                 RaycastHit hit;
-                if (Physics.Raycast(child.transform.position, dir, out hit, raycastLength, obstacleLayer))
+                if (Physics.Raycast(child.transform.position, dir2, out hit, raycastLength, obstacleLayer))
                 {
                     if (hit.transform.CompareTag("Obstacle"))
                     {
@@ -327,7 +337,8 @@ public class EnemyMovement : MonoBehaviour
         for (int i = 0; i < numerOfRay; i++)
         {
             Vector3 dir = Quaternion.Euler(0, tempRotation, 0) * Vector3.forward;
-            Gizmos.DrawRay(child.transform.position, Quaternion.Euler(0, tempRotation, 0) * Vector3.forward * raycastLength);
+            Vector3 dir2 = Quaternion.Euler(0, 0, 0) * dir;
+            Gizmos.DrawRay(child.transform.position, dir2 * raycastLength);
             tempRotation += step;
         }
         Gizmos.color = Color.blue;

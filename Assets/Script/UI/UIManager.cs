@@ -74,18 +74,25 @@ public class UIManager : MonoBehaviour
     public IEnumerator LevelComplete()
     {
         backGrounds.SetActive(true);
-        Tween a = levelCompleteImg.DOAnchorPosX(0, 0.5f, true).SetEase(Ease.Linear);
+        Tween a = levelCompleteImg.DOAnchorPosX(0, 0.5f, true).SetEase(Ease.Linear).SetUpdate(true);
         yield return a.WaitForCompletion();
-        Tween b = levelCompleteTxt.DOAnchorPosY(15, 1, true).SetEase(Ease.OutBounce);
+        Tween b = levelCompleteTxt.DOAnchorPosY(15, 1, true).SetEase(Ease.OutBounce).SetUpdate(true);
         yield return b.WaitForCompletion();
         yield return new WaitForSeconds(0.25f);
         SetNextLevelTxt();
         adsBtn.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.5f);
-        adsBtn.DOScale(new Vector3(8, 12, 0), 0.75f).SetEase(Ease.OutCubic).SetLoops(-1, LoopType.Yoyo);
+        adsBtn.DOScale(new Vector3(8, 12, 0), 0.75f).SetEase(Ease.OutCubic).SetLoops(-1, LoopType.Yoyo).SetUpdate(true);
         yield return new WaitForSeconds(3);
         nextLevelBtn.gameObject.SetActive(true);
-        Tween d = nextLevelBtn.GetComponentInChildren<Text>().DOFade(1, 1).SetEase(Ease.Linear);
+        Tween d = nextLevelBtn.GetComponentInChildren<Text>().DOFade(1, 1).SetEase(Ease.Linear).SetUpdate(true);
+        Time.timeScale = 0;
+
+    }
+
+    public void SlidersOff()
+    {
+        sliders.SetActive(false);
     }
 
     public void SetNextLevelTxt()

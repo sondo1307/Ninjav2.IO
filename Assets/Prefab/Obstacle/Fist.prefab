@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 3848286288827282018}
   - component: {fileID: 3848286288827282029}
   m_Layer: 8
-  m_Name: Swing
+  m_Name: Fist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,6 +109,7 @@ MonoBehaviour:
   defaultTimer: 4
   child: {fileID: 8068947082727946685}
   destinationX: -1
+  capsuleBoxMain: {fileID: 637090314}
 --- !u!1 &3848286289351370697
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,20 +7,28 @@ public class MusicBtn : MonoBehaviour
 {
     public Sprite defaultSprite1;
     public Sprite spriteMute;
-    private bool check = true;
 
-    public void Click()
+    private void Start()
     {
-        GameDataManager.Instance.SetMusic();
-        if (check)
-        {
-            transform.GetComponent<Image>().sprite = spriteMute;
-            check = false;
-        }
-        else if (!check)
+        if (GameDataManager.Instance.gameDataScrObj.musicOn)
         {
             transform.GetComponent<Image>().sprite = defaultSprite1;
-            check = true;
         }
+        else
+        {
+            transform.GetComponent<Image>().sprite = spriteMute;
+        }
+    }
+    public void Click()
+    {
+        if (GameDataManager.Instance.gameDataScrObj.musicOn)
+        {
+            transform.GetComponent<Image>().sprite = spriteMute;
+        }
+        else if (!GameDataManager.Instance.gameDataScrObj.musicOn)
+        {
+            transform.GetComponent<Image>().sprite = defaultSprite1;
+        }
+        GameDataManager.Instance.SetMusic();
     }
 }

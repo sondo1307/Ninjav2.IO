@@ -8,17 +8,36 @@ public class Flame : MonoBehaviour
     public GameObject flamePrefab;
     private List<GameObject> temp = new List<GameObject>();
     public GameObject trigger;
+
+    public DangerSignal dangerSignal1;
+    public DangerSignal dangerSignal2;
+
+    public float timeBetween;
+    [SerializeField]private float tempTime;
     private void Start()
     {
-        for (int i = 0; i < transform.childCount; i++)
+        tempTime = timeBetween;
+        for (int i = 0; i < transform.childCount-1; i++)
         {
             list.Add(transform.GetChild(i));
         }
-        InvokeRepeating("InstanceFlame", 1, 7);
     }
 
-    public void InstanceFlame()
+    private void Update()
     {
+        tempTime -= Time.deltaTime;
+        if (tempTime <= 0)
+        {
+            StartCoroutine(InstanceFlame());
+            tempTime = timeBetween;
+        }
+    }
+
+    public IEnumerator InstanceFlame()
+    {
+        dangerSignal1.SingalControl();
+        dangerSignal2.SingalControl();
+        yield return new WaitForSeconds(1);
         trigger.SetActive(true);
         for (int i = 0; i < list.Count; i++)
         {
@@ -35,5 +54,7 @@ public class Flame : MonoBehaviour
         {
             Destroy(temp[i].gameObject);
         }
+        dangerSignal1.DauChamThanTat();
+        dangerSignal2.DauChamThanTat();
     }
 }

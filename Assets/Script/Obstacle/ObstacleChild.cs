@@ -24,18 +24,10 @@ public class ObstacleChild : MonoBehaviour
             if (other.transform.tag == "Player")
             {
                 other.transform.GetComponentInParent<PlayerManager>().PlayerKick(kickDirection);
-                for (int i = 0; i < transform.parent.childCount; i++)
-                {
-                    Physics.IgnoreCollision(transform.parent.GetChild(i).GetComponent<CapsuleCollider>(), other);
-                }
             }
             else if (other.transform.CompareTag("Enemy"))
             {
                 other.transform.GetComponentInParent<PlayerManager>().EnemyKick(kickDirection );
-                for (int i = 0; i < transform.parent.childCount; i++)
-                {
-                    Physics.IgnoreCollision(transform.parent.GetChild(i).GetComponent<CapsuleCollider>(), other);
-                }
             }
         }
     }

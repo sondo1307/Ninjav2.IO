@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
-
+using DG.Tweening;
 
 
 public class PlayerManager : MonoBehaviour
@@ -40,7 +40,7 @@ public class PlayerManager : MonoBehaviour
         isSkin1 = true;
         rb = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
-        //checkPointPosition = new Vector3(0, transform.position.y, 0);
+        checkPointPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
 
     private void Update()
@@ -49,7 +49,6 @@ public class PlayerManager : MonoBehaviour
 
     public IEnumerator AngryResetToCheckPoint()
     {
-        StartCoroutine(playerInput.Skin2ToSkin1());
         StartCoroutine(Delay(timeBetweenResurrect, "angry"));
         yield return new WaitForSeconds(timeBetweenResurrect-0.5f);
         playerInput.StartParticleSystem();
@@ -84,6 +83,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (playerIsDead)
         {
+            StartCoroutine(playerInput.Skin2ToSkin1());
             gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Default");
             playerIsDead = false;
             canMove = false;
@@ -126,6 +126,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (enemyIsDead)
         {
+            DOTween.Kill(transform);
             enemyIsDead = false;
             gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Default");
 
@@ -165,9 +166,9 @@ public class PlayerManager : MonoBehaviour
     public IEnumerator EnemyAngryResetToCheckPoint()
     {
         StartCoroutine(enemyManager.EnemySkin2ToSkin1());
-        StartCoroutine(Delay(timeBetweenResurrect, "angry"));
+        StartCoroutine(EnemyDelay(timeBetweenResurrect, "angry"));
         yield return new WaitForSeconds(timeBetweenResurrect - 0.5f);
-        playerInput.StartParticleSystem();
+        enemyManager.StartParticleSystem();
     }
 
     public void EnemyKick(Vector3 kickDirection)
@@ -195,4 +196,8 @@ public class PlayerManager : MonoBehaviour
         StartCoroutine(EnemyDelay(timeBetweenResurrect, "fall"));
     }
 
+    public void DisableAllCapsuleCollider()
+    {
+        transform.GetChild(1).GetComponent<CapsuleCollider>().enabled = false;
+    }
 }
