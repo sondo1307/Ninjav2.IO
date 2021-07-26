@@ -49,10 +49,11 @@ MonoBehaviour:
   finishZ: 96
   listOfTeacher:
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   placeCount: 0
   playerInput: {fileID: 0}
   enemysManager:
-  - {fileID: 0}
   - {fileID: 0}
 --- !u!114 &1214346938821779520
 MonoBehaviour:
