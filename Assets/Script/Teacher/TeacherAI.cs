@@ -5,11 +5,14 @@ using DG.Tweening;
 
 public class TeacherAI : MonoBehaviour
 {
+    public bool start { get; set; }
+
     public float timeLerp;
     private int i = 0;
     private bool allowPatrol;
     public FieldOfView fieldOfView;
     private bool oneTime = true;
+    private bool oneTimeStartPatrol = true;
     private bool controlDelayToPatrol = true;
 
     public float idleToPatrolTime = 5f;
@@ -26,13 +29,14 @@ public class TeacherAI : MonoBehaviour
 
     [Header("Signal")]
     public GameObject dangerSignal;
+
     private void Start()
     {
+        stopToCheckPlayer = true;
         defaultTargetPosition = target.position;
         animator = GetComponentInChildren<Animator>();
         fieldOfView = GetComponentInChildren<FieldOfView>();
         allowPatrol = true;
-        StartCoroutine(StartPatrol());
         fieldOfView.enabled = false;
         fieldOfView.viewRadius = 0;
         fieldOfView.viewAngle = 0;
@@ -41,22 +45,33 @@ public class TeacherAI : MonoBehaviour
 
     private void Update()
     {
-        if (startFieldOfView)
+        if (start)
         {
-            fieldOfView.viewRadius = Mathf.SmoothStep(fieldOfView.viewRadius, fieldOfView.defaultViewRadius, 0.1f);
+            if (oneTimeStartPatrol)
+            {
+                StartCoroutine(StartPatrol());
+                oneTimeStartPatrol = false;
+            }
+            if (startFieldOfView)
+            {
+                //fieldOfView.viewRadius = Mathf.SmoothStep(fieldOfView.viewRadius, fieldOfView.defaultViewRadius, 0.1f);
+                DOTween.To(() => fieldOfView.viewRadius, x => fieldOfView.viewRadius = x, fieldOfView.defaultViewRadius, 1.5f);
+
+            }
+            if (i < targetsXs.Count && allowPatrol)
+            {
+                CheckReachPatrolPoint();
+            }
+            else if (i == targetsXs.Count)
+            {
+                ReachEndOfList();
+            }
+            if (i < targetsXs.Count && !allowPatrol && controlDelayToPatrol)
+            {
+                StartCoroutine(DelayToPatrol());
+            }
         }
-        if (i < targetsXs.Count && allowPatrol)
-        {
-            CheckReachPatrolPoint();
-        }
-        else if (i == targetsXs.Count)
-        {
-            ReachEndOfList();
-        }
-        if (i < targetsXs.Count && !allowPatrol && controlDelayToPatrol)
-        {
-            StartCoroutine(DelayToPatrol());
-        }
+
     }
 
     IEnumerator StartPatrol()
@@ -110,36 +125,47 @@ public class TeacherAI : MonoBehaviour
             if (i < targetsXs.Count)
             {
                 DOTween.Kill(transform);
+                DOTween.Kill(target.transform);
                 Patrol();
             }
         }
 
+        ScanBool();
+
         if (scanBool)
         {
-            if (Physics.Raycast(child.position, new Vector3(target.position.x, child.position.y, target.position.z) - child.position, fieldOfView.viewRadius - 0.25f, layer) && stopToCheckPlayer && stopToCheckPlayer)
+            if (Physics.Raycast(child.position, new Vector3(target.position.x, child.position.y, target.position.z) - child.position, fieldOfView.viewRadius - 0.25f, layer) 
+                && stopToCheckPlayer )
             {
                 DOTween.Pause(target.transform);
-                fieldOfView.viewAngle = Mathf.SmoothStep(5, fieldOfView.viewAngle, 0.8f);
+                //fieldOfView.viewAngle = Mathf.SmoothStep(5, fieldOfView.viewAngle, 0.8f);
+                DOTween.To(() => fieldOfView.viewAngle, x => fieldOfView.viewAngle = x, 5, 0.5f);
                 StartCoroutine(DelayFieldOfView());
             }
         }
         if (!stopToCheckPlayer)
         {
-            fieldOfView.viewAngle = Mathf.SmoothStep(fieldOfView.viewAngle, fieldOfView.defaultViewAngle, 0.1f);
+            //fieldOfView.viewAngle = Mathf.SmoothStep(fieldOfView.viewAngle, fieldOfView.defaultViewAngle, 0.1f);
+            DOTween.To(() => fieldOfView.viewAngle, x => fieldOfView.viewAngle = x, fieldOfView.defaultViewAngle, 0.5f);
         }
     }
 
     public void ScanBool()
     {
         float a = Random.Range(0, 10);
-        if (a <= 4)
+
+        if (Time.frameCount% 30 == 0)
         {
-            scanBool = true;
+            if (a <= 7)
+            {
+                scanBool = true;
+            }
+            else
+            {
+                scanBool = false;
+            }
         }
-        else
-        {
-            scanBool = false;
-        }
+
     }
 
     IEnumerator DelayFieldOfView()
@@ -162,10 +188,15 @@ public class TeacherAI : MonoBehaviour
         dangerSignal.SetActive(false);
         //fieldOfView.viewAngle = Mathf.Lerp(0, fieldOfView.viewAngle, 0.9f);
         //fieldOfView.viewAngle = Mathf.SmoothStep(0, fieldOfView.viewAngle, 0.1f);
-        fieldOfView.viewRadius = Mathf.SmoothStep(0, fieldOfView.viewRadius, 0.8f);
+        //fieldOfView.viewRadius = Mathf.SmoothStep(0, fieldOfView.viewRadius, 0.8f);
+
         allowPatrol = false;
         if (oneTime)
         {
+            DOTween.Kill(transform);
+            DOTween.Kill(target.transform);
+            DOTween.To(() => fieldOfView.viewRadius, x => fieldOfView.viewRadius = x, 0, 0.5f);
+            //fieldOfView.viewRadius = 0;
             animator.SetTrigger("looktoturn");
             transform.DORotate(Vector3.zero, 2).SetEase(Ease.Linear);
             StartCoroutine(Delay(2));
@@ -174,8 +205,6 @@ public class TeacherAI : MonoBehaviour
         if (fieldOfView.viewAngle <= 0.0001f || fieldOfView.viewRadius <= 0.001f)
         {
             i = 0;
-            fieldOfView.viewAngle = 0;
-            fieldOfView.viewRadius = 0;
             fieldOfView.enabled = false;
         }
     }
@@ -205,6 +234,7 @@ public class TeacherAI : MonoBehaviour
     {
         DOTween.Kill(transform, false);
         DOTween.Kill(target.transform, false);
+        DOTween.Kill(dangerSignal.transform, false);
         Destroy(gameObject);
     }
 }

@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 727145190}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.025, z: 0}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 139496471106514263}
@@ -140,13 +140,14 @@ GameObject:
   - component: {fileID: 807574068009359363}
   - component: {fileID: 807574068009359362}
   - component: {fileID: 3957660980009088991}
+  - component: {fileID: 1500871030}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &139496471106514263
 Transform:
   m_ObjectHideFlags: 0
@@ -194,6 +195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dataManager: {fileID: 0}
   teacher: {fileID: 0}
+  fov: {fileID: 0}
   dodgePercent: 25
 --- !u!114 &807574068009359363
 MonoBehaviour:
@@ -224,7 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f9e63f70760d04448e0ca6ae1130805, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rbSpeed: 7
+  rbSpeed: 0
   rbSpeedOrigin: 7
   jumpForce: 6
   child: {fileID: 727145190}
@@ -234,16 +236,16 @@ MonoBehaviour:
   slideForce: 0.1
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 3328
+    m_Bits: 12224
   roadLayer:
     serializedVersion: 2
     m_Bits: 512
   wallLayer:
     serializedVersion: 2
-    m_Bits: 1216
-  Y1Rotation: -15
-  raycastLength: 5
-  numerOfRay: 19
+    m_Bits: 1984
+  Y1Rotation: -25
+  raycastLength: 10
+  numerOfRay: 15
   scanFrequence: 30
   intelligent: 7
 --- !u!114 &3957660980009088991
@@ -258,14 +260,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94ef37c802071584eac3fae69cc2a4a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMove: 0
   skin1: {fileID: 573221075292166811}
   skin2: {fileID: 139496470942629563}
   particle: {fileID: 6060720363130308437, guid: 4903418ea9fe4ce41a10a0d43f94e876, type: 3}
   myCamera: {fileID: 0}
   timeBetweenResurrect: 2
-  playerIsDead: 1
-  enemyIsDead: 1
+  playerIsDead: 0
+  enemyIsDead: 0
   constraint1: 112
+  deathCylinder: {fileID: 2174163202735670411, guid: c405690a1a9570b488c305d68e9de822, type: 3}
+  defaultScale: {x: 0, y: 0, z: 0}
+--- !u!114 &1500871030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139496471106514267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a3cfaa9406a4f449a5db8d5ffc491d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 562233865113914289, guid: c405690a1a9570b488c305d68e9de822, type: 3}
+  point2: 2
+  vaccumPrefab: {fileID: 8026597296773727827, guid: fea3d45b5c432b1438aa037a6e14526e, type: 3}
 --- !u!136 &893956533
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -329,6 +349,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 65f9c4bdde36c3147bf479c533025634, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2750582448059301601, guid: 65f9c4bdde36c3147bf479c533025634, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 65f9c4bdde36c3147bf479c533025634, type: 3}

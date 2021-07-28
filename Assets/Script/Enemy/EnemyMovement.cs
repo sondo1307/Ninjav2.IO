@@ -34,9 +34,13 @@ public class EnemyMovement : MonoBehaviour
     [Range(1,9)]
     public int intelligent;
     private float desiredX;
+
+
+    private PlayerManager playerManager;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        playerManager = GetComponent<PlayerManager>();
         animator = GetComponentInChildren<Animator>();
         Y2Rotation = -Y1Rotation;
         rbSpeedOrigin = rbSpeed;
@@ -45,7 +49,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
-        if (MyScene.Instance.gameIsStart && !isPushed)
+        if (MyScene.Instance.gameIsStart && !isPushed && playerManager.canMove)
         {
             RayCastCheck();
             RayCastOnOff();
@@ -62,7 +66,15 @@ public class EnemyMovement : MonoBehaviour
                 animator.SetBool("run", true);
                 oneTime = false;
             }
-            EnemyMovefoward();
+
+            if (playerManager.canMove)
+            {
+                EnemyMovefoward();
+            }
+            else if (!playerManager.canMove)
+            {
+                rb.velocity = new Vector3(0, rb.velocity.y, 0);
+            }
         }
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, -2.5f, 2.5f), transform.position.y, transform.position.z);
     }
@@ -83,12 +95,12 @@ public class EnemyMovement : MonoBehaviour
             float step = Mathf.Abs(Y1Rotation - Y2Rotation) / (numerOfRay - 1);
             RaycastHit forwardCheck;
             float angle = 0;
-            if (Physics.Raycast(child.transform.position- new Vector3(0,0,0.1f), transform.forward, out forwardCheck, 1, roadLayer))
+            if (Physics.Raycast(child.transform.position- new Vector3(0,0,0.1f), transform.forward, out forwardCheck, 0.1f, roadLayer))
             {
                 angle = Vector3.Angle(forwardCheck.normal,transform.forward)-90;
                 //Debug.Log("true");
             }
-            Physics.Raycast(child.transform.position, transform.forward, out forwardCheck, raycastLength, roadLayer);
+            //Physics.Raycast(child.transform.position, transform.forward, out forwardCheck, raycastLength, roadLayer);
             for (int i = 0; i < numerOfRay; i++)
             {
                 Vector3 dir = Quaternion.Euler(0, tempRotation, 0) * Vector3.forward;
@@ -96,11 +108,11 @@ public class EnemyMovement : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(child.transform.position, dir2, out hit, raycastLength, obstacleLayer))
                 {
-                    if (hit.transform.CompareTag("Obstacle"))
-                    {
-                        a[i] = hit.point;
-                    }
-
+                    a[i] = hit.point;
+                    //if (hit.transform.CompareTag("Obstacle"))
+                    //{
+                    //    a[i] = hit.point;
+                    //}
                 }
                 else
                 {
@@ -144,6 +156,10 @@ public class EnemyMovement : MonoBehaviour
                         {
                             transform.DOMoveX(transform.position.x + 0.5f, 1);
                         }
+                        else if (RayCastRight() && RayCastLeft())
+                        {
+                            return;
+                        }
                     }
                     else
                     {
@@ -175,6 +191,10 @@ public class EnemyMovement : MonoBehaviour
                             {
                                 transform.DOMoveX(transform.position.x - 0.5f, 1);
                             }
+                            else if (RayCastRight() && RayCastLeft())
+                            {
+                                return;
+                            }
                         }
                     }
                 }
@@ -199,6 +219,10 @@ public class EnemyMovement : MonoBehaviour
                             {
                                 transform.DOMoveX(transform.position.x - 1f, 1);
                             }
+                            else if (RayCastRight() && RayCastLeft())
+                            {
+                                return;
+                            }
                         }
                     }
                 }
@@ -213,16 +237,18 @@ public class EnemyMovement : MonoBehaviour
                 }
                 else
                 {
-
-                        if (RayCastLeft())
-                        {
-                            transform.DOMoveX(transform.position.x + 1.5f, 2);
-                        }
-                        else if (RayCastRight())
-                        {
-                            transform.DOMoveX(transform.position.x - 1.5f, 2);
-                        }
-                    
+                    if (RayCastLeft())
+                    {
+                        transform.DOMoveX(transform.position.x + 1.5f, 2);
+                    }
+                    else if (RayCastRight())
+                    {
+                        transform.DOMoveX(transform.position.x - 1.5f, 2);
+                    }
+                    else if (RayCastRight() && RayCastLeft())
+                    {
+                        return;
+                    }
                 }
 
             }
@@ -242,6 +268,8 @@ public class EnemyMovement : MonoBehaviour
     {
         if (Physics.Raycast(child.transform.position, -Vector3.right, 3, wallLayer))
         {
+            Debug.Log(2);
+
             return true;
         }
         return false;
@@ -250,8 +278,9 @@ public class EnemyMovement : MonoBehaviour
 
     public bool RayCastRight()
     {
-        if (Physics.Raycast(child.transform.position, Vector3.right, 3, obstacleLayer))
+        if (Physics.Raycast(child.transform.position, Vector3.right, 3, wallLayer))
         {
+            Debug.Log(1);
             return true;
         }
         return false;

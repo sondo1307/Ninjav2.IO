@@ -6,7 +6,7 @@ using DG.Tweening;
 
 public class PlayerManager : MonoBehaviour
 {
-    public bool canMove { get; set; }
+    public bool canMove;
     public bool canSlide { get; set; }
     public bool jumping { get; set; }
     public GameObject skin1;
@@ -19,9 +19,9 @@ public class PlayerManager : MonoBehaviour
     public float timeBetweenResurrect = 2;
 
     public Vector3 checkPointPosition { get; set; }
-    public bool playerIsDead = true;
+    public bool playerIsDead = false;
 
-    public bool enemyIsDead = true;
+    public bool enemyIsDead = false;
     private EnemyManager enemyManager;
 
     private Rigidbody rb;
@@ -29,11 +29,14 @@ public class PlayerManager : MonoBehaviour
     public Animator animator { get; set; }
     public RigidbodyConstraints constraint1 = RigidbodyConstraints.FreezeRotation;
 
-
+    [Header("Death")]
+    public CylinderDeath deathCylinder;
+    public Vector3 defaultScale;
 
     private void Start()
     {
-
+        defaultScale = transform.localScale;
+        deathCylinder = GetComponent<CylinderDeath>();
         playerInput = GetComponent<PlayerInput>();
         enemyManager = GetComponent<EnemyManager>();
         canMove = true;
@@ -43,20 +46,71 @@ public class PlayerManager : MonoBehaviour
         checkPointPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
 
-    private void Update()
+
+    public void AngryResetToCheckPoint()
     {
+        StartCoroutine(DelayTeacherHit(timeBetweenResurrect, "angry"));
+        //yield return new WaitForSeconds(timeBetweenResurrect - 0.5f);
+        //playerInput.StartParticleSystem();
     }
 
-    public IEnumerator AngryResetToCheckPoint()
+    public IEnumerator DelayTeacherHit(float delay, string a)
     {
-        StartCoroutine(Delay(timeBetweenResurrect, "angry"));
-        yield return new WaitForSeconds(timeBetweenResurrect-0.5f);
-        playerInput.StartParticleSystem();
-    }
+        if (!playerIsDead)
+        {
+            AudioManager.Instance.StopAudio("footstep");
 
+            StartCoroutine(playerInput.Skin2ToSkin1());
+            animator.SetTrigger("angry");
+            playerIsDead = true;
+            gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Default");
+            canMove = false;
+            rb.velocity = new Vector3(0, rb.velocity.y, 0);
+            transform.GetComponent<PlayerInput>().enabled = false;
+            transform.GetComponent<PlayerMovement>().enabled = false;
+            animator.SetBool("run", false);
+
+            yield return new WaitForSeconds(0.5f);
+            StartCoroutine(deathCylinder.Instance(transform.position));
+            myCamera.player = null;
+
+            yield return new WaitForSeconds(0.5f);
+            transform.DOScale(Vector3.zero, 0.5f).SetEase(Ease.Linear);
+            Tween tween1 = transform.DOMoveY(5, 0.5f).SetEase(Ease.Linear);
+            Collider[] b = transform.GetComponentsInChildren<CapsuleCollider>();
+            yield return tween1.WaitForCompletion();
+
+            //yield return new WaitForSeconds(0.5f);
+            StartCoroutine(deathCylinder.Instance2(checkPointPosition));
+
+            myCamera.player = transform.gameObject;
+            myCamera.transform.position = checkPointPosition + myCamera.offset;
+            transform.position = checkPointPosition + new Vector3(0, 5, 0);
+
+            Tween tween2 = transform.DOScale(defaultScale, 0.5f).SetEase(Ease.Linear);
+            //rb.AddForce(Vector3.down, ForceMode.Impulse);
+            yield return tween2.WaitForCompletion();
+
+            gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Player");
+
+            playerInput.checkAnimationRun = true;
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            StartCoroutine(playerInput.Skin2ToSkin1());
+            b[0].enabled = true;
+            rb.constraints = constraint1;
+            yield return new WaitForSeconds(0.5f);
+            rb.velocity = new Vector3(0, 0, 0);
+            animator.SetTrigger("idle");
+            transform.GetComponent<PlayerInput>().enabled = true;
+            transform.GetComponent<PlayerMovement>().enabled = true;
+            canMove = true;
+            playerIsDead = false;
+            GetComponent<PlayerMovement>().oneTime = true;
+        }
+    }
     public void ResetPositionToCheckPoint()
     {
-        StartCoroutine(playerInput.Skin2ToSkin1());
+        //StartCoroutine(playerInput.Skin2ToSkin1());
         StartCoroutine(Delay(timeBetweenResurrect, "die"));
     }
 
@@ -81,11 +135,12 @@ public class PlayerManager : MonoBehaviour
 
     IEnumerator Delay(float delay, string a)
     {
-        if (playerIsDead)
+        if (!playerIsDead)
         {
+            AudioManager.Instance.StopAudio("footstep");
             StartCoroutine(playerInput.Skin2ToSkin1());
             gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Default");
-            playerIsDead = false;
+            playerIsDead = true;
             canMove = false;
             rb.velocity = new Vector3(0, rb.velocity.y, 0);
             transform.GetComponent<PlayerInput>().enabled = false;
@@ -107,29 +162,89 @@ public class PlayerManager : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, 0);
             transform.position = checkPointPosition;
             StartCoroutine(playerInput.Skin2ToSkin1());
-            for (int i = 0; i < b.Length; i++)
-            {
-                b[i].enabled = true;
-            }
+            //for (int i = 0; i < b.Length; i++)
+            //{
+            //    b[i].enabled = true;
+            //}
+            b[0].enabled = true;
+
             rb.constraints = constraint1;
 
             yield return new WaitForSeconds(0.5f);
             canMove = true;
-            playerIsDead = true;
+            playerIsDead = false;
+            GetComponent<PlayerMovement>().oneTime = true;
+
         }
 
     }
 
-
-
-    IEnumerator EnemyDelay(float delay, string a)
+    public IEnumerator EnemyDelayTeacherHit(float delay, string a)
     {
-        if (enemyIsDead)
+        if (!enemyIsDead)
         {
             DOTween.Kill(transform);
-            enemyIsDead = false;
-            gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Default");
+            StopCoroutine(GetComponent<EnemyMovement>().DelayJump());
+            GetComponent<EnemyMovement>().enabled = false;
+            StartCoroutine(enemyManager.EnemySkin2ToSkin1());
 
+            animator.SetTrigger("angry");
+            enemyIsDead = true;
+            gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Default");
+            canMove = false;
+            rb.velocity = new Vector3(0, rb.velocity.y, 0);
+            animator.SetBool("run", false);
+            yield return new WaitForSeconds(0.5f);
+            StartCoroutine(deathCylinder.Instance(transform.position));
+            yield return new WaitForSeconds(0.5f);
+            transform.DOScale(Vector3.zero, 0.5f).SetEase(Ease.Linear);
+            Tween tween1 = transform.DOMoveY(5, 0.5f).SetEase(Ease.Linear);
+            Collider[] b = transform.GetComponentsInChildren<CapsuleCollider>();
+            yield return tween1.WaitForCompletion();
+
+            yield return new WaitForSeconds(0.5f);
+            StartCoroutine(enemyManager.EnemySkin2ToSkin1());
+
+            StartCoroutine(deathCylinder.Instance2(checkPointPosition));
+            transform.position = checkPointPosition + new Vector3(0, 5, 0);
+
+            Tween tween2 = transform.DOScale(defaultScale, 0.5f).SetEase(Ease.Linear);
+            rb.AddForce(Vector3.down, ForceMode.Impulse);
+            yield return tween2.WaitForCompletion();
+
+            gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Player");
+
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            //for (int i = 0; i < b.Length; i++)
+            //{
+            //    b[i].enabled = true;
+            //}
+            b[0].enabled = true;
+
+            rb.constraints = constraint1;
+            yield return new WaitForSeconds(0.5f);
+            rb.velocity = new Vector3(0, 0, 0);
+            animator.SetTrigger("idle");
+            yield return new WaitForSeconds(0.5f);
+            animator.SetBool("run", true);
+            GetComponent<EnemyMovement>().enabled = true;
+
+            rb.velocity = new Vector3(0, 0, GetComponent<EnemyMovement>().rbSpeed);
+            canMove = true;
+            enemyIsDead = false;
+        }
+    }
+
+
+    public IEnumerator EnemyDelay(float delay, string a)
+    {
+        if (!enemyIsDead)
+        {
+            DOTween.Kill(transform);
+            enemyIsDead = true;
+            canMove = false;
+            gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Default");
+            StartCoroutine(enemyManager.EnemySkin2ToSkin1());
             StopCoroutine(GetComponent<EnemyMovement>().DelayJump());
             rb.velocity = Vector3.zero;
             transform.GetComponent<EnemyMovement>().enabled = false;
@@ -138,15 +253,19 @@ public class PlayerManager : MonoBehaviour
             Collider[] b = transform.GetComponentsInChildren<CapsuleCollider>();
             // sau delay giay thi sinh ra cho moi
             yield return new WaitForSeconds(delay);
+            StartCoroutine(enemyManager.EnemySkin2ToSkin1());
+
             enemyManager.StartParticleSystem();
             gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Enemy");
 
             rb.velocity = new Vector3(0, 0, 0);
 
-            for (int i = 0; i < b.Length; i++)
-            {
-                b[i].enabled = true;
-            }
+            //for (int i = 0; i < b.Length; i++)
+            //{
+            //    b[i].enabled = true;
+            //}
+            b[0].enabled = true;
+
             animator.SetTrigger("idle");
             rb.constraints = constraint1;
             transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -158,17 +277,17 @@ public class PlayerManager : MonoBehaviour
             transform.GetComponent<EnemyMovement>().enabled = true;
             rb.velocity = new Vector3(0, 0, GetComponent<EnemyMovement>().rbSpeed);
             animator.SetBool("run", true);
-            enemyIsDead = true;
+            enemyIsDead = false;
+            canMove = true;
         }
 
     }
 
-    public IEnumerator EnemyAngryResetToCheckPoint()
+    public void EnemyAngryResetToCheckPoint()
     {
-        StartCoroutine(enemyManager.EnemySkin2ToSkin1());
-        StartCoroutine(EnemyDelay(timeBetweenResurrect, "angry"));
-        yield return new WaitForSeconds(timeBetweenResurrect - 0.5f);
-        enemyManager.StartParticleSystem();
+        StartCoroutine(EnemyDelayTeacherHit(timeBetweenResurrect, "angry"));
+        //yield return new WaitForSeconds(timeBetweenResurrect - 0.5f);
+        //enemyManager.StartParticleSystem();
     }
 
     public void EnemyKick(Vector3 kickDirection)

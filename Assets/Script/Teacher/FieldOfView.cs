@@ -226,14 +226,15 @@ public class FieldOfView : MonoBehaviour
         {
             if (visibleTargets[i].transform.tag == "Player")
             {
-				StartCoroutine(visibleTargets[i].GetComponentInParent<PlayerManager>().AngryResetToCheckPoint());
+				visibleTargets[i].GetComponentInParent<PlayerManager>().AngryResetToCheckPoint();
 				visibleTargets.RemoveAt(i);
 			}
             else if (visibleTargets[i].transform.tag == "Enemy")
             {
-				StartCoroutine(visibleTargets[i].GetComponentInParent<PlayerManager>().EnemyAngryResetToCheckPoint());
-				visibleTargets.RemoveAt(i);
-			}
-		}
+
+				visibleTargets[i].GetComponentInParent<PlayerManager>().EnemyAngryResetToCheckPoint();
+                visibleTargets.RemoveAt(i);
+            }
+        }
     }
 }

@@ -18,6 +18,7 @@ public class Coin : MonoBehaviour
     {
         if (other.transform.CompareTag("Player"))
         {
+            AudioManager.Instance.PlayAudio("coin");
             PlayerData.Instance.coinEarnThisRun++;
             Destroy(transform.parent.gameObject);
         }

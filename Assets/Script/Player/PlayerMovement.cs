@@ -20,14 +20,17 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody rb;
     private PlayerManager playerManager;
     private Animator animator;
+
+    public bool oneTime { get; set; }
     private void Start()
     {
+        oneTime = true;
         rb = GetComponent<Rigidbody>();
         playerManager = GetComponent<PlayerManager>();
         animator = GetComponentInChildren<Animator>();
     }
-    public float defaultSpeedForward = 5;
-    public float speedForward = 5;
+    //public float defaultSpeedForward = 5;
+    //public float speedForward = 5;
     public float halfRange;
 
     public float sensitive = 1;
@@ -36,39 +39,56 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            rb.AddForce(-transform.forward * 5, ForceMode.VelocityChange);
-        }
-        if ( Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             lastCursorPosition = WorldMousePos();
         }
-        else if ( Input.GetMouseButton(0))
+        else if (Input.GetMouseButton(0))
         {
             Vector2 delta = WorldMousePos() - lastCursorPosition;
 
-            if (MyScene.Instance.gameIsStart == true && !isPushed)
+            if (MyScene.Instance.gameIsStart == true && !isPushed && playerManager.canMove)
             {
                 MoveHorizontal(delta.x / Screen.width * sensitive * halfRange);
+
+                //if (delta.x > 0 && !checkRight)
+                //{
+                //    MoveHorizontal(delta.x / Screen.width * sensitive * halfRange);
+                //}
+                //else if (delta.x < 0)
+                //{
+                //    MoveHorizontal(delta.x / Screen.width * sensitive * halfRange);
+                //}
             }
             lastCursorPosition = Input.mousePosition;
         }
+
         CheckGround();
     }
     private void FixedUpdate()
     {
         if (MyScene.Instance.gameIsStart == true && !isPushed)
         {
+            //CheckLeft();
+            //CheckRight();
             if (MoveForward())
             {
                 rb.velocity = new Vector3(0, rb.velocity.y, Mathf.Clamp(1 * moveSpeed, 0, moveSpeed));
+                if (oneTime)
+                {
+                    AudioManager.Instance.PlayAudio("footstep");
+                    oneTime = false;
+                }
             }
             if (!MoveForward())
             {
                 rb.velocity = new Vector3(0, rb.velocity.y, 0);
+                oneTime = true;
+                AudioManager.Instance.StopAudio("footstep");
             }
         }
+
+
     }
     public bool MoveForward()
     {
@@ -88,11 +108,28 @@ public class PlayerMovement : MonoBehaviour
 
     protected void MoveHorizontal(float move)
     {
-        //float deltaX = Mathf.Clamp(transform.position.x + move, -halfRange, halfRange) - transform.position.x;
-        rb.position = new Vector3(Mathf.Clamp(transform.position.x + move, -halfRange, halfRange), rb.position.y, rb.position.z);
+        RaycastHit hitRight;
+        RaycastHit hitLeft;
+        //left
+        if (Physics.Raycast(child.transform.position, -transform.right, out hitLeft, 2, layer))
+        {
+
+            rb.position = new Vector3(Mathf.Clamp(transform.position.x + move, hitLeft.point.x + 0.3f, halfRange), rb.position.y, rb.position.z);
+        }
+        //right
+        else if (Physics.Raycast(child.transform.position, transform.right, out hitRight, 2, layer))
+        {
+
+            rb.position = new Vector3(Mathf.Clamp(transform.position.x + move, -halfRange, hitRight.point.x - 0.3f), rb.position.y, rb.position.z);
+        }
+        else if (!Physics.Raycast(child.transform.position, -transform.right, 2f, layer)
+            && !Physics.Raycast(child.transform.position, transform.right, 2, layer))
+        {
+            rb.position = new Vector3(Mathf.Clamp(transform.position.x + move, -halfRange, halfRange), rb.position.y, rb.position.z);
+        }
     }
 
-   
+
 
     IEnumerator Delay()
     {
@@ -145,5 +182,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawRay(child.transform.position, transform.forward*0.25f);
+        Gizmos.DrawRay(child.transform.position, Vector3.left * 2f);
+        Gizmos.DrawRay(child.transform.position, Vector3.right * 2f);
     }
 }

@@ -17,7 +17,11 @@ public class BrickWall : MonoBehaviour
         brickX = brick.transform.localScale.x;
         brickY = brick.transform.localScale.y;
         brickZ = brick.transform.localScale.z;
-        InstanceBrick();
+        //InstanceBrick();
+
+        d1 = transform.position + new Vector3(-brickX - (brickX / 2), brickY / 2 + brickY * c, 0);
+        //InstanceBrick2();
+        InstanceBrick3();
     }
 
     public void InstanceBrick()
@@ -50,6 +54,40 @@ public class BrickWall : MonoBehaviour
                 }
             }
             c++;
+        }
+    }
+
+    public void InstanceBrick2()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            Vector3 temp = d1;
+
+            for (int j = 0; j < 4-i; j++)
+            {
+                Instantiate(brick, temp, Quaternion.identity, transform);
+                temp += new Vector3(brickX, 0, 0);
+
+            }
+            d1.x += brickX;
+            d1.y += brickY;
+        }
+    }
+
+    public void InstanceBrick3()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            Vector3 temp = d1;
+
+            for (int j = 0; j < 4 - i; j++)
+            {
+                Instantiate(brick, temp, Quaternion.identity, transform);
+                temp += new Vector3(brickX, 0, 0);
+
+            }
+            d1.x += brickX/2;
+            d1.y += brickY;
         }
     }
 }

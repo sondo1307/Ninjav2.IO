@@ -32,7 +32,7 @@ public class EnemyManager : MonoBehaviour
         // enemy dang sau hoac bang vi tri nguoi choi
         if (Mathf.Abs(MyScene.Instance.finishZ - transform.position.z) >= Mathf.Abs(MyScene.Instance.finishZ - player.position.z))
         {
-            int a = Random.Range(0, 100);
+            int a = Random.Range(1, 100);
             if (a >= smartThreshHold)
             {
                 enemyMovement.intelligent = 7;
@@ -41,7 +41,7 @@ public class EnemyManager : MonoBehaviour
         // enemy di truoc
         else if (Mathf.Abs(MyScene.Instance.finishZ - transform.position.z) < Mathf.Abs(MyScene.Instance.finishZ - player.position.z))
         {
-            int a = Random.Range(0, 100);
+            int a = Random.Range(1, 100);
             if (a<smartThreshHold && a > stupidThreshHold)
             {
                 enemyMovement.intelligent = 5;
@@ -62,14 +62,15 @@ public class EnemyManager : MonoBehaviour
     {
         playerManager.canMove = false;
         playerManager.isSkin1 = false;
-        playerManager.skin1.transform.DOScale(Vector3.zero, scaleTime);
+        GetComponentInParent<Rigidbody>().velocity = Vector3.zero;
+
+        //playerManager.skin1.transform.DOScale(Vector3.zero, scaleTime);
         playerManager.skin2.GetComponent<CapsuleCollider>().enabled = true;
         playerManager.skin2.GetComponent<MeshRenderer>().enabled = true;
         playerManager.skin1.GetComponent<CapsuleCollider>().enabled = false;
         playerManager.skin1.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
         yield return new WaitForSeconds(scaleTime);
         playerManager.isSkin2 = true;
-
         playerManager.skin2.transform.localScale = skin2OriginSize;
 
     }
@@ -78,7 +79,7 @@ public class EnemyManager : MonoBehaviour
     {
         playerManager.canMove = true;
         playerManager.isSkin2 = false;
-        playerManager.skin2.transform.DOScale(Vector3.zero, scaleTime);
+        //playerManager.skin2.transform.DOScale(Vector3.zero, scaleTime);
         playerManager.skin1.GetComponent<CapsuleCollider>().enabled = true;
         playerManager.skin1.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
         playerManager.skin2.GetComponent<CapsuleCollider>().enabled = false;
@@ -88,6 +89,12 @@ public class EnemyManager : MonoBehaviour
 
         playerManager.skin1.transform.localScale = skin1OriginSize;
 
+    }
+
+    public void KillEnemy()
+    {
+        DOTween.Kill(transform);
+        Destroy(gameObject);
     }
 
 }

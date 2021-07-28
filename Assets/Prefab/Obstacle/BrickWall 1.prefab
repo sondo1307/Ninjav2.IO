@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1575583484213890049}
   - component: {fileID: 6744451012724420700}
   - component: {fileID: 1951290085457015321}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Brick1(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 4780114609128831064}
   - component: {fileID: 8803649890578643865}
   - component: {fileID: 8608862149452259724}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Brick1(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2126762031920381565}
   - component: {fileID: 2126762031920381562}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BrickWall 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,7 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 319a1881377dc5e4080cde8f67c08d0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brick: {fileID: 289401005861019176, guid: ee5d2a09b98e9d648b6f396780d5f087, type: 3}
+  brick: {fileID: 8949350050204253841, guid: 578f85ef70e7d0540b0d1692b1c23f5a, type: 3}
 --- !u!1 &2142738403118603068
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,7 +322,7 @@ GameObject:
   - component: {fileID: 1113049196208169383}
   - component: {fileID: 1124726033748633919}
   - component: {fileID: 4797892816585200500}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Brick1(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -447,7 +447,7 @@ GameObject:
   - component: {fileID: 4700659954627545043}
   - component: {fileID: 6433164862668419215}
   - component: {fileID: 1564818111414272178}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Brick1(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -572,7 +572,7 @@ GameObject:
   - component: {fileID: 1991662427863009331}
   - component: {fileID: 3412673398305429165}
   - component: {fileID: 7908036635111732543}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Brick1(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -697,7 +697,7 @@ GameObject:
   - component: {fileID: 7251695120841205694}
   - component: {fileID: 8958056297380246871}
   - component: {fileID: 7386102497471053807}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Brick1(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -822,7 +822,7 @@ GameObject:
   - component: {fileID: 8239047140289886265}
   - component: {fileID: 6349728726537918982}
   - component: {fileID: 2935349886922386677}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Brick1(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -947,7 +947,7 @@ GameObject:
   - component: {fileID: 7644200162607205032}
   - component: {fileID: 4926910936907481876}
   - component: {fileID: 7905356748308334016}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Brick1(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1072,7 +1072,7 @@ GameObject:
   - component: {fileID: 4697653968328679467}
   - component: {fileID: 8588050694976454862}
   - component: {fileID: 4701310007796348607}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Brick1(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1197,7 +1197,7 @@ GameObject:
   - component: {fileID: 3110118701866527342}
   - component: {fileID: 5480365242218663679}
   - component: {fileID: 3205465325520652417}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Brick1(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1322,7 +1322,7 @@ GameObject:
   - component: {fileID: 4872597850041335865}
   - component: {fileID: 5547868305484625886}
   - component: {fileID: 5560450803720764191}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Brick1(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1447,7 +1447,7 @@ GameObject:
   - component: {fileID: 4417316546970823599}
   - component: {fileID: 5273081308676683187}
   - component: {fileID: 8491702735417946210}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Brick1(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1572,7 +1572,7 @@ GameObject:
   - component: {fileID: 1327312770614953755}
   - component: {fileID: 8359338719714782193}
   - component: {fileID: 8006930474621003519}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Brick1(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1697,7 +1697,7 @@ GameObject:
   - component: {fileID: 8381805280271117183}
   - component: {fileID: 8370233093917273262}
   - component: {fileID: 3433092300861655962}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Brick1(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -7,24 +7,28 @@ public class MyScene : MonoBehaviour
 {
     public static MyScene Instance;
     public bool gameIsStart;
-    public bool gameIsFinish;
+    public bool gameIsFinish { get; set; }
     public float finishZ;
     public List<GameObject> listOfTeacher = new List<GameObject>();
     public int placeCount = 0;
 
     public PlayerInput playerInput;
     public List<EnemyManager> enemysManager = new List<EnemyManager>();
+    public List<GameObject> listOfPlayer = new List<GameObject>();
     public bool oneTime { get; set; }
     private void Awake()
     {
+        Application.targetFrameRate = 60;
         Instance = this;
+        IgnoreCollision();
     }
 
     private void Update()
     {
         if (oneTime)
         {
-            StartCoroutine(Delay());
+            //StartCoroutine(Delay());
+            StartGame();
         }
     }
 
@@ -36,16 +40,31 @@ public class MyScene : MonoBehaviour
         }
     }
 
-    public IEnumerator Delay()
+    public void StartGame()
     {
         oneTime = false;
         UIManager.Instance.StartGame();
-        for (int i = 0; i < enemysManager.Count; i++)
+
+        if (enemysManager.Count > 0)
         {
-            enemysManager[i].animator.SetTrigger("prepare_run");
+            for (int i = 0; i < enemysManager.Count; i++)
+            {
+                enemysManager[i].animator.SetTrigger("prepare_run");
+            }
         }
         playerInput.animator.SetTrigger("prepare_run");
-        yield return new WaitForSeconds(3);
         gameIsStart = true;
+    }
+
+    public void IgnoreCollision()
+    {
+        for (int i = 0; i < listOfPlayer.Count; i++)
+        {
+            for (int j = 0; j < listOfPlayer.Count; j++)
+            {
+                Physics.IgnoreCollision(listOfPlayer[i].transform.GetChild(0).GetComponent<CapsuleCollider>()
+                    , listOfPlayer[j].transform.GetChild(0).GetComponent<CapsuleCollider>());
+            }
+        }
     }
 }

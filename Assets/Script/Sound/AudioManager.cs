@@ -1,13 +1,16 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager Instance;
     public Sound[] sounds;
     private void Awake()
     {
+        Instance = this;
         foreach (var item in sounds)
         {
             item.source = gameObject.AddComponent<AudioSource>();
@@ -15,6 +18,27 @@ public class AudioManager : MonoBehaviour
             item.source.volume = item.volume;
             item.source.loop = item.loop;
         }
+    }
+
+
+    public void PlayAudio(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            return;
+        }
+        s.source.Play();
+    }
+
+    public void StopAudio(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            return;
+        }
+        s.source.Stop();
     }
 }
 

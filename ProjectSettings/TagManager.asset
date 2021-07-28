@@ -9,10 +9,13 @@ TagManager:
   - Obstacle
   - StairUp
   - StairDown
-  - StairDown2
   - TriggerDie
   - Faster
   - Slower
+  - FxTemporaire
+  - Shuriken
+  - Teacher
+  - Dummy
   layers:
   - Default
   - TransparentFX
@@ -26,8 +29,8 @@ TagManager:
   - Ground
   - Wall
   - PlayerObstacle
-  - 
-  - 
+  - ObstaclePushable
+  - Teacher
   - 
   - 
   - 

@@ -11,30 +11,18 @@ public class FinishLine : MonoBehaviour
         if (other.transform.tag == "Player")
         {
             MyScene.Instance.StartVibrate();
-            other.GetComponentInParent<PlayerMovement>().enabled = false;
-            other.GetComponentInParent<PlayerInput>().enabled = false;
-            other.GetComponentInParent<PlayerManager>().DisableAllCapsuleCollider();
             Collider[] list = other.GetComponentsInChildren<CapsuleCollider>();
             for (int i = 0; i < list.Length; i++)
             {
                 Physics.IgnoreCollision(transform.GetComponent<BoxCollider>(), list[i]);
             }
-            StartParticle(transform.position - Vector3.right * 2.5f, transform.position + Vector3.right * 2.5f);
+            //StartParticle(transform.position - Vector3.right * 2.5f, transform.position + Vector3.right * 2.5f);
             int a =  MyScene.Instance.placeCount;
             PlayerData.Instance.place = a;
-            PlayerData.Instance.CoinEarnThisRun(a);
-            UIManager.Instance.SlidersOff();
+            //PlayerData.Instance.CoinEarnThisRun(a);
+            UIManager.Instance.ReachFinishLine();
 
             StartCoroutine(other.GetComponentInParent<PlayerDoEndRun>().PlayerEndRun());
-
-            //if (a == 1)
-            //{
-            //    StartCoroutine(other.GetComponentInParent<PlayerDoEndRun>().PlayerEndRun());
-            //}
-            //else
-            //{
-            //    other.GetComponent<PlayerInput>().StartParticleSystem();
-            //}
         }
         else if (other.transform.tag == "Enemy")
         {
@@ -42,7 +30,7 @@ public class FinishLine : MonoBehaviour
             other.GetComponentInParent<EnemyMovement>().rb.isKinematic = true;
             //other.GetComponentInParent<EnemyMovement>().animator.SetTrigger("victory");
             other.GetComponentInParent<EnemyManager>().StartParticleSystem();
-            Destroy(other.transform.parent.gameObject);
+            other.GetComponentInParent<EnemyManager>().KillEnemy();
             other.GetComponentInParent<EnemyMovement>().enabled = false;
             Collider[] list = other.GetComponentsInChildren<CapsuleCollider>();
             for (int i = 0; i < list.Length; i++)

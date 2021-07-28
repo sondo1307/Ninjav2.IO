@@ -17,7 +17,12 @@ public class UIManager : MonoBehaviour
     public GameObject shopButton;
     public GameObject coinGroup;
     public GameObject countDown;
+    public GameObject levelTxt;
+
+    [Header("In Game")]
     public GameObject sliders;
+    public GameObject coinInGame;
+    public GameObject shurikenInGame;
 
     [Header("Finished")]
     public RectTransform nextLevelBtn;
@@ -25,6 +30,10 @@ public class UIManager : MonoBehaviour
     public Transform adsBtn;
     public RectTransform levelCompleteTxt;
     public RectTransform levelCompleteImg;
+
+    public GameObject holdTxt;
+
+
     private void Awake()
     {
         Instance = this;
@@ -33,6 +42,9 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1;
+        shurikenInGame.SetActive(false);
+        coinInGame.SetActive(false);
         settingBtn.gameObject.SetActive(true);
         shopButton.gameObject.SetActive(true);
         panel.gameObject.SetActive(true);
@@ -68,11 +80,16 @@ public class UIManager : MonoBehaviour
         panel.gameObject.SetActive(false);
         coinGroup.gameObject.SetActive(false);
         dragTxt.SetActive(false);
-        StartCoroutine(CountDown());
+        coinInGame.SetActive(true);
+        shurikenInGame.SetActive(true);
+        sliders.SetActive(true);
+
+        //StartCoroutine(CountDown());
     }
 
     public IEnumerator LevelComplete()
     {
+        holdTxt.SetActive(false);
         backGrounds.SetActive(true);
         Tween a = levelCompleteImg.DOAnchorPosX(0, 0.5f, true).SetEase(Ease.Linear).SetUpdate(true);
         yield return a.WaitForCompletion();
@@ -87,12 +104,26 @@ public class UIManager : MonoBehaviour
         nextLevelBtn.gameObject.SetActive(true);
         Tween d = nextLevelBtn.GetComponentInChildren<Text>().DOFade(1, 1).SetEase(Ease.Linear).SetUpdate(true);
         Time.timeScale = 0;
+    }
+
+    public void ShowHoldTxt()
+    {
+        holdTxt.SetActive(true);
+    }
+
+    public void ThrowShurikenChannel()
+    {
+        shurikenInGame.SetActive(false);
+        holdTxt.SetActive(false);
 
     }
 
-    public void SlidersOff()
+    public void ReachFinishLine()
     {
         sliders.SetActive(false);
+        coinInGame.SetActive(false);
+        levelTxt.SetActive(false);
+        //shurikenInGame.SetActive(false);
     }
 
     public void SetNextLevelTxt()
@@ -103,7 +134,6 @@ public class UIManager : MonoBehaviour
 
     public IEnumerator CountDown()
     {
-        sliders.SetActive(true);
 
         countDown.transform.GetChild(0).gameObject.SetActive(true);
         Tween a = countDown.transform.GetChild(0).GetComponent<TMP_Text>().DOFade(0, 1);

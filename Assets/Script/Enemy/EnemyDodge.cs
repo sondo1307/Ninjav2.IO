@@ -12,7 +12,7 @@ public class EnemyDodge : MonoBehaviour
     private Rigidbody rb;
     public MyScene dataManager;
     public GameObject teacher;
-    private FieldOfView fov;
+    public FieldOfView fov;
     [Range(0, 100)]
     public float dodgePercent;
 
@@ -23,15 +23,20 @@ public class EnemyDodge : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         enemyManager = GetComponent<EnemyManager>();
         teacher = dataManager.listOfTeacher[0];
-        fov = teacher.GetComponentInChildren<FieldOfView>();
+        fov = teacher.GetComponent<TeacherAI>().fieldOfView;
         enemyMovement = GetComponent<EnemyMovement>();
 
     }
 
     private void Update()
     {
-        EnemyDodgeControl();
+        if (MyScene.Instance.listOfTeacher.Count != 0)
+        {
+            teacher = dataManager.listOfTeacher[0];
+            fov = teacher.GetComponent<TeacherAI>().fieldOfView;
+        }
 
+        EnemyDodgeControl();
     }
 
     public void EnemyDodgeControl()
@@ -51,7 +56,6 @@ public class EnemyDodge : MonoBehaviour
                     rb.velocity = Vector3.zero;
                     DOTween.Kill(transform);
 
-                    transform.GetComponent<EnemyMovement>().enabled = false;
                     StartCoroutine(enemyManager.EnemySkin1ToSkin2());
                     enemyManager.StartParticleSystem();
                 }
@@ -60,7 +64,6 @@ public class EnemyDodge : MonoBehaviour
             {
                 rb.velocity = Vector3.zero;
                 DOTween.Kill(transform);
-                transform.GetComponent<EnemyMovement>().enabled = false;
                 StartCoroutine(enemyManager.EnemySkin1ToSkin2());
                 enemyManager.StartParticleSystem();
             }
@@ -77,7 +80,6 @@ public class EnemyDodge : MonoBehaviour
             else if (enemyMovement.intelligent > 5)
             {
                 StartCoroutine(enemyManager.EnemySkin2ToSkin1());
-                transform.GetComponent<EnemyMovement>().enabled = true;
             }
             oneTime = true;
         }
@@ -87,6 +89,5 @@ public class EnemyDodge : MonoBehaviour
     {
         yield return new WaitForSeconds(a);
         StartCoroutine(enemyManager.EnemySkin2ToSkin1());
-        transform.GetComponent<EnemyMovement>().enabled = true;
     }
 }

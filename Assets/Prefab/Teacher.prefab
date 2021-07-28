@@ -1,5 +1,62 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &981594047
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 981594048}
+  - component: {fileID: 981594049}
+  - component: {fileID: 981594050}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &981594048
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981594047}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.67, z: -32.56}
+  m_LocalScale: {x: 6, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2858463060611978665}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &981594049
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981594047}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &981594050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981594047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4428280ef4c41994cb58247a29b825ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1136997473231328042
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,6 +174,20 @@ Transform:
   m_Father: {fileID: 1670815554066160749}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &7663898997158152970
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045827512260347607}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!95 &2093810993
 Animator:
   serializedVersion: 3
@@ -212,8 +283,8 @@ MonoBehaviour:
   parent: {fileID: 2858463060611978665}
   view1: 0
   view2: 1
-  viewRadius: 15
-  defaultViewRadius: 15
+  viewRadius: 30
+  defaultViewRadius: 30
   viewAngle: 10
   defaultViewAngle: 10
   targetMask:
@@ -221,7 +292,7 @@ MonoBehaviour:
     m_Bits: 192
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 2304
+    m_Bits: 6400
   visibleTargets: []
   meshResolution: 30
   edgeResolveIterations: 1
@@ -286,9 +357,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2858463060611978665}
   - component: {fileID: 2858463060611978678}
-  m_Layer: 0
+  - component: {fileID: 1630029368}
+  m_Layer: 13
   m_Name: Teacher
-  m_TagString: Untagged
+  m_TagString: Teacher
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -306,6 +378,7 @@ Transform:
   m_Children:
   - {fileID: 1670815554066160749}
   - {fileID: 7429189141632672848}
+  - {fileID: 981594048}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -335,6 +408,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   dangerSignal: {fileID: 7429189141632672849}
+--- !u!114 &1630029368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2858463060611978664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff8506478da258d438d3e1a52e8fd5bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  count: 0
+  Hp: 5
 --- !u!1 &8571979537818080633
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,6 +546,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3c0c8a030b45e3f44afef138d126ea3a, type: 3}
       propertyPath: m_Name
       value: Teacher_Rig
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3c0c8a030b45e3f44afef138d126ea3a, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3c0c8a030b45e3f44afef138d126ea3a, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 7563025301146127650, guid: 3c0c8a030b45e3f44afef138d126ea3a, type: 3}
       propertyPath: m_LocalPosition.x
