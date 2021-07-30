@@ -10,15 +10,17 @@ public class EnemyDodge : MonoBehaviour
     private EnemyManager enemyManager;
     private EnemyMovement enemyMovement;
     private Rigidbody rb;
-    public MyScene dataManager;
+    private MyScene dataManager;
     public GameObject teacher;
     public FieldOfView fov;
     [Range(0, 100)]
     public float dodgePercent;
 
-    private bool oneTime = true;
+    public bool oneTime { get; set; }
     private void Start()
     {
+        oneTime = true;
+        dataManager = FindObjectOfType<MyScene>();
         playerManager = GetComponent<PlayerManager>();
         rb = GetComponent<Rigidbody>();
         enemyManager = GetComponent<EnemyManager>();

@@ -6,6 +6,9 @@ public class TeacherTrigger : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        GetComponentInParent<TeacherAI>().start = true;
+        if (other.transform.CompareTag("Player"))
+        {
+            GetComponentInParent<TeacherAI>().start = true;
+        }
     }
 }

@@ -7,22 +7,31 @@ public class MyScene : MonoBehaviour
 {
     public static MyScene Instance;
     public bool gameIsStart;
-    public bool gameIsFinish { get; set; }
+    public bool runIsFinish { get; set; }
     public float finishZ;
     public List<GameObject> listOfTeacher = new List<GameObject>();
     public int placeCount = 0;
 
-    public PlayerInput playerInput;
+    private PlayerInput playerInput;
     public List<EnemyManager> enemysManager = new List<EnemyManager>();
     public List<GameObject> listOfPlayer = new List<GameObject>();
     public bool oneTime { get; set; }
+
+    [Header("particle")]
+    public GameObject confettiPrefab;
+    public GameObject hitEffect;
+    public GameObject smokeEffect;
     private void Awake()
     {
-        Application.targetFrameRate = 60;
+        //Application.targetFrameRate = 60;
         Instance = this;
         IgnoreCollision();
     }
 
+    private void Start()
+    {
+        playerInput = FindObjectOfType<PlayerInput>();
+    }
     private void Update()
     {
         if (oneTime)
@@ -66,5 +75,10 @@ public class MyScene : MonoBehaviour
                     , listOfPlayer[j].transform.GetChild(0).GetComponent<CapsuleCollider>());
             }
         }
+    }
+
+    public void StartParticleConfetti(Vector3 position)
+    {
+        Instantiate(confettiPrefab, position, Quaternion.Euler(-90, 0, 0));
     }
 }

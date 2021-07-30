@@ -83,7 +83,7 @@ public class UIManager : MonoBehaviour
         coinInGame.SetActive(true);
         shurikenInGame.SetActive(true);
         sliders.SetActive(true);
-
+        levelTxt.SetActive(false);
         //StartCoroutine(CountDown());
     }
 
@@ -95,12 +95,12 @@ public class UIManager : MonoBehaviour
         yield return a.WaitForCompletion();
         Tween b = levelCompleteTxt.DOAnchorPosY(15, 1, true).SetEase(Ease.OutBounce).SetUpdate(true);
         yield return b.WaitForCompletion();
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSecondsRealtime(0.25f);
         SetNextLevelTxt();
         adsBtn.gameObject.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSecondsRealtime(0.5f);
         adsBtn.DOScale(new Vector3(8, 12, 0), 0.75f).SetEase(Ease.OutCubic).SetLoops(-1, LoopType.Yoyo).SetUpdate(true);
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSecondsRealtime(3);
         nextLevelBtn.gameObject.SetActive(true);
         Tween d = nextLevelBtn.GetComponentInChildren<Text>().DOFade(1, 1).SetEase(Ease.Linear).SetUpdate(true);
         Time.timeScale = 0;
@@ -115,7 +115,6 @@ public class UIManager : MonoBehaviour
     {
         shurikenInGame.SetActive(false);
         holdTxt.SetActive(false);
-
     }
 
     public void ReachFinishLine()

@@ -193,7 +193,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7e7f707d3c370e49ae33d3c102793aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dataManager: {fileID: 0}
   teacher: {fileID: 0}
   fov: {fileID: 0}
   dodgePercent: 25
@@ -226,7 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f9e63f70760d04448e0ca6ae1130805, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rbSpeed: 0
+  rbSpeed: 7
   rbSpeedOrigin: 7
   jumpForce: 6
   child: {fileID: 727145190}
@@ -243,10 +242,10 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 1984
-  Y1Rotation: -25
+  Y1Rotation: -45
   raycastLength: 10
-  numerOfRay: 15
-  scanFrequence: 30
+  numerOfRay: 30
+  scanFrequence: 60
   intelligent: 7
 --- !u!114 &3957660980009088991
 MonoBehaviour:
@@ -263,7 +262,7 @@ MonoBehaviour:
   canMove: 0
   skin1: {fileID: 573221075292166811}
   skin2: {fileID: 139496470942629563}
-  particle: {fileID: 6060720363130308437, guid: 4903418ea9fe4ce41a10a0d43f94e876, type: 3}
+  particle: {fileID: 1965343156803978, guid: e589125f4f683604cbed1b5a7c6e16b2, type: 3}
   myCamera: {fileID: 0}
   timeBetweenResurrect: 2
   playerIsDead: 0

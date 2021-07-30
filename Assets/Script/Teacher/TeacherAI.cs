@@ -54,9 +54,8 @@ public class TeacherAI : MonoBehaviour
             }
             if (startFieldOfView)
             {
-                //fieldOfView.viewRadius = Mathf.SmoothStep(fieldOfView.viewRadius, fieldOfView.defaultViewRadius, 0.1f);
-                DOTween.To(() => fieldOfView.viewRadius, x => fieldOfView.viewRadius = x, fieldOfView.defaultViewRadius, 1.5f);
-
+                fieldOfView.viewRadius = Mathf.SmoothStep(fieldOfView.viewRadius, fieldOfView.defaultViewRadius, 0.1f);
+                //DOTween.To(() => fieldOfView.viewRadius, x => fieldOfView.viewRadius = x, fieldOfView.defaultViewRadius, 1.5f);
             }
             if (i < targetsXs.Count && allowPatrol)
             {
@@ -77,14 +76,15 @@ public class TeacherAI : MonoBehaviour
     IEnumerator StartPatrol()
     {
         dangerSignal.SetActive(true);
-        transform.DORotate(new Vector3(0, 180, 0), 2).SetEase(Ease.Linear);
+        Tween a = transform.DORotate(new Vector3(0, 180, 0), 0.5f).SetEase(Ease.Linear);
         animator.SetBool("turn", true);
-        yield return new WaitForSeconds(2);
+        yield return a.WaitForCompletion();
         startFieldOfView = true;
+
         fieldOfView.enabled = true;
         animator.SetTrigger("lookup");
         fieldOfView.viewAngle = fieldOfView.defaultViewAngle;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         startFieldOfView = false;
         Patrol();
     }
@@ -137,16 +137,16 @@ public class TeacherAI : MonoBehaviour
             if (Physics.Raycast(child.position, new Vector3(target.position.x, child.position.y, target.position.z) - child.position, fieldOfView.viewRadius - 0.25f, layer) 
                 && stopToCheckPlayer )
             {
-                DOTween.Pause(target.transform);
-                //fieldOfView.viewAngle = Mathf.SmoothStep(5, fieldOfView.viewAngle, 0.8f);
-                DOTween.To(() => fieldOfView.viewAngle, x => fieldOfView.viewAngle = x, 5, 0.5f);
+                //DOTween.Pause(target.transform);
+                fieldOfView.viewAngle = Mathf.SmoothStep(10, fieldOfView.viewAngle, 0.8f);
+                //DOTween.To(() => fieldOfView.viewAngle, x => fieldOfView.viewAngle = x, 5, 0.5f);
                 StartCoroutine(DelayFieldOfView());
             }
         }
         if (!stopToCheckPlayer)
         {
-            //fieldOfView.viewAngle = Mathf.SmoothStep(fieldOfView.viewAngle, fieldOfView.defaultViewAngle, 0.1f);
-            DOTween.To(() => fieldOfView.viewAngle, x => fieldOfView.viewAngle = x, fieldOfView.defaultViewAngle, 0.5f);
+            fieldOfView.viewAngle = Mathf.SmoothStep(fieldOfView.viewAngle, fieldOfView.defaultViewAngle, 0.1f);
+            //DOTween.To(() => fieldOfView.viewAngle, x => fieldOfView.viewAngle = x, fieldOfView.defaultViewAngle, 0.5f);
         }
     }
 
@@ -235,6 +235,8 @@ public class TeacherAI : MonoBehaviour
         DOTween.Kill(transform, false);
         DOTween.Kill(target.transform, false);
         DOTween.Kill(dangerSignal.transform, false);
+        Instantiate(MyScene.Instance.smokeEffect, transform.position, Quaternion.Euler(-90, 0, 0));
+        MyScene.Instance.listOfTeacher.RemoveAt(0);
         Destroy(gameObject);
     }
 }

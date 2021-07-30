@@ -16,7 +16,7 @@ public class FinishLine : MonoBehaviour
             {
                 Physics.IgnoreCollision(transform.GetComponent<BoxCollider>(), list[i]);
             }
-            //StartParticle(transform.position - Vector3.right * 2.5f, transform.position + Vector3.right * 2.5f);
+            StartParticle(transform.position - Vector3.right * 2.5f, transform.position + Vector3.right * 2.5f);
             int a =  MyScene.Instance.placeCount;
             PlayerData.Instance.place = a;
             //PlayerData.Instance.CoinEarnThisRun(a);
@@ -43,9 +43,9 @@ public class FinishLine : MonoBehaviour
 
     public void StartParticle(Vector3 position1, Vector3 position2)
     {
-         Instantiate(confettiParticle, position1, Quaternion.Euler(-45, 0, 0));
-         Instantiate(confettiParticle, position2, Quaternion.Euler(-45, 0, 0));
-         Instantiate(confettiParticle, transform.position, Quaternion.Euler(-45, 0, 0));
+         Instantiate(confettiParticle, position1, Quaternion.Euler(-90, 0, 0));
+         Instantiate(confettiParticle, position2, Quaternion.Euler(-90, 0, 0));
+         Instantiate(confettiParticle, transform.position, Quaternion.Euler(-90, 0, 0));
     }
 
 }

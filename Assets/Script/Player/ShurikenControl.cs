@@ -15,10 +15,10 @@ public class ShurikenControl : MonoBehaviour
     public LayerMask layer;
     private void Update()
     {
-        if (MyScene.Instance.gameIsStart)
-        {
-            ThrowShuriken();
-        }
+        //if (MyScene.Instance.gameIsStart)
+        //{
+        //    ThrowShuriken();
+        //}
     }
 
     public void ThrowShuriken()

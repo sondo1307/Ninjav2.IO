@@ -6,13 +6,16 @@ using DG.Tweening;
 
 public class CameraFollow : MonoBehaviour
 {
+    public static CameraFollow Instance;
     public Vector3 offset;
     public GameObject player;
     public float smoothSpeed;
     public float smoothZSpeed;
     public float smoothXSpeed;
+    public bool check;
     private void Start()
     {
+        Instance = this;
     }
 
     private void LateUpdate()
@@ -24,11 +27,18 @@ public class CameraFollow : MonoBehaviour
         if (player != null)
         {
             float desiredZPosition = player.transform.position.z + offset.z;
-            float smoothZPosition = Mathf.Lerp(transform.position.z, desiredZPosition, smoothZSpeed );
+            float smoothZPosition = Mathf.Lerp(transform.position.z, desiredZPosition, smoothZSpeed * Time.deltaTime);
 
             float desiredXPosition = player.transform.position.x + offset.x;
-            float smoothXPosition = Mathf.Lerp(transform.position.x, desiredXPosition, smoothXSpeed );
-            transform.position = new Vector3(smoothXPosition, player.transform.position.y + offset.y, player.transform.position.z + offset.z);
+            float smoothXPosition = Mathf.Lerp(transform.position.x, desiredXPosition, smoothXSpeed * Time.deltaTime);
+            if (!check)
+            {
+                transform.position = new Vector3(smoothXPosition, player.transform.position.y + offset.y, player.transform.position.z + offset.z);
+            }
+            else
+            {
+                transform.position = new Vector3(smoothXPosition, player.transform.position.y + offset.y, smoothZPosition);
+            }
         }
     }
 }

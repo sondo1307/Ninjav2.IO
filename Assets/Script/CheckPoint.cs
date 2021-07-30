@@ -6,16 +6,9 @@ using DG.Tweening;
 
 public class CheckPoint : MonoBehaviour
 {
-    public GameObject teacher;
+    //public GameObject teacher;
     public List<Transform> flags = new List<Transform>();
     public GameObject confettiParticle;
-    //private void Start()
-    //{
-    //    for (int i = 0; i < a.GetComponentsInChildren<CapsuleCollider>().Length; i++)
-    //    {
-    //        Physics.IgnoreCollision(transform.GetComponent<BoxCollider>(), a.GetComponentsInChildren<CapsuleCollider>()[i]);
-    //    }
-    //}
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.tag == "Player")
@@ -40,11 +33,11 @@ public class CheckPoint : MonoBehaviour
                 Physics.IgnoreCollision(transform.GetComponent<BoxCollider>(), other.transform.parent.gameObject.GetComponentsInChildren<CapsuleCollider>()[i]);
             }
         }
-        if (teacher != null)
-        {
-            MyScene.Instance.listOfTeacher.RemoveAt(0);
-            teacher.GetComponent<TeacherAI>().KillTeacher();
-        }
+        //if (teacher != null)
+        //{
+        //    MyScene.Instance.listOfTeacher.RemoveAt(0);
+        //    teacher.GetComponent<TeacherAI>().KillTeacher();
+        //}
     }
 
 

@@ -8,7 +8,7 @@ public class PlayerData : MonoBehaviour
     public static PlayerData Instance;
     public int place;
     public int coinEarnThisRun;
-    public int multipleCoin;
+    public int multipleCoin { get; set; }
 
     private void Awake()
     {
@@ -36,6 +36,7 @@ public class PlayerData : MonoBehaviour
 
     public void SetTotalCoinThisRun()
     {
+        multipleCoin = Mathf.Clamp(GetComponent<ShurikenControl>().totalShuriken, 1, 10);
         coinEarnThisRun *= multipleCoin;
     }
 }

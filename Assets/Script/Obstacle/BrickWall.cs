@@ -10,7 +10,7 @@ public class BrickWall : MonoBehaviour
     private float brickZ;
     private int c = 0;
     private Vector3 d1;
-
+    private bool oneTime;
 
     private void Start()
     {
@@ -22,6 +22,10 @@ public class BrickWall : MonoBehaviour
         d1 = transform.position + new Vector3(-brickX - (brickX / 2), brickY / 2 + brickY * c, 0);
         //InstanceBrick2();
         InstanceBrick3();
+    }
+
+    private void Update()
+    {
     }
 
     public void InstanceBrick()

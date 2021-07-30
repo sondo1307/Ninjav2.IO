@@ -20,8 +20,7 @@ public class Brick : MonoBehaviour
             rb.AddForce((transform.position - collision.transform.position) * 20, ForceMode.Impulse);
 
             Physics.IgnoreCollision(transform.GetComponent<BoxCollider>(), collision.transform.GetComponentInChildren<CapsuleCollider>());
-
-            //transform.GetComponent<BoxCollider>().isTrigger = true;
+            transform.GetComponent<BoxCollider>().isTrigger = true;
             check = false;
         }
         //else if (collision.transform.tag == "Player" && !check)

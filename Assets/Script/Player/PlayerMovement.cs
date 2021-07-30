@@ -39,15 +39,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if ( Input.GetMouseButtonDown(0))
         {
             lastCursorPosition = WorldMousePos();
         }
-        else if (Input.GetMouseButton(0))
+        else if ( Input.GetMouseButton(0))
         {
             Vector2 delta = WorldMousePos() - lastCursorPosition;
 
-            if (MyScene.Instance.gameIsStart == true && !isPushed && playerManager.canMove)
+            if (MyScene.Instance.gameIsStart == true && !isPushed )
             {
                 MoveHorizontal(delta.x / Screen.width * sensitive * halfRange);
 

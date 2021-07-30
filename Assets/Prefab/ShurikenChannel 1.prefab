@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   a: 0
   speed: 100
-  check: 0
+  force: 0
 --- !u!1 &4824639780464579044
 GameObject:
   m_ObjectHideFlags: 0
@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 4824639780464579045}
   - component: {fileID: 4824639780464579046}
   - component: {fileID: 4824639780464579064}
+  - component: {fileID: 4664729729261286373}
   m_Layer: 6
   m_Name: ShurikenChannel 1
   m_TagString: Untagged
@@ -63,7 +64,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 118
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!136 &4824639780464579064
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -78,6 +79,21 @@ CapsuleCollider:
   m_Height: 0.45
   m_Direction: 2
   m_Center: {x: 0, y: 1.15, z: 0}
+--- !u!114 &4664729729261286373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4824639780464579044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c33d970ed564f604a815d5477fab249b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  desiredScale: {x: 0, y: 0, z: 0}
+  scaling: {x: 0.15, y: 0, z: 0.15}
+  shurikenControl: {fileID: 0}
 --- !u!1001 &4824639780043486025
 PrefabInstance:
   m_ObjectHideFlags: 0

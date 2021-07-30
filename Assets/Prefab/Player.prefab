@@ -88,7 +88,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 2
 --- !u!114 &564572456169107239
 MonoBehaviour:
@@ -102,9 +102,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0527d2043ef0034591d689168431a83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
+  moveSpeed: 10
   slowSpeed: 1
-  originMoveSpeed: 7
+  originMoveSpeed: 10
   jumpForce: 6
   child: {fileID: 564572455089152339}
   layer:
@@ -144,7 +144,7 @@ MonoBehaviour:
   canMove: 0
   skin1: {fileID: 1509811631754168055}
   skin2: {fileID: 564572456264678601}
-  particle: {fileID: 6060720363130308437, guid: 4903418ea9fe4ce41a10a0d43f94e876, type: 3}
+  particle: {fileID: 1965343156803978, guid: e589125f4f683604cbed1b5a7c6e16b2, type: 3}
   myCamera: {fileID: 0}
   timeBetweenResurrect: 2
   playerIsDead: 0
@@ -176,14 +176,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a305d31b833b28149bc0da697dc0819f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cylinder: {fileID: 0}
+  groupOfFinish: {fileID: 0}
   shurikenChannel: {fileID: 1184932332}
   a: 60
-  defaulta: 40
+  defaulta: 50
   scaleShurikenChannel: {x: 0.15, y: 0, z: 0.15}
   finishRoad: {fileID: 0}
+  cylinder: {fileID: 0}
   dummy: {fileID: 0}
-  confettiParticle: {fileID: 4777693137976714930, guid: a9e8b2b34c4895b42819fb3d126f9a61, type: 3}
+  gatherPowerParticle: {fileID: 0}
 --- !u!114 &6508432511309980255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,7 +199,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   place: 0
   coinEarnThisRun: 0
-  multipleCoin: 0
 --- !u!114 &8443736471117452376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,6 +389,20 @@ Transform:
   m_Father: {fileID: 564572456169107237}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &331359019
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7702846591588787641}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.22
+  m_Height: 0.45
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1743601690507541414
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -603,6 +617,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1.1
       objectReference: {fileID: 0}
+    - target: {fileID: 4664729729261286373, guid: 6bce32f62ee776145b3d88e709afb1d0, type: 3}
+      propertyPath: shurikenControl
+      value: 
+      objectReference: {fileID: 8443736471117452376}
     - target: {fileID: 4824639780464579044, guid: 6bce32f62ee776145b3d88e709afb1d0, type: 3}
       propertyPath: m_Name
       value: ShurikenChannel
@@ -655,9 +673,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4824639780464579046, guid: 6bce32f62ee776145b3d88e709afb1d0, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4824639780464579064, guid: 6bce32f62ee776145b3d88e709afb1d0, type: 3}
       propertyPath: m_Center.y
-      value: 1.1
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5288156805918200893, guid: 6bce32f62ee776145b3d88e709afb1d0, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0.27058825
+      objectReference: {fileID: 0}
+    - target: {fileID: 5288156805918200893, guid: 6bce32f62ee776145b3d88e709afb1d0, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0.8392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 5558750175797685671, guid: 6bce32f62ee776145b3d88e709afb1d0, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0.27058825
+      objectReference: {fileID: 0}
+    - target: {fileID: 5558750175797685671, guid: 6bce32f62ee776145b3d88e709afb1d0, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0.8392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 6804081897168769066, guid: 6bce32f62ee776145b3d88e709afb1d0, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0.27058825
+      objectReference: {fileID: 0}
+    - target: {fileID: 6804081897168769066, guid: 6bce32f62ee776145b3d88e709afb1d0, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0.8392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349183720197055795, guid: 6bce32f62ee776145b3d88e709afb1d0, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0.27058825
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349183720197055795, guid: 6bce32f62ee776145b3d88e709afb1d0, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0.8392157
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bce32f62ee776145b3d88e709afb1d0, type: 3}
@@ -669,5 +723,10 @@ GameObject:
 --- !u!4 &1184932333 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4824639780464579045, guid: 6bce32f62ee776145b3d88e709afb1d0, type: 3}
+  m_PrefabInstance: {fileID: 4824639779418140680}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7702846591588787641 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2887531358942762417, guid: 6bce32f62ee776145b3d88e709afb1d0, type: 3}
   m_PrefabInstance: {fileID: 4824639779418140680}
   m_PrefabAsset: {fileID: 0}

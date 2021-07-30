@@ -23,6 +23,7 @@ public class PlayerManager : MonoBehaviour
 
     public bool enemyIsDead = false;
     private EnemyManager enemyManager;
+    private EnemyDodge enemyDodge;
 
     private Rigidbody rb;
     private PlayerInput playerInput;
@@ -33,12 +34,17 @@ public class PlayerManager : MonoBehaviour
     public CylinderDeath deathCylinder;
     public Vector3 defaultScale;
 
+    private void Update()
+    {
+    }
+
     private void Start()
     {
         defaultScale = transform.localScale;
         deathCylinder = GetComponent<CylinderDeath>();
         playerInput = GetComponent<PlayerInput>();
         enemyManager = GetComponent<EnemyManager>();
+        enemyDodge = GetComponent<EnemyDodge>();
         canMove = true;
         isSkin1 = true;
         rb = GetComponent<Rigidbody>();
@@ -80,7 +86,6 @@ public class PlayerManager : MonoBehaviour
             Collider[] b = transform.GetComponentsInChildren<CapsuleCollider>();
             yield return tween1.WaitForCompletion();
 
-            //yield return new WaitForSeconds(0.5f);
             StartCoroutine(deathCylinder.Instance2(checkPointPosition));
 
             myCamera.player = transform.gameObject;
@@ -88,17 +93,16 @@ public class PlayerManager : MonoBehaviour
             transform.position = checkPointPosition + new Vector3(0, 5, 0);
 
             Tween tween2 = transform.DOScale(defaultScale, 0.5f).SetEase(Ease.Linear);
-            //rb.AddForce(Vector3.down, ForceMode.Impulse);
             yield return tween2.WaitForCompletion();
 
             gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Player");
 
             playerInput.checkAnimationRun = true;
             transform.rotation = Quaternion.Euler(0, 0, 0);
-            StartCoroutine(playerInput.Skin2ToSkin1());
             b[0].enabled = true;
             rb.constraints = constraint1;
-            yield return new WaitForSeconds(0.5f);
+
+            yield return new WaitForSeconds(0.1f);
             rb.velocity = new Vector3(0, 0, 0);
             animator.SetTrigger("idle");
             transform.GetComponent<PlayerInput>().enabled = true;
@@ -161,7 +165,6 @@ public class PlayerManager : MonoBehaviour
             myCamera.transform.position = checkPointPosition + myCamera.offset;
             transform.rotation = Quaternion.Euler(0, 0, 0);
             transform.position = checkPointPosition;
-            StartCoroutine(playerInput.Skin2ToSkin1());
             //for (int i = 0; i < b.Length; i++)
             //{
             //    b[i].enabled = true;
@@ -223,12 +226,14 @@ public class PlayerManager : MonoBehaviour
 
             rb.constraints = constraint1;
             yield return new WaitForSeconds(0.5f);
+            StartCoroutine(enemyManager.EnemySkin2ToSkin1());
+
             rb.velocity = new Vector3(0, 0, 0);
             animator.SetTrigger("idle");
             yield return new WaitForSeconds(0.5f);
             animator.SetBool("run", true);
             GetComponent<EnemyMovement>().enabled = true;
-
+            enemyDodge.oneTime = true;
             rb.velocity = new Vector3(0, 0, GetComponent<EnemyMovement>().rbSpeed);
             canMove = true;
             enemyIsDead = false;
@@ -274,6 +279,7 @@ public class PlayerManager : MonoBehaviour
 
             // sau 0.5s idle thi sang run
             yield return new WaitForSeconds(0.5f);
+            enemyDodge.oneTime = true;
             transform.GetComponent<EnemyMovement>().enabled = true;
             rb.velocity = new Vector3(0, 0, GetComponent<EnemyMovement>().rbSpeed);
             animator.SetBool("run", true);

@@ -49,7 +49,7 @@ public class PlayerInput : MonoBehaviour
 
     public void StartParticleSystem()
     {
-        Instantiate(playerManager.particle, transform.position, Quaternion.Euler(-90, 0, 0));
+        Instantiate(playerManager.particle, transform.position +  Vector3.up * 0.5f, Quaternion.Euler(90,0,0));
     }
 
     public IEnumerator Skin1ToSkin2()

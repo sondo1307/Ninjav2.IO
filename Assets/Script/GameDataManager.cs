@@ -37,7 +37,7 @@ public class GameDataManager : MonoBehaviour
 
     public bool SetMusic()
     {
-        return gameDataScrObj.vibrateOn = !gameDataScrObj.musicOn;
+        return gameDataScrObj.musicOn = !gameDataScrObj.musicOn;
     }
 
     public bool SetVibrate()

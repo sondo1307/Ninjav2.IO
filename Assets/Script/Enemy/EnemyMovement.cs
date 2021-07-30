@@ -156,10 +156,10 @@ public class EnemyMovement : MonoBehaviour
                         {
                             transform.DOMoveX(transform.position.x + 0.5f, 1);
                         }
-                        else if (RayCastRight() && RayCastLeft())
-                        {
-                            return;
-                        }
+                        //else if (RayCastRight() && RayCastLeft())
+                        //{
+                        //    return;
+                        //}
                     }
                     else
                     {
@@ -191,10 +191,10 @@ public class EnemyMovement : MonoBehaviour
                             {
                                 transform.DOMoveX(transform.position.x - 0.5f, 1);
                             }
-                            else if (RayCastRight() && RayCastLeft())
-                            {
-                                return;
-                            }
+                            //else if (RayCastRight() && RayCastLeft())
+                            //{
+                            //    return;
+                            //}
                         }
                     }
                 }
@@ -219,10 +219,10 @@ public class EnemyMovement : MonoBehaviour
                             {
                                 transform.DOMoveX(transform.position.x - 1f, 1);
                             }
-                            else if (RayCastRight() && RayCastLeft())
-                            {
-                                return;
-                            }
+                            //else if (RayCastRight() && RayCastLeft())
+                            //{
+                            //    return;
+                            //}
                         }
                     }
                 }
@@ -245,10 +245,10 @@ public class EnemyMovement : MonoBehaviour
                     {
                         transform.DOMoveX(transform.position.x - 1.5f, 2);
                     }
-                    else if (RayCastRight() && RayCastLeft())
-                    {
-                        return;
-                    }
+                    //else if (RayCastRight() && RayCastLeft())
+                    //{
+                    //    return;
+                    //}
                 }
 
             }
@@ -268,7 +268,6 @@ public class EnemyMovement : MonoBehaviour
     {
         if (Physics.Raycast(child.transform.position, -Vector3.right, 3, wallLayer))
         {
-            Debug.Log(2);
 
             return true;
         }
@@ -280,7 +279,6 @@ public class EnemyMovement : MonoBehaviour
     {
         if (Physics.Raycast(child.transform.position, Vector3.right, 3, wallLayer))
         {
-            Debug.Log(1);
             return true;
         }
         return false;

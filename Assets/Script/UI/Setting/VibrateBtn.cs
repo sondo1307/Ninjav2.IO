@@ -12,11 +12,11 @@ public class VibrateBtn : MonoBehaviour
     {
         if (GameDataManager.Instance.gameDataScrObj.vibrateOn)
         {
-            transform.GetComponent<Image>().sprite = defaultSprite1;
+            transform.GetChild(0).GetComponent<Image>().sprite = defaultSprite1;
         }
         else
         {
-            transform.GetComponent<Image>().sprite = spriteMute;
+            transform.GetChild(0).GetComponent<Image>().sprite = spriteMute;
         }
     }
 
@@ -26,11 +26,11 @@ public class VibrateBtn : MonoBehaviour
 
         if (GameDataManager.Instance.gameDataScrObj.vibrateOn)
         {
-            transform.GetComponent<Image>().sprite = spriteMute;
+            transform.GetChild(0).GetComponent<Image>().sprite = spriteMute;
         }
         else if (!GameDataManager.Instance.gameDataScrObj.vibrateOn)
         {
-            transform.GetComponent<Image>().sprite = defaultSprite1;
+            transform.GetChild(0).GetComponent<Image>().sprite = defaultSprite1;
         }
         GameDataManager.Instance.SetVibrate();
 

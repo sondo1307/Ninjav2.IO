@@ -14,14 +14,12 @@ public class AnimationControl : MonoBehaviour
 
     public void PushChannelShuriken()
     {
-        Time.timeScale = 1;
-        shurikenChannel.GetComponent<Rigidbody>().AddForce(Vector3.forward * shurikenControl.totalShuriken * 1.5f, ForceMode.VelocityChange);
-        StartCoroutine(Delay());
+        shurikenChannel.GetComponentInChildren<ShurikenChannelChild>().PushShurikenChannel();
     }
 
     IEnumerator Delay()
     {
         yield return new WaitForSeconds(0.5f);
-        shurikenChannel.GetComponentInChildren<ShurikenChannel>().check = true;
+        shurikenChannel.GetComponentInChildren<ShurikenChannelChild>().check = true;
     }
 }

@@ -12,22 +12,22 @@ public class MusicBtn : MonoBehaviour
     {
         if (GameDataManager.Instance.gameDataScrObj.musicOn)
         {
-            transform.GetComponent<Image>().sprite = defaultSprite1;
+            transform.GetChild(0).GetComponent<Image>().sprite = defaultSprite1;
         }
         else
         {
-            transform.GetComponent<Image>().sprite = spriteMute;
+            transform.GetChild(0).GetComponent<Image>().sprite = spriteMute;
         }
     }
     public void Click()
     {
         if (GameDataManager.Instance.gameDataScrObj.musicOn)
         {
-            transform.GetComponent<Image>().sprite = spriteMute;
+            transform.GetChild(0).GetComponent<Image>().sprite = spriteMute;
         }
         else if (!GameDataManager.Instance.gameDataScrObj.musicOn)
         {
-            transform.GetComponent<Image>().sprite = defaultSprite1;
+            transform.GetChild(0).GetComponent<Image>().sprite = defaultSprite1;
         }
         GameDataManager.Instance.SetMusic();
     }

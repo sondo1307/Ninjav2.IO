@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 2766186282003108340}
   - component: {fileID: 8900847734945531121}
   - component: {fileID: 8900847734945531126}
+  - component: {fileID: 1323197285}
   m_Layer: 0
   m_Name: Target Dummy
   m_TagString: Dummy
@@ -140,7 +141,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 114
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!136 &8900847734945531126
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -155,6 +156,19 @@ CapsuleCollider:
   m_Height: 1.5
   m_Direction: 1
   m_Center: {x: 0, y: 0.8, z: 0}
+--- !u!114 &1323197285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2766186282010534438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c63e7734f8070e43b7d4039283df3c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  finishRoad: {fileID: 0}
 --- !u!1 &2766186282010534440
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,6 +758,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WindParticle
       objectReference: {fileID: 0}
+    - target: {fileID: 2062259441473873201, guid: 08e9aab165c3661488498be89723e308, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2062259441473873202, guid: 08e9aab165c3661488498be89723e308, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -758,7 +776,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2062259441473873202, guid: 08e9aab165c3661488498be89723e308, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -14.23
       objectReference: {fileID: 0}
     - target: {fileID: 2062259441473873202, guid: 08e9aab165c3661488498be89723e308, type: 3}
       propertyPath: m_LocalRotation.w
@@ -787,6 +805,22 @@ PrefabInstance:
     - target: {fileID: 2062259441473873202, guid: 08e9aab165c3661488498be89723e308, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062259441473873203, guid: 08e9aab165c3661488498be89723e308, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062259441473873203, guid: 08e9aab165c3661488498be89723e308, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062259441473873203, guid: 08e9aab165c3661488498be89723e308, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: -60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062259441473873203, guid: 08e9aab165c3661488498be89723e308, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08e9aab165c3661488498be89723e308, type: 3}

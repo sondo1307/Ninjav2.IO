@@ -13,7 +13,7 @@ public class FinishRoadManager : MonoBehaviour
     {
         for (int i = 1; i < transform.childCount; i++)
         {
-            transform.GetChild(i).GetComponent<FinishRoadCollider>().multiplePoint = (float)(i / 2f) + 1;
+            transform.GetChild(i).GetComponent<FinishRoadCollider>().multiplePoint = i ;
             transform.GetChild(i).GetComponent<FinishRoadCollider>().txt.SetText("x" + transform.GetChild(i).GetComponent<FinishRoadCollider>().multiplePoint);
         }
     }

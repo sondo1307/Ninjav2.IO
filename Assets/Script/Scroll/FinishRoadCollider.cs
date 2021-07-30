@@ -14,11 +14,11 @@ public class FinishRoadCollider : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.transform.CompareTag("Dummy"))
-        {
-            PlayerData.Instance.multipleCoin = (int)multiplePoint;
-        }
-    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.transform.CompareTag("Dummy"))
+    //    {
+    //        PlayerData.Instance.multipleCoin = (int)multiplePoint;
+    //    }
+    //}
 }

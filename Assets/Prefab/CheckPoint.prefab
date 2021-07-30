@@ -128,7 +128,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a4b3b1888d4907498ebe415a4f1c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teacher: {fileID: 0}
   flags:
   - {fileID: 1161010426344719136}
   - {fileID: 2475086968166874984}
