@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ObstacleChild : MonoBehaviour
 {
+
     private void OnTriggerEnter(Collider other)
     {
         if (transform.tag != "Swing")

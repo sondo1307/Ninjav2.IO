@@ -26,6 +26,7 @@ public class TeacherAI : MonoBehaviour
     private bool startFieldOfView = false;
     private bool stopToCheckPlayer;
     public LayerMask layer;
+    public BoxCollider boxForEnemyIOScan;
 
     [Header("Signal")]
     public GameObject dangerSignal;
@@ -76,6 +77,7 @@ public class TeacherAI : MonoBehaviour
     IEnumerator StartPatrol()
     {
         dangerSignal.SetActive(true);
+        boxForEnemyIOScan.enabled = true;
         Tween a = transform.DORotate(new Vector3(0, 180, 0), 0.5f).SetEase(Ease.Linear);
         animator.SetBool("turn", true);
         yield return a.WaitForCompletion();
@@ -193,9 +195,11 @@ public class TeacherAI : MonoBehaviour
         allowPatrol = false;
         if (oneTime)
         {
+            boxForEnemyIOScan.enabled = false;
+
             DOTween.Kill(transform);
             DOTween.Kill(target.transform);
-            DOTween.To(() => fieldOfView.viewRadius, x => fieldOfView.viewRadius = x, 0, 0.5f);
+            DOTween.To(() => fieldOfView.viewRadius, (x) => fieldOfView.viewRadius = x, 0, 0.5f);
             //fieldOfView.viewRadius = 0;
             animator.SetTrigger("looktoturn");
             transform.DORotate(Vector3.zero, 2).SetEase(Ease.Linear);
@@ -236,7 +240,7 @@ public class TeacherAI : MonoBehaviour
         DOTween.Kill(target.transform, false);
         DOTween.Kill(dangerSignal.transform, false);
         Instantiate(MyScene.Instance.smokeEffect, transform.position, Quaternion.Euler(-90, 0, 0));
-        MyScene.Instance.listOfTeacher.RemoveAt(0);
+        //MyScene.Instance.listOfTeacher.RemoveAt(0);
         Destroy(gameObject);
     }
 }

@@ -31,6 +31,8 @@ public class FieldOfView : MonoBehaviour
 		teacherAI = GetComponentInParent<TeacherAI>();
 		viewMesh = new Mesh();
 		viewMesh.name = "View Mesh";
+		defaultViewRadius = MyScene.Instance.rangeOfActive;
+		//viewRadius = defaultViewRadius;
 		viewMeshFilter.mesh = viewMesh;
         //StartCoroutine("FindTargetsWithDelay", .2f);
     }

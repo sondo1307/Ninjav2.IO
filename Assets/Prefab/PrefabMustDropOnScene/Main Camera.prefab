@@ -43,7 +43,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.14117648, g: 0.6862745, b: 0.7372549, a: 0.6901961}
+  m_BackGroundColor: {r: 0.23944461, g: 0.6761392, b: 0.7169812, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -96,11 +96,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac9e215ce1a7a3644ab4bda38c22220c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 4.5, z: -6.2}
-  offset2: {x: 0, y: 0, z: 0}
+  offset: {x: 0, y: 4.5, z: -7}
   player: {fileID: 0}
   smoothSpeed: 0
   smoothZSpeed: 10
   smoothXSpeed: 2
-  rotation1: {x: 0, y: 0, z: 0}
-  rotation2: {x: 0, y: 0, z: 0}
+  check: 0

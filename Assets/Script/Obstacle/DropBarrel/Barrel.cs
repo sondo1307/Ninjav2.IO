@@ -26,29 +26,30 @@ public class Barrel : MonoBehaviour
         dir.Normalize();
         if (collision.transform.CompareTag("Player"))
         {
-            int a = Random.Range(0, 10);
-            if (a < 5)
-            {
-                transform.GetComponent<Rigidbody>().AddForce((Vector3.right + Vector3.forward) * 7, ForceMode.VelocityChange);
-            }
-            else
-            {
-                transform.GetComponent<Rigidbody>().AddForce((Vector3.left + Vector3.forward) * 7, ForceMode.VelocityChange);
-            }
+
             StartCoroutine(collision.transform.GetComponentInParent<PlayerMovement>().PushBack(dir * 5));
         }
         else if (collision.transform.CompareTag("Enemy"))
         {
-            int a = Random.Range(0, 10);
-            if (a < 5)
-            {
-                transform.GetComponent<Rigidbody>().AddForce((Vector3.right + Vector3.forward) * 7, ForceMode.VelocityChange);
-            }
-            else
-            {
-                transform.GetComponent<Rigidbody>().AddForce((Vector3.left + Vector3.forward) * 7, ForceMode.VelocityChange);
-            }
+            //int a = Random.Range(0, 10);
+            //if (a < 5)
+            //{
+            //    transform.GetComponent<Rigidbody>().AddForce((Vector3.right + Vector3.forward) * 7, ForceMode.VelocityChange);
+            //}
+            //else
+            //{
+            //    transform.GetComponent<Rigidbody>().AddForce((Vector3.left + Vector3.forward) * 7, ForceMode.VelocityChange);
+            //}
             StartCoroutine(collision.transform.GetComponentInParent<EnemyMovement>().PushBack(dir * 5));
+        }
+        int a = Random.Range(0, 10);
+        if (a < 5)
+        {
+            transform.GetComponent<Rigidbody>().AddForce((Vector3.right + Vector3.forward) * 7, ForceMode.VelocityChange);
+        }
+        else
+        {
+            transform.GetComponent<Rigidbody>().AddForce((Vector3.left + Vector3.forward) * 7, ForceMode.VelocityChange);
         }
     }
 }

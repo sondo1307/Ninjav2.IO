@@ -55,6 +55,7 @@ public class PlayerInput : MonoBehaviour
     public IEnumerator Skin1ToSkin2()
     {
         playerManager.canMove = false;
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         playerManager.isSkin1 = false;
         //playerManager.skin1.transform.DOScale(Vector3.zero, scaleTime);
         playerManager.skin2.GetComponent<CapsuleCollider>().enabled = true;
@@ -71,6 +72,7 @@ public class PlayerInput : MonoBehaviour
     {
         playerManager.canMove = true;
         playerManager.isSkin2 = false;
+        GetComponent<Rigidbody>().constraints = playerManager.constraint1;
         //playerManager.skin2.transform.DOScale(Vector3.zero, scaleTime);
         playerManager.skin1.GetComponent<CapsuleCollider>().enabled = true;
         playerManager.skin1.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;

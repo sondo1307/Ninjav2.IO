@@ -33,7 +33,9 @@ public class CameraFollow : MonoBehaviour
             float smoothXPosition = Mathf.Lerp(transform.position.x, desiredXPosition, smoothXSpeed * Time.deltaTime);
             if (!check)
             {
-                transform.position = new Vector3(smoothXPosition, player.transform.position.y + offset.y, player.transform.position.z + offset.z);
+                transform.position = new Vector3(Mathf.Clamp(smoothXPosition,-1.5f,1.5f), player.transform.position.y + offset.y, player.transform.position.z + offset.z);
+
+                //transform.position = new Vector3(smoothXPosition, player.transform.position.y + offset.y, player.transform.position.z + offset.z);
             }
             else
             {

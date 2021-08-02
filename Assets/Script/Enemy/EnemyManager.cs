@@ -55,7 +55,7 @@ public class EnemyManager : MonoBehaviour
 
     public void StartParticleSystem()
     {
-        Instantiate(playerManager.particle, transform.position, Quaternion.Euler(-90, 0, 0));
+        Instantiate(playerManager.particle, transform.position + Vector3.up*0.5f, Quaternion.Euler(90, 0, 0));
     }
 
     public IEnumerator EnemySkin1ToSkin2()
@@ -66,6 +66,8 @@ public class EnemyManager : MonoBehaviour
         DOTween.Kill(transform);
 
         GetComponentInParent<Rigidbody>().velocity = Vector3.zero;
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+
 
         //playerManager.skin1.transform.DOScale(Vector3.zero, scaleTime);
         playerManager.skin2.GetComponent<CapsuleCollider>().enabled = true;
@@ -82,6 +84,7 @@ public class EnemyManager : MonoBehaviour
         playerManager.canMove = true;
         playerManager.isSkin2 = false;
         playerManager.isSkin1 = true;
+        GetComponent<Rigidbody>().constraints = playerManager.constraint1;
         //playerManager.skin2.transform.DOScale(Vector3.zero, scaleTime);
         playerManager.skin1.GetComponent<CapsuleCollider>().enabled = true;
         playerManager.skin1.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;

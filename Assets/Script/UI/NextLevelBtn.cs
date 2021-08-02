@@ -19,13 +19,15 @@ public class NextLevelBtn : MonoBehaviour
     {
         DOTween.KillAll();
         GameDataManager.Instance.SaveGameData();
-        if (GameDataManager.Instance.gameDataScrObj.keys == 3)
-        {
-            GameDataManager.Instance.ChestThreeKeyOpen();
-        }
-        else if (GameDataManager.Instance.gameDataScrObj.keys < 3)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
+        //if (GameDataManager.Instance.gameDataScrObj.keys == 3)
+        //{
+        //    GameDataManager.Instance.ChestThreeKeyOpen();
+        //}
+        //else if (GameDataManager.Instance.gameDataScrObj.keys < 3)
+        //{
+        //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //}
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
     }
 }

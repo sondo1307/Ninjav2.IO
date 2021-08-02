@@ -1,5 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &25555504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184932332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c33d970ed564f604a815d5477fab249b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  desiredScale: {x: 0, y: 0, z: 0}
+  scaling: {x: 0.15, y: 0, z: 0.15}
+  shurikenControl: {fileID: 8443736471117452376}
 --- !u!1 &564572455089152339
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,7 +103,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 112
   m_CollisionDetection: 2
 --- !u!114 &564572456169107239
 MonoBehaviour:
@@ -181,10 +196,6 @@ MonoBehaviour:
   a: 60
   defaulta: 50
   scaleShurikenChannel: {x: 0.15, y: 0, z: 0.15}
-  finishRoad: {fileID: 0}
-  cylinder: {fileID: 0}
-  dummy: {fileID: 0}
-  gatherPowerParticle: {fileID: 0}
 --- !u!114 &6508432511309980255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,7 +341,7 @@ CapsuleCollider:
   m_Radius: 0.3
   m_Height: 1
   m_Direction: 1
-  m_Center: {x: 0, y: 0.15, z: -0.2}
+  m_Center: {x: 0, y: 0.15, z: -0.1}
 --- !u!136 &908714196
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -689,6 +700,14 @@ PrefabInstance:
       propertyPath: m_Parameters.colorGradient.key0.g
       value: 0.8392157
       objectReference: {fileID: 0}
+    - target: {fileID: 5288156805918200893, guid: 6bce32f62ee776145b3d88e709afb1d0, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5288156805918200893, guid: 6bce32f62ee776145b3d88e709afb1d0, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 0.9956037
+      objectReference: {fileID: 0}
     - target: {fileID: 5558750175797685671, guid: 6bce32f62ee776145b3d88e709afb1d0, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.b
       value: 0.27058825
@@ -696,6 +715,14 @@ PrefabInstance:
     - target: {fileID: 5558750175797685671, guid: 6bce32f62ee776145b3d88e709afb1d0, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.g
       value: 0.8392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 5558750175797685671, guid: 6bce32f62ee776145b3d88e709afb1d0, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5558750175797685671, guid: 6bce32f62ee776145b3d88e709afb1d0, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 0.9956037
       objectReference: {fileID: 0}
     - target: {fileID: 6804081897168769066, guid: 6bce32f62ee776145b3d88e709afb1d0, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.b
@@ -705,6 +732,14 @@ PrefabInstance:
       propertyPath: m_Parameters.colorGradient.key0.g
       value: 0.8392157
       objectReference: {fileID: 0}
+    - target: {fileID: 6804081897168769066, guid: 6bce32f62ee776145b3d88e709afb1d0, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6804081897168769066, guid: 6bce32f62ee776145b3d88e709afb1d0, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 0.9956037
+      objectReference: {fileID: 0}
     - target: {fileID: 8349183720197055795, guid: 6bce32f62ee776145b3d88e709afb1d0, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.b
       value: 0.27058825
@@ -712,6 +747,14 @@ PrefabInstance:
     - target: {fileID: 8349183720197055795, guid: 6bce32f62ee776145b3d88e709afb1d0, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.g
       value: 0.8392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349183720197055795, guid: 6bce32f62ee776145b3d88e709afb1d0, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349183720197055795, guid: 6bce32f62ee776145b3d88e709afb1d0, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 0.9956037
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bce32f62ee776145b3d88e709afb1d0, type: 3}

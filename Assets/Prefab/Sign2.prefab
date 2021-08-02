@@ -293,11 +293,11 @@ MonoBehaviour:
   moveX: 1
   moveY: 0
   moveZ: 0
-  pointReach: {x: 0, y: -90, z: 0}
-  defaultRotation: {x: 0, y: 0, z: 0}
-  second: 1
-  waitSecond: 3
-  dauChamThan: {fileID: 0}
+  pointReach: {x: -90, y: 0, z: 0}
+  defaultRotation: {x: 90, y: 0, z: 0}
+  second: 0.5
+  waitSecond: 3.5
+  dauChamThan: {fileID: 9003574532767455196}
 --- !u!1001 &4341921382404348451
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -305,6 +305,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8897325233165306305}
     m_Modifications:
+    - target: {fileID: 4661934986406514145, guid: 9fc5277bfec9a854ea91d27972fa2e30, type: 3}
+      propertyPath: pointReach
+      value: 1.75
+      objectReference: {fileID: 0}
     - target: {fileID: 4661934986406514174, guid: 9fc5277bfec9a854ea91d27972fa2e30, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -315,7 +319,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4661934986406514174, guid: 9fc5277bfec9a854ea91d27972fa2e30, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 4661934986406514174, guid: 9fc5277bfec9a854ea91d27972fa2e30, type: 3}
       propertyPath: m_LocalPosition.z
@@ -355,6 +359,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fc5277bfec9a854ea91d27972fa2e30, type: 3}
+--- !u!1 &9003574532767455196 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4661934986406514175, guid: 9fc5277bfec9a854ea91d27972fa2e30, type: 3}
+  m_PrefabInstance: {fileID: 4341921382404348451}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9003574532767455197 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4661934986406514174, guid: 9fc5277bfec9a854ea91d27972fa2e30, type: 3}

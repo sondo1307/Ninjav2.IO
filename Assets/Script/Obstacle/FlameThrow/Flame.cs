@@ -13,10 +13,12 @@ public class Flame : MonoBehaviour
     public DangerSignal dangerSignal2;
 
     public float timeBetween;
+    public bool check;
     [SerializeField]private float tempTime;
     private void Start()
     {
-        tempTime = timeBetween;
+        trigger.SetActive(false);
+        tempTime = 0;
         for (int i = 0; i < transform.childCount-1; i++)
         {
             list.Add(transform.GetChild(i));
@@ -26,7 +28,7 @@ public class Flame : MonoBehaviour
     private void Update()
     {
         tempTime -= Time.deltaTime;
-        if (tempTime <= 0)
+        if (tempTime <= 0 && check)
         {
             StartCoroutine(InstanceFlame());
             tempTime = timeBetween;

@@ -44,16 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64866c259acce1147ac10c568e152fd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rangeOfActive: 10
   gameIsStart: 0
   finishZ: 96
-  listOfTeacher:
-  - {fileID: 0}
-  - {fileID: 0}
   placeCount: 0
-  playerInput: {fileID: 0}
-  enemysManager:
-  - {fileID: 0}
-  - {fileID: 0}
   listOfPlayer:
   - {fileID: 0}
   - {fileID: 0}
@@ -61,6 +55,7 @@ MonoBehaviour:
   confettiPrefab: {fileID: 4777693137976714930, guid: a9e8b2b34c4895b42819fb3d126f9a61, type: 3}
   hitEffect: {fileID: 100000, guid: 3156817f64ec68948ad6bb26569b9ef5, type: 3}
   smokeEffect: {fileID: 1965343156803978, guid: e589125f4f683604cbed1b5a7c6e16b2, type: 3}
+  smokeEffectNoSmokeUp: {fileID: 1965343156803978, guid: 5b3999da54bf19c45a8a15c6294a0f61, type: 3}
 --- !u!114 &1214346938821779520
 MonoBehaviour:
   m_ObjectHideFlags: 0

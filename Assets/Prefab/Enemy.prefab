@@ -193,9 +193,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7e7f707d3c370e49ae33d3c102793aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teacher: {fileID: 0}
-  fov: {fileID: 0}
   dodgePercent: 25
+  layer:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!114 &807574068009359363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,8 +226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f9e63f70760d04448e0ca6ae1130805, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rbSpeed: 7
-  rbSpeedOrigin: 7
+  rbSpeed: 10
+  rbSpeedOrigin: 10
   jumpForce: 6
   child: {fileID: 727145190}
   layer:
@@ -246,7 +247,7 @@ MonoBehaviour:
   raycastLength: 10
   numerOfRay: 30
   scanFrequence: 60
-  intelligent: 7
+  intelligent: 5
 --- !u!114 &3957660980009088991
 MonoBehaviour:
   m_ObjectHideFlags: 0

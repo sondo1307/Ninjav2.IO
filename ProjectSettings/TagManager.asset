@@ -16,6 +16,7 @@ TagManager:
   - Shuriken
   - Teacher
   - Dummy
+  - Immune
   layers:
   - Default
   - TransparentFX
@@ -29,7 +30,7 @@ TagManager:
   - Ground
   - Wall
   - PlayerObstacle
-  - ObstaclePushable
+  - EnemyObstacle
   - Teacher
   - 
   - 

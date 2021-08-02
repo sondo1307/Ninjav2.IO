@@ -6,21 +6,23 @@ using DG.Tweening;
 public class MyScene : MonoBehaviour
 {
     public static MyScene Instance;
+    public float rangeOfActive;
     public bool gameIsStart;
     public bool runIsFinish { get; set; }
     public float finishZ;
-    public List<GameObject> listOfTeacher = new List<GameObject>();
+    //public List<GameObject> listOfTeacher = new List<GameObject>();
     public int placeCount = 0;
 
     private PlayerInput playerInput;
-    public List<EnemyManager> enemysManager = new List<EnemyManager>();
+    private List<EnemyManager> enemysManager { get; set; }
     public List<GameObject> listOfPlayer = new List<GameObject>();
     public bool oneTime { get; set; }
 
-    [Header("particle")]
+    [Header("Particle")]
     public GameObject confettiPrefab;
     public GameObject hitEffect;
     public GameObject smokeEffect;
+    public GameObject smokeEffectNoSmokeUp;
     private void Awake()
     {
         //Application.targetFrameRate = 60;
@@ -31,6 +33,8 @@ public class MyScene : MonoBehaviour
     private void Start()
     {
         playerInput = FindObjectOfType<PlayerInput>();
+        //EnemyManager[] a =  FindObjectsOfType<EnemyManager>();
+        enemysManager = new List<EnemyManager>(FindObjectsOfType<EnemyManager>());
     }
     private void Update()
     {

@@ -149,12 +149,12 @@ public class EnemyMovement : MonoBehaviour
                     {
                         if (RayCastLeft())
                         {
-                            transform.DOMoveX(transform.position.x - 0.5f, 1);
+                            transform.DOMoveX(transform.position.x - 0.5f, 1).SetEase(Ease.InCubic);
 
                         }
                         else if (RayCastRight())
                         {
-                            transform.DOMoveX(transform.position.x + 0.5f, 1);
+                            transform.DOMoveX(transform.position.x + 0.5f, 1).SetEase(Ease.InCubic);
                         }
                         //else if (RayCastRight() && RayCastLeft())
                         //{
@@ -176,7 +176,7 @@ public class EnemyMovement : MonoBehaviour
                     if (listOfVectorNotZero.Count != 0)
                     {
                         int temp2 = Mathf.FloorToInt(MyRandom(listOfVectorNotZero.Count));
-                        transform.DOMoveX(listOfVectorNotZero[temp2].x, 1);
+                        transform.DOMoveX(listOfVectorNotZero[temp2].x, 1).SetEase(Ease.InCubic);
                     }
                     else
                     {
@@ -185,11 +185,11 @@ public class EnemyMovement : MonoBehaviour
                         {
                             if (RayCastLeft())
                             {
-                                transform.DOMoveX(transform.position.x + 0.5f, 1);
+                                transform.DOMoveX(transform.position.x + 0.5f, 1).SetEase(Ease.InCubic);
                             }
                             else if (RayCastRight())
                             {
-                                transform.DOMoveX(transform.position.x - 0.5f, 1);
+                                transform.DOMoveX(transform.position.x - 0.5f, 1).SetEase(Ease.InCubic);
                             }
                             //else if (RayCastRight() && RayCastLeft())
                             //{
@@ -212,12 +212,12 @@ public class EnemyMovement : MonoBehaviour
                         {
                             if (RayCastLeft())
                             {
-                                transform.DOMoveX(transform.position.x + 1f, 1);
+                                transform.DOMoveX(transform.position.x + 1f, 1).SetEase(Ease.InCubic);
 
                             }
                             else if (RayCastRight())
                             {
-                                transform.DOMoveX(transform.position.x - 1f, 1);
+                                transform.DOMoveX(transform.position.x - 1f, 1).SetEase(Ease.InCubic);
                             }
                             //else if (RayCastRight() && RayCastLeft())
                             //{
@@ -239,11 +239,11 @@ public class EnemyMovement : MonoBehaviour
                 {
                     if (RayCastLeft())
                     {
-                        transform.DOMoveX(transform.position.x + 1.5f, 2);
+                        transform.DOMoveX(transform.position.x + 1.5f, 2).SetEase(Ease.InCubic);
                     }
                     else if (RayCastRight())
                     {
-                        transform.DOMoveX(transform.position.x - 1.5f, 2);
+                        transform.DOMoveX(transform.position.x - 1.5f, 2).SetEase(Ease.InCubic);
                     }
                     //else if (RayCastRight() && RayCastLeft())
                     //{
