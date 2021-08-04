@@ -22,7 +22,7 @@ public class DUmmy : MonoBehaviour
         //{
         //    transform.DOMoveZ(finishRoad.transform.GetChild(11).transform.position.z, 4);
         //}
-        transform.DOMoveZ(finishRoad.transform.GetChild(Mathf.Clamp(force+1, 1, 10)).transform.position.z, 4).OnComplete(EndRun);
+        transform.DOMoveZ(finishRoad.transform.GetChild(Mathf.Clamp(force+1, 1, 20)).transform.position.z, 7).SetEase(Ease.OutCubic).OnComplete(EndRun);
 
     }
 

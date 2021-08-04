@@ -12,6 +12,7 @@ public class PlayerManager : MonoBehaviour
     public GameObject skin1;
     public GameObject skin2;
     public GameObject particle;
+
     public CameraFollow myCamera;
     public bool isSkin1 { get; set; }
     public bool isSkin2 { get; set; }
@@ -25,30 +26,35 @@ public class PlayerManager : MonoBehaviour
     private EnemyManager enemyManager;
     private EnemyDodge enemyDodge;
 
-    private Rigidbody rb;
+    public Rigidbody rb { get; set; }
     private PlayerInput playerInput;
     public Animator animator { get; set; }
-    public RigidbodyConstraints constraint1 = RigidbodyConstraints.FreezeRotation;
+    public RigidbodyConstraints constraintAllRotation = RigidbodyConstraints.FreezeRotation;
+    public RigidbodyConstraints constraintAllRotationAndY { get; set; }
 
     [Header("Death")]
     public CylinderDeath deathCylinder;
     public Vector3 defaultScale;
 
-    private void Update()
+    private void Awake()
     {
-    }
+        myCamera = FindObjectOfType<CameraFollow>();
 
+    }
     private void Start()
     {
-        defaultScale = transform.localScale;
+        rb = GetComponent<Rigidbody>();
+        animator = GetComponentInChildren<Animator>();
+
         deathCylinder = GetComponent<CylinderDeath>();
         playerInput = GetComponent<PlayerInput>();
         enemyManager = GetComponent<EnemyManager>();
         enemyDodge = GetComponent<EnemyDodge>();
         canMove = true;
         isSkin1 = true;
-        rb = GetComponent<Rigidbody>();
-        animator = GetComponentInChildren<Animator>();
+        //constraintAllRotationAndY = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
+        defaultScale = transform.localScale;
+        //rb.constraints = constraintAllRotationAndY;
         checkPointPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
 
@@ -64,15 +70,15 @@ public class PlayerManager : MonoBehaviour
     {
         if (!playerIsDead)
         {
-            canMove = false;
             AudioManager.Instance.StopAudio("footstep");
             StartCoroutine(playerInput.Skin2ToSkin1());
+            canMove = false;
+
             animator.SetTrigger("angry");
             playerIsDead = true;
             gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Default");
             rb.velocity = new Vector3(0, rb.velocity.y, 0);
             transform.GetComponent<PlayerInput>().enabled = false;
-            transform.GetComponent<PlayerMovement>().enabled = false;
             animator.SetBool("run", false);
 
             yield return new WaitForSeconds(0.5f);
@@ -100,15 +106,15 @@ public class PlayerManager : MonoBehaviour
             playerInput.checkAnimationRun = true;
             transform.rotation = Quaternion.Euler(0, 0, 0);
             b[0].enabled = true;
-            rb.constraints = constraint1;
-            yield return new WaitForSecondsRealtime(0.5f);
-            Instantiate(MyScene.Instance.smokeEffectNoSmokeUp, checkPointPosition, Quaternion.Euler(-90, 0, 0));
+            rb.constraints = constraintAllRotation;
+            yield return new WaitForSecondsRealtime(0.7f);
+            Instantiate(MyScene.Instance.smokeEffectNoSmokeUp, checkPointPosition + Vector3.up*0.25f, Quaternion.Euler(90, 0, 0));
             yield return new WaitForSeconds(2f);
             myCamera.player = transform.gameObject;
             rb.velocity = new Vector3(0, 0, 0);
             animator.SetTrigger("idle");
             transform.GetComponent<PlayerInput>().enabled = true;
-            transform.GetComponent<PlayerMovement>().enabled = true;
+
             canMove = true;
             playerIsDead = false;
             GetComponent<PlayerMovement>().oneTime = true;
@@ -173,7 +179,7 @@ public class PlayerManager : MonoBehaviour
             //}
             b[0].enabled = true;
 
-            rb.constraints = constraint1;
+            rb.constraints = constraintAllRotation;
 
             yield return new WaitForSeconds(0.5f);
             canMove = true;
@@ -220,7 +226,7 @@ public class PlayerManager : MonoBehaviour
 
             yield return tween2.WaitForCompletion();
 
-            gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Player");
+            gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Enemy");
 
             transform.rotation = Quaternion.Euler(0, 0, 0);
             //for (int i = 0; i < b.Length; i++)
@@ -229,7 +235,7 @@ public class PlayerManager : MonoBehaviour
             //}
             b[0].enabled = true;
 
-            rb.constraints = constraint1;
+            rb.constraints = constraintAllRotation;
             yield return new WaitForSeconds(2f);
 
             rb.velocity = new Vector3(0, 0, 0);
@@ -279,7 +285,7 @@ public class PlayerManager : MonoBehaviour
             b[0].enabled = true;
 
             animator.SetTrigger("idle");
-            rb.constraints = constraint1;
+            rb.constraints = constraintAllRotation;
             transform.rotation = Quaternion.Euler(0, 0, 0);
             transform.position = checkPointPosition;
 

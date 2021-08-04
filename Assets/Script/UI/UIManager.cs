@@ -11,7 +11,6 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
     public GameObject panel;
-    public GameObject exitBtn;
     public GameObject settingBtn;
     public GameObject dragTxt;
     public GameObject shopButton;
@@ -75,7 +74,6 @@ public class UIManager : MonoBehaviour
     public void StartGame()
     {
         settingBtn.gameObject.SetActive(false);
-        exitBtn.gameObject.SetActive(false);
         shopButton.gameObject.SetActive(false);
         panel.gameObject.SetActive(false);
         coinGroup.gameObject.SetActive(false);

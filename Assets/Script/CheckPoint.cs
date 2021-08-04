@@ -18,7 +18,7 @@ public class CheckPoint : MonoBehaviour
             for (int i = 0; i < flags.Count; i++)
             {
                 float tempRotationY = flags[i].transform.localRotation.eulerAngles.y;
-                flags[i].transform.DORotate(new Vector3(0, tempRotationY, 0), 0.5f).SetEase(Ease.Linear);
+                flags[i].transform.DORotate(new Vector3(0, tempRotationY, 0), 0.25f).SetEase(Ease.Linear);
             }
             for (int i = 0; i < other.transform.parent.gameObject.GetComponentsInChildren<CapsuleCollider>().Length; i++)
             {

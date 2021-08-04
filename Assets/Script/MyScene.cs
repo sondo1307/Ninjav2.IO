@@ -14,8 +14,8 @@ public class MyScene : MonoBehaviour
     public int placeCount = 0;
 
     private PlayerInput playerInput;
-    private List<EnemyManager> enemysManager { get; set; }
-    public List<GameObject> listOfPlayer = new List<GameObject>();
+    private List<EnemyManager> enemysManager;
+    private List<PlayerManager> listOfPlayer;
     public bool oneTime { get; set; }
 
     [Header("Particle")]
@@ -25,16 +25,17 @@ public class MyScene : MonoBehaviour
     public GameObject smokeEffectNoSmokeUp;
     private void Awake()
     {
-        //Application.targetFrameRate = 60;
         Instance = this;
-        IgnoreCollision();
+
+        Application.targetFrameRate = 60;
+        playerInput = FindObjectOfType<PlayerInput>();
+        listOfPlayer = new List<PlayerManager>(FindObjectsOfType<PlayerManager>());
+        enemysManager = new List<EnemyManager>(FindObjectsOfType<EnemyManager>());
     }
 
     private void Start()
     {
-        playerInput = FindObjectOfType<PlayerInput>();
-        //EnemyManager[] a =  FindObjectsOfType<EnemyManager>();
-        enemysManager = new List<EnemyManager>(FindObjectsOfType<EnemyManager>());
+        IgnoreCollision();
     }
     private void Update()
     {
@@ -45,13 +46,6 @@ public class MyScene : MonoBehaviour
         }
     }
 
-    public void StartVibrate()
-    {
-        if (GameDataManager.Instance.gameDataScrObj.vibrateOn)
-        {
-            Handheld.Vibrate();
-        }
-    }
 
     public void StartGame()
     {
@@ -62,21 +56,28 @@ public class MyScene : MonoBehaviour
         {
             for (int i = 0; i < enemysManager.Count; i++)
             {
-                enemysManager[i].animator.SetTrigger("prepare_run");
+                enemysManager[i].animator.SetTrigger("run");
             }
         }
-        playerInput.animator.SetTrigger("prepare_run");
         gameIsStart = true;
     }
 
+    public List<Collider> a;
     public void IgnoreCollision()
     {
         for (int i = 0; i < listOfPlayer.Count; i++)
         {
-            for (int j = 0; j < listOfPlayer.Count; j++)
+            Collider[] b = listOfPlayer[i].GetComponentsInChildren<Collider>();
+            for (int j = 0; j < b.Length; j++)
             {
-                Physics.IgnoreCollision(listOfPlayer[i].transform.GetChild(0).GetComponent<CapsuleCollider>()
-                    , listOfPlayer[j].transform.GetChild(0).GetComponent<CapsuleCollider>());
+                a.Add(b[j]);
+            }
+        }
+        for (int i = 0; i < a.Count; i++)
+        {
+            for (int j = 0; j < a.Count; j++)
+            {
+                Physics.IgnoreCollision(a[i], a[j]);
             }
         }
     }

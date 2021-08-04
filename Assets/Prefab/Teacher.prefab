@@ -357,7 +357,8 @@ GameObject:
   - component: {fileID: 2858463060611978665}
   - component: {fileID: 2858463060611978678}
   - component: {fileID: 1630029368}
-  m_Layer: 12
+  - component: {fileID: 3712715417538299008}
+  m_Layer: 13
   m_Name: Teacher
   m_TagString: Teacher
   m_Icon: {fileID: 0}
@@ -420,6 +421,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   count: 0
   Hp: 5
+--- !u!65 &3712715417538299008
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2858463060611978664}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &8571979537818080633
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,11 +581,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c0c8a030b45e3f44afef138d126ea3a, type: 3}
---- !u!4 &4702742159551008494 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -3321919801592875672, guid: 3c0c8a030b45e3f44afef138d126ea3a, type: 3}
-  m_PrefabInstance: {fileID: 1199457894554336134}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1670815554066160749 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3c0c8a030b45e3f44afef138d126ea3a, type: 3}
@@ -580,6 +589,11 @@ Transform:
 --- !u!1 &2045827512260347607 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3c0c8a030b45e3f44afef138d126ea3a, type: 3}
+  m_PrefabInstance: {fileID: 1199457894554336134}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4702742159551008494 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -3321919801592875672, guid: 3c0c8a030b45e3f44afef138d126ea3a, type: 3}
   m_PrefabInstance: {fileID: 1199457894554336134}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2858463060061694382

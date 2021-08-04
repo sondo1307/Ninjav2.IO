@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject child;
     public LayerMask layer;
     public LayerMask wallLayer;
-    private bool checkJump;
+    public bool checkJump { get; set; }
     [Header("Component")]
     public Rigidbody rb;
     private PlayerManager playerManager;
@@ -39,15 +39,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if ( Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             lastCursorPosition = WorldMousePos();
         }
-        else if ( Input.GetMouseButton(0))
+        else if ( Input.GetMouseButton(0) && playerManager.canMove)
         {
             Vector2 delta = WorldMousePos() - lastCursorPosition;
 
-            if (MyScene.Instance.gameIsStart == true && !isPushed )
+            if (MyScene.Instance.gameIsStart == true && !isPushed && playerManager.canMove)
             {
                 MoveHorizontal(delta.x / Screen.width * sensitive * halfRange);
 
@@ -67,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (MyScene.Instance.gameIsStart == true && !isPushed)
+        if (MyScene.Instance.gameIsStart == true && !isPushed )
         {
             //CheckLeft();
             //CheckRight();
@@ -80,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
                     oneTime = false;
                 }
             }
-            if (!MoveForward())
+            if (!MoveForward() && !playerManager.jumping)
             {
                 rb.velocity = new Vector3(0, rb.velocity.y, 0);
                 oneTime = true;
@@ -110,16 +110,20 @@ public class PlayerMovement : MonoBehaviour
     {
         RaycastHit hitRight;
         RaycastHit hitLeft;
-        //left
-        if (Physics.Raycast(child.transform.position, -transform.right, out hitLeft, 2, layer))
+        if (Physics.Raycast(child.transform.position, -transform.right, out hitLeft, 2, layer)
+            && Physics.Raycast(child.transform.position, transform.right, out hitRight, 2, layer))
         {
+            rb.position = new Vector3(Mathf.Clamp(transform.position.x + move, hitLeft.point.x + 0.3f, hitRight.point.x - 0.3f), rb.position.y, rb.position.z);
 
+        }
+        //left
+        else if (Physics.Raycast(child.transform.position, -transform.right, out hitLeft, 2, layer))
+        {
             rb.position = new Vector3(Mathf.Clamp(transform.position.x + move, hitLeft.point.x + 0.3f, halfRange), rb.position.y, rb.position.z);
         }
         //right
         else if (Physics.Raycast(child.transform.position, transform.right, out hitRight, 2, layer))
         {
-
             rb.position = new Vector3(Mathf.Clamp(transform.position.x + move, -halfRange, hitRight.point.x - 0.3f), rb.position.y, rb.position.z);
         }
         else if (!Physics.Raycast(child.transform.position, -transform.right, 2f, layer)
@@ -141,6 +145,9 @@ public class PlayerMovement : MonoBehaviour
     public void Jump()
     {
         playerManager.jumping = true;
+        jump = true;
+        AudioManager.Instance.StopAudio("footstep");
+        GetComponent<PlayerInput>().enabled = false;
         rb.AddForce(new Vector3(rb.velocity.x, 1 * jumpForce, rb.velocity.z), ForceMode.Impulse);
         animator.SetBool("jump", true);
         StartCoroutine(Delay());
@@ -149,22 +156,47 @@ public class PlayerMovement : MonoBehaviour
     public void SuperJump()
     {
         playerManager.jumping = true;
+        superJump = true;
+        AudioManager.Instance.StopAudio("footstep");
+        GetComponent<PlayerInput>().enabled = false;
         rb.AddForce(new Vector3(rb.velocity.x, 2.5f * jumpForce, rb.velocity.z), ForceMode.Impulse);
         animator.SetBool("jump", true);
         StartCoroutine(Delay());
     }
 
-    public void CheckGround()
+    public bool jump { get; set; }
+    public bool superJump { get; set; }
+
+public void CheckGround()
     {
-        if (Physics.Raycast(child.transform.position, Vector3.down, 0.05f, layer))
+        if (Physics.Raycast(child.transform.position, Vector3.down, 0.11f, layer))
         {
-            if (checkJump)
+            if (checkJump && jump)
             {
                 animator.SetBool("jump", false);
+                AudioManager.Instance.PlayAudio("footstep");
+                GetComponent<PlayerInput>().enabled = true;
                 checkJump = false;
                 playerManager.jumping = false;
+                jump = false;
+            }
+            else if (checkJump && superJump)
+            {
+                animator.SetTrigger("roll");
+                AudioManager.Instance.PlayAudio("footstep");
+                GetComponent<PlayerInput>().enabled = true;
+                checkJump = false;
+                playerManager.jumping = false;
+                superJump = false;
+
             }
         }
+    }
+
+    public IEnumerator DelayFreezeY()
+    {
+        yield return new WaitForSeconds(0.5f);
+        rb.constraints = playerManager.constraintAllRotation;
     }
 
     public IEnumerator PushBack(Vector3 dir)

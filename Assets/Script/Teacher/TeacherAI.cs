@@ -44,6 +44,8 @@ public class TeacherAI : MonoBehaviour
         InvokeRepeating("ScanBool", 2, 2);
     }
 
+    private bool end;
+
     private void Update()
     {
         if (start)
@@ -62,7 +64,7 @@ public class TeacherAI : MonoBehaviour
             {
                 CheckReachPatrolPoint();
             }
-            else if (i == targetsXs.Count)
+            else if (i == targetsXs.Count&&!end)
             {
                 ReachEndOfList();
             }
@@ -188,29 +190,40 @@ public class TeacherAI : MonoBehaviour
     public void ReachEndOfList()
     {
         dangerSignal.SetActive(false);
+        end = true;
+
         //fieldOfView.viewAngle = Mathf.Lerp(0, fieldOfView.viewAngle, 0.9f);
         //fieldOfView.viewAngle = Mathf.SmoothStep(0, fieldOfView.viewAngle, 0.1f);
         //fieldOfView.viewRadius = Mathf.SmoothStep(0, fieldOfView.viewRadius, 0.8f);
+        StartCoroutine(End());
+        //allowPatrol = false;
+        //if (oneTime)
+        //{
+        //    boxForEnemyIOScan.enabled = false;
 
-        allowPatrol = false;
-        if (oneTime)
-        {
-            boxForEnemyIOScan.enabled = false;
+        //    DOTween.Kill(transform);
+        //    DOTween.Kill(target.transform);
+        //    DOTween.To(() => fieldOfView.viewRadius, (x) => fieldOfView.viewRadius = x, 0, 0.2f);
+        //    //fieldOfView.viewRadius = 0;
+        //    animator.SetTrigger("looktoturn");
+        //    transform.DORotate(Vector3.zero, 2).SetEase(Ease.Linear);
+        //    StartCoroutine(Delay(2));
+        //    oneTime = false;
+        //}
+        //if (fieldOfView.viewAngle <= 0.0001f || fieldOfView.viewRadius <= 0.001f)
+        //{
+        //    i = 0;
+        //    fieldOfView.enabled = false;
+        //}
+    }
 
-            DOTween.Kill(transform);
-            DOTween.Kill(target.transform);
-            DOTween.To(() => fieldOfView.viewRadius, (x) => fieldOfView.viewRadius = x, 0, 0.5f);
-            //fieldOfView.viewRadius = 0;
-            animator.SetTrigger("looktoturn");
-            transform.DORotate(Vector3.zero, 2).SetEase(Ease.Linear);
-            StartCoroutine(Delay(2));
-            oneTime = false;
-        }
-        if (fieldOfView.viewAngle <= 0.0001f || fieldOfView.viewRadius <= 0.001f)
-        {
-            i = 0;
-            fieldOfView.enabled = false;
-        }
+    IEnumerator End()
+    {
+        Tween a = DOTween.To(() => fieldOfView.viewRadius, (x) => fieldOfView.viewRadius = x, 0, 0.2f);
+        yield return a.WaitForCompletion();
+        animator.SetTrigger("hi");
+        yield return new WaitForSeconds(1);
+        KillTeacher();
     }
 
     IEnumerator Delay(float a)

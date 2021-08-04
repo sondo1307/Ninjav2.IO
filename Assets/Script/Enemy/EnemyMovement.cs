@@ -61,11 +61,6 @@ public class EnemyMovement : MonoBehaviour
     {
         if (MyScene.Instance.gameIsStart && !isPushed)
         {
-            if (oneTime)
-            {
-                animator.SetBool("run", true);
-                oneTime = false;
-            }
 
             if (playerManager.canMove)
             {
@@ -149,17 +144,27 @@ public class EnemyMovement : MonoBehaviour
                     {
                         if (RayCastLeft())
                         {
-                            transform.DOMoveX(transform.position.x - 0.5f, 1).SetEase(Ease.InCubic);
+                            transform.DOMoveX(transform.position.x - 0.5f, 1).SetEase(Ease.Linear);
 
                         }
                         else if (RayCastRight())
                         {
-                            transform.DOMoveX(transform.position.x + 0.5f, 1).SetEase(Ease.InCubic);
+                            transform.DOMoveX(transform.position.x + 0.5f, 1).SetEase(Ease.Linear);
                         }
-                        //else if (RayCastRight() && RayCastLeft())
-                        //{
-                        //    return;
-                        //}
+                        else if (RayCastRight() && RayCastLeft())
+                        {
+                            int b = 0;
+                            b = Random.Range(1, 10);
+                            if (b < 5)
+                            {
+                                transform.DOMoveX(transform.position.x + 2f, 2).SetEase(Ease.InCubic);
+
+                            }
+                            else if (b >= 5)
+                            {
+                                transform.DOMoveX(transform.position.x - 2f, 2).SetEase(Ease.InCubic);
+                            }
+                        }
                     }
                     else
                     {
@@ -185,16 +190,26 @@ public class EnemyMovement : MonoBehaviour
                         {
                             if (RayCastLeft())
                             {
-                                transform.DOMoveX(transform.position.x + 0.5f, 1).SetEase(Ease.InCubic);
+                                transform.DOMoveX(transform.position.x + 0.5f, 1).SetEase(Ease.Linear);
                             }
                             else if (RayCastRight())
                             {
-                                transform.DOMoveX(transform.position.x - 0.5f, 1).SetEase(Ease.InCubic);
+                                transform.DOMoveX(transform.position.x - 0.5f, 1).SetEase(Ease.Linear);
                             }
-                            //else if (RayCastRight() && RayCastLeft())
-                            //{
-                            //    return;
-                            //}
+                            else if (RayCastRight() && RayCastLeft())
+                            {
+                                int b = 0;
+                                b = Random.Range(1, 10);
+                                if (b < 5)
+                                {
+                                    transform.DOMoveX(transform.position.x + 2f, 2).SetEase(Ease.InCubic);
+
+                                }
+                                else if (b >= 5)
+                                {
+                                    transform.DOMoveX(transform.position.x - 2f, 2).SetEase(Ease.InCubic);
+                                }
+                            }
                         }
                     }
                 }
@@ -212,17 +227,27 @@ public class EnemyMovement : MonoBehaviour
                         {
                             if (RayCastLeft())
                             {
-                                transform.DOMoveX(transform.position.x + 1f, 1).SetEase(Ease.InCubic);
+                                transform.DOMoveX(transform.position.x + 1f, 1).SetEase(Ease.Linear);
 
                             }
                             else if (RayCastRight())
                             {
-                                transform.DOMoveX(transform.position.x - 1f, 1).SetEase(Ease.InCubic);
+                                transform.DOMoveX(transform.position.x - 1f, 1).SetEase(Ease.Linear);
                             }
-                            //else if (RayCastRight() && RayCastLeft())
-                            //{
-                            //    return;
-                            //}
+                            else if (RayCastRight() && RayCastLeft())
+                            {
+                                int b = 0;
+                                b = Random.Range(1, 10);
+                                if (b < 5)
+                                {
+                                    transform.DOMoveX(transform.position.x + 2f, 2).SetEase(Ease.InCubic);
+
+                                }
+                                else if (b >= 5)
+                                {
+                                    transform.DOMoveX(transform.position.x - 2f, 2).SetEase(Ease.InCubic);
+                                }
+                            }
                         }
                     }
                 }
@@ -239,16 +264,26 @@ public class EnemyMovement : MonoBehaviour
                 {
                     if (RayCastLeft())
                     {
-                        transform.DOMoveX(transform.position.x + 1.5f, 2).SetEase(Ease.InCubic);
+                        transform.DOMoveX(transform.position.x + 2f, 2).SetEase(Ease.Linear);
                     }
                     else if (RayCastRight())
                     {
-                        transform.DOMoveX(transform.position.x - 1.5f, 2).SetEase(Ease.InCubic);
+                        transform.DOMoveX(transform.position.x - 2f, 2).SetEase(Ease.Linear);
                     }
-                    //else if (RayCastRight() && RayCastLeft())
-                    //{
-                    //    return;
-                    //}
+                    else if (RayCastRight() && RayCastLeft())
+                    {
+                        int b = 0;
+                        b = Random.Range(1, 10);
+                        if (b<5)
+                        {
+                            transform.DOMoveX(transform.position.x + 2f, 2).SetEase(Ease.InCubic);
+
+                        }
+                        else if (b>=5)
+                        {
+                            transform.DOMoveX(transform.position.x - 2f, 2).SetEase(Ease.InCubic);
+                        }
+                    }
                 }
 
             }
@@ -266,7 +301,7 @@ public class EnemyMovement : MonoBehaviour
 
     public bool RayCastLeft()
     {
-        if (Physics.Raycast(child.transform.position, -Vector3.right, 3, wallLayer))
+        if (Physics.Raycast(child.transform.position, -Vector3.right, 3f, wallLayer))
         {
 
             return true;
@@ -277,7 +312,7 @@ public class EnemyMovement : MonoBehaviour
 
     public bool RayCastRight()
     {
-        if (Physics.Raycast(child.transform.position, Vector3.right, 3, wallLayer))
+        if (Physics.Raycast(child.transform.position, Vector3.right, 3f, wallLayer))
         {
             return true;
         }
@@ -368,8 +403,8 @@ public class EnemyMovement : MonoBehaviour
             Gizmos.DrawRay(child.transform.position, dir2 * raycastLength);
             tempRotation += step;
         }
-        Gizmos.color = Color.blue;
-        Gizmos.DrawRay(child.transform.position, Vector3.right*2);
-        Gizmos.DrawRay(child.transform.position, -Vector3.right*2);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawRay(child.transform.position, Vector3.right*3f);
+        Gizmos.DrawRay(child.transform.position, -Vector3.right* 2.5f);
     }
 }

@@ -10,16 +10,21 @@ public class PlayerDoEndRun : MonoBehaviour
     private ShurikenControl shurikenControl;
     public GameObject groupOfFinish;
     public GameObject shurikenChannel;
-    private CameraFollow cameraFollow;
+    public CameraFollow cameraFollow;
     public int a;
     public int defaulta;
     public Vector3 scaleShurikenChannel;
-    private Vector3 desiredScaleShurikenChannel;
     [Header("GroupOfFinishInOrder")]
     private GameObject finishRoad;
     private Transform cylinder;
     private GameObject dummy;
     private GameObject gatherPowerParticle;
+
+    private void Awake()
+    {
+        groupOfFinish = FindObjectOfType<DUmmy>().transform.parent.gameObject;
+    }
+
     private void Start()
     {
         oneTime = true;
@@ -50,47 +55,21 @@ public class PlayerDoEndRun : MonoBehaviour
             if (shurikenControl.shuriken == 0  && Input.GetKeyDown(KeyCode.Mouse0))
             {
                 animator.SetTrigger("throw");
-                shurikenChannel.GetComponentInChildren<ShurikenChannelChild>().force = shurikenControl.totalShuriken;
+                shurikenChannel.GetComponent<shurikenChannelParent>().force = shurikenControl.totalShuriken;
                 gatherPowerParticle.SetActive(false);
                 GetComponent<PlayerDoEndRun>().enabled = false;
 
             }
-            //if (Input.GetKeyDown(KeyCode.Mouse0))
-            //{
-            //    temp = Time.frameCount;
-            //    gatherPowerParticle.SetActive(true);
-            //    allow = true;
-
-            //}
-            // bo? hold
-            //if (Input.GetKey(KeyCode.Mouse0) && shurikenControl.shuriken>0 && allow)
-            //{
-            //    sub = Time.frameCount - temp;
-
-            //    if ((int)(sub % a) == 0)
-            //    {
-            //        GetComponent<ShurikenControl>().shuriken--;
-            //        a-=4;
-            //        a = Mathf.Clamp(a, 10, defaulta);
-            //        shurikenChannel.GetComponentInChildren<ShurikenChannel>().speed += 70;
-            //        shurikenChannel.transform.localScale += scaleShurikenChannel;
-            //    }
-            //}
-            //startChannelShuriken
-            //if (Input.GetKeyUp(KeyCode.Mouse0))
-            //{
-            //    a = defaulta;
-            //    gatherPowerParticle.SetActive(false);
-            //    temp = 0;
-            //}
-            
         }
     }
 
     public IEnumerator PlayerEndRun()
     {
         AudioManager.Instance.StopAudio("footstep");
+        //Destroy(GetComponentInChildren<BoxCollider>());
+        transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
         rb.velocity = Vector3.zero;
+        rb.constraints = RigidbodyConstraints.FreezeAll;
         finishRoad.SetActive(true);
         CameraFollow.Instance.player = shurikenChannel;
         GetComponent<PlayerMovement>().enabled = false;

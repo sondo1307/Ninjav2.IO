@@ -10,7 +10,7 @@ public class FinishLine : MonoBehaviour
         MyScene.Instance.placeCount++;
         if (other.transform.tag == "Player")
         {
-            MyScene.Instance.StartVibrate();
+            VibrateManager.Instance.LongVibrate();
             Collider[] list = other.GetComponentsInChildren<CapsuleCollider>();
             for (int i = 0; i < list.Length; i++)
             {
@@ -19,7 +19,6 @@ public class FinishLine : MonoBehaviour
             StartParticle(transform.position - Vector3.right * 2.5f, transform.position + Vector3.right * 2.5f);
             int a =  MyScene.Instance.placeCount;
             PlayerData.Instance.place = a;
-            //PlayerData.Instance.CoinEarnThisRun(a);
             UIManager.Instance.ReachFinishLine();
 
             StartCoroutine(other.GetComponentInParent<PlayerDoEndRun>().PlayerEndRun());

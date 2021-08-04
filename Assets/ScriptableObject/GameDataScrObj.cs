@@ -9,10 +9,13 @@ public class GameDataScrObj : ScriptableObject
     public int level;
     public int totalCoin;
     public GameObject skin1;
-    public GameObject skin2;
+    public Mesh skin1Mesh;
+    public Material skin1Material;
+    public MeshFilter skin2MeshFilter;
+    public MeshRenderer skin2MeshRenderer;
 
-    public List<GameObject> listSkin1 = new List<GameObject>();
-    public List<GameObject> listSkin2 = new List<GameObject>();
+    public int howManySkin1Unlock;
+    public int howManySkin2Unlock;
 
 
     public bool vibrateOn;

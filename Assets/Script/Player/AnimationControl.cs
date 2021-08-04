@@ -22,4 +22,9 @@ public class AnimationControl : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         shurikenChannel.GetComponentInChildren<ShurikenChannelChild>().check = true;
     }
+
+    public void RollFinish()
+    {
+        GetComponent<Animator>().SetBool("jump", false);
+    }
 }

@@ -10,7 +10,7 @@ public class EnemyManager : MonoBehaviour
     public float smartThreshHold;
     public float stupidThreshHold;
     public float timeBetweenInvoke;
-    public Transform player;
+    public Transform player { get; set; }
     private PlayerManager playerManager;
     private EnemyMovement enemyMovement;
     private Vector3 skin1OriginSize;
@@ -18,6 +18,7 @@ public class EnemyManager : MonoBehaviour
     public Animator animator { get; set; }
     private void Start()
     {
+        player = FindObjectOfType<PlayerMovement>().transform;
         animator = GetComponentInChildren<Animator>();
         playerManager = GetComponent<PlayerManager>();
         enemyMovement = GetComponent<EnemyMovement>();
@@ -84,7 +85,7 @@ public class EnemyManager : MonoBehaviour
         playerManager.canMove = true;
         playerManager.isSkin2 = false;
         playerManager.isSkin1 = true;
-        GetComponent<Rigidbody>().constraints = playerManager.constraint1;
+        GetComponent<Rigidbody>().constraints = playerManager.constraintAllRotation;
         //playerManager.skin2.transform.DOScale(Vector3.zero, scaleTime);
         playerManager.skin1.GetComponent<CapsuleCollider>().enabled = true;
         playerManager.skin1.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;

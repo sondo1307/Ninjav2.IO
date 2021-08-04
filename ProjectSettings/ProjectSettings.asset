@@ -424,7 +424,7 @@ PlayerSettings:
   openGLRequireES32: 0
   m_TemplateCustomTags: {}
   mobileMTRendering:
-    Android: 1
+    Android: 0
     iPhone: 1
     tvOS: 1
   m_BuildTargetGroupLightmapEncodingQuality: []
@@ -669,7 +669,7 @@ PlayerSettings:
   scriptingDefineSymbols:
     1: PROBUILDER_EXPERIMENTAL_FEATURES
     4: PROBUILDER_EXPERIMENTAL_FEATURES
-    7: PROBUILDER_EXPERIMENTAL_FEATURES
+    7: PROBUILDER_EXPERIMENTAL_FEATURES;MOREMOUNTAINS_NICEVIBRATIONS
     13: PROBUILDER_EXPERIMENTAL_FEATURES
     19: PROBUILDER_EXPERIMENTAL_FEATURES
     21: PROBUILDER_EXPERIMENTAL_FEATURES

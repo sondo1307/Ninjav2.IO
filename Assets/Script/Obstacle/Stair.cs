@@ -29,6 +29,7 @@ public class Stair : MonoBehaviour
         {
             if (other.transform.tag == "Player")
             {
+                Debug.Log(other.transform.name);
                 other.GetComponentInParent<PlayerMovement>().rb.AddForce(new Vector3(0, -5, 0), ForceMode.Impulse);
             }
             if (other.transform.CompareTag("Enemy"))

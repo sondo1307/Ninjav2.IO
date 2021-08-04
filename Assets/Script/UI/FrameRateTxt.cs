@@ -17,5 +17,6 @@ public class FrameRateTxt : MonoBehaviour
     {
         deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
         txt.SetText("" + (int)(1.0f / deltaTime));
+        //Debug.Log((int)(1.0f / deltaTime));
     }
 }

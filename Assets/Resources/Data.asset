@@ -15,9 +15,12 @@ MonoBehaviour:
   keys: 0
   level: 2
   totalCoin: 700
-  skin1: {fileID: 0}
-  skin2: {fileID: 0}
-  listSkin1: []
-  listSkin2: []
+  skin1: {fileID: 919132149155446097, guid: 65f9c4bdde36c3147bf479c533025634, type: 3}
+  skin1Mesh: {fileID: 4300000, guid: 05c08b0ee2420884e8df40ed0c6a3fe3, type: 2}
+  skin1Material: {fileID: 2100000, guid: e5a7d4d91e45a334dae786d6954904df, type: 2}
+  skin2MeshFilter: {fileID: -5754084199372789682, guid: 1ec3a62aef209c14684e6f8718cdd95e, type: 3}
+  skin2MeshRenderer: {fileID: -7511558181221131132, guid: 1ec3a62aef209c14684e6f8718cdd95e, type: 3}
+  howManySkin1Unlock: 0
+  howManySkin2Unlock: 1
   vibrateOn: 1
   musicOn: 1
