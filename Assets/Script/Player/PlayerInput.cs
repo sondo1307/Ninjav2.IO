@@ -13,7 +13,7 @@ public class PlayerInput : MonoBehaviour
     public bool checkAnimationRun { get; set; }
 
     public Animator animator { get; set; }
-    private bool oneTime;
+    public bool oneTime { get; set; }
     private void Start()
     {
         checkAnimationRun = true;

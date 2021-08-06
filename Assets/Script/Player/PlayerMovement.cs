@@ -43,22 +43,13 @@ public class PlayerMovement : MonoBehaviour
         {
             lastCursorPosition = WorldMousePos();
         }
-        else if ( Input.GetMouseButton(0) && playerManager.canMove)
+        else if (Input.GetMouseButton(0) && playerManager.canMove)
         {
             Vector2 delta = WorldMousePos() - lastCursorPosition;
 
             if (MyScene.Instance.gameIsStart == true && !isPushed && playerManager.canMove)
             {
                 MoveHorizontal(delta.x / Screen.width * sensitive * halfRange);
-
-                //if (delta.x > 0 && !checkRight)
-                //{
-                //    MoveHorizontal(delta.x / Screen.width * sensitive * halfRange);
-                //}
-                //else if (delta.x < 0)
-                //{
-                //    MoveHorizontal(delta.x / Screen.width * sensitive * halfRange);
-                //}
             }
             lastCursorPosition = Input.mousePosition;
         }
@@ -67,13 +58,12 @@ public class PlayerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (MyScene.Instance.gameIsStart == true && !isPushed )
+        if (MyScene.Instance.gameIsStart == true && !isPushed)
         {
-            //CheckLeft();
-            //CheckRight();
             if (MoveForward())
             {
                 rb.velocity = new Vector3(0, rb.velocity.y, Mathf.Clamp(1 * moveSpeed, 0, moveSpeed));
+                //rb.position += Vector3.forward * Time.deltaTime * moveSpeed;
                 if (oneTime)
                 {
                     AudioManager.Instance.PlayAudio("footstep");
@@ -87,8 +77,7 @@ public class PlayerMovement : MonoBehaviour
                 AudioManager.Instance.StopAudio("footstep");
             }
         }
-
-
+        //MoveHorizontal2();
     }
     public bool MoveForward()
     {
@@ -102,6 +91,8 @@ public class PlayerMovement : MonoBehaviour
         }
         return false;
     }
+
+    
 
     public Vector2 WorldMousePos() => Input.mousePosition;
 
@@ -133,7 +124,56 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    //float x1;
+    //public float slideSpeed;
+    //public float lerpSlideSpeed;
+    //public float lerpSpeed;
 
+    //void MoveHorizontal2()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Mouse0))
+    //    {
+    //        x1 = Input.mousePosition.x;
+    //    }
+    //    if (Input.GetKey(KeyCode.Mouse0))
+    //    {
+    //        if (Input.mousePosition.x - x1 > 15 && transform.position.x < 1.4f)
+    //        {
+    //            //rb.velocity = transform.right * slideSpeed + new Vector3(0, rb.velocity.y, rb.velocity.z);
+    //            Debug.Log(1);
+    //            rb.velocity = Vector3.Lerp(rb.velocity,
+    //                (transform.right * slideSpeed + new Vector3(0, rb.velocity.y, rb.velocity.z)), lerpSlideSpeed);
+
+    //            //rb.AddForce(transform.right * slideSpeed, ForceMode.Impulse);
+    //            //x1 = Mathf.Lerp(x1, Input.mousePosition.x, lerpSpeed);
+    //        }
+    //        else if (Input.mousePosition.x - x1 < -15 && transform.position.x > -1.4f)
+    //        {
+    //            //rb.velocity = transform.right * -slideSpeed + new Vector3(0, rb.velocity.y, rb.velocity.z);
+
+    //            rb.velocity = Vector3.Lerp(rb.velocity,
+    //                (transform.right * -slideSpeed + new Vector3(0, rb.velocity.y, rb.velocity.z)), lerpSlideSpeed);
+
+    //            //rb.AddForce(transform.right * -slideSpeed, ForceMode.Impulse);
+
+    //            //x1 = Input.mousePosition.x;
+    //            //x1 = Mathf.Lerp(x1, Input.mousePosition.x, lerpSpeed);
+    //        }
+    //        //if (Input.mousePosition.x - x1 > -5 && Input.mousePosition.x - x1 < 5)
+    //        //{
+    //        //    rb.velocity = new Vector3(0, rb.velocity.y, rb.velocity.z);
+    //        //}
+    //        x1 = Mathf.Lerp(x1, Input.mousePosition.x, lerpSpeed);
+    //        if (Mathf.Abs(x1 - Input.mousePosition.x) < 0.5f)
+    //        {
+    //            rb.velocity = new Vector3(0, rb.velocity.y, rb.velocity.z);
+    //        }
+    //    }
+    //    else
+    //    {
+    //        rb.velocity = new Vector3(0, rb.velocity.y, rb.velocity.z);
+    //    }
+    //}
 
     IEnumerator Delay()
     {
@@ -145,7 +185,7 @@ public class PlayerMovement : MonoBehaviour
     public void Jump()
     {
         playerManager.jumping = true;
-        jump = true;
+        //jump = true;
         AudioManager.Instance.StopAudio("footstep");
         GetComponent<PlayerInput>().enabled = false;
         rb.AddForce(new Vector3(rb.velocity.x, 1 * jumpForce, rb.velocity.z), ForceMode.Impulse);
@@ -156,7 +196,7 @@ public class PlayerMovement : MonoBehaviour
     public void SuperJump()
     {
         playerManager.jumping = true;
-        superJump = true;
+        //superJump = true;
         AudioManager.Instance.StopAudio("footstep");
         GetComponent<PlayerInput>().enabled = false;
         rb.AddForce(new Vector3(rb.velocity.x, 2.5f * jumpForce, rb.velocity.z), ForceMode.Impulse);
@@ -164,30 +204,30 @@ public class PlayerMovement : MonoBehaviour
         StartCoroutine(Delay());
     }
 
-    public bool jump { get; set; }
-    public bool superJump { get; set; }
+    //public bool jump { get; set; }
+    //public bool superJump { get; set; }
 
-public void CheckGround()
+    public void CheckGround()
     {
         if (Physics.Raycast(child.transform.position, Vector3.down, 0.11f, layer))
         {
-            if (checkJump && jump)
-            {
-                animator.SetBool("jump", false);
-                AudioManager.Instance.PlayAudio("footstep");
-                GetComponent<PlayerInput>().enabled = true;
-                checkJump = false;
-                playerManager.jumping = false;
-                jump = false;
-            }
-            else if (checkJump && superJump)
+            //if (checkJump && jump)
+            //{
+            //    animator.SetBool("jump", false);
+            //    //AudioManager.Instance.PlayAudio("footstep");
+            //    GetComponent<PlayerInput>().enabled = true;
+            //    checkJump = false;
+            //    playerManager.jumping = false;
+            //    jump = false;
+            //}
+            if (checkJump)
             {
                 animator.SetTrigger("roll");
                 AudioManager.Instance.PlayAudio("footstep");
                 GetComponent<PlayerInput>().enabled = true;
                 checkJump = false;
                 playerManager.jumping = false;
-                superJump = false;
+                //superJump = false;
 
             }
         }
@@ -213,7 +253,7 @@ public void CheckGround()
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawRay(child.transform.position, transform.forward*0.25f);
+        Gizmos.DrawRay(child.transform.position, transform.forward * 0.25f);
         Gizmos.DrawRay(child.transform.position, Vector3.left * 2f);
         Gizmos.DrawRay(child.transform.position, Vector3.right * 2f);
     }

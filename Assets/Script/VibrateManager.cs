@@ -37,6 +37,10 @@ public class VibrateManager : MonoBehaviour
     public void LongVibrate()
     {
         MMVibrationManager.Haptic(HapticTypes.SoftImpact);
+    }
 
+    public void HeavyVibrate()
+    {
+        MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
     }
 }

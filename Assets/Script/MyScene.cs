@@ -31,11 +31,12 @@ public class MyScene : MonoBehaviour
         playerInput = FindObjectOfType<PlayerInput>();
         listOfPlayer = new List<PlayerManager>(FindObjectsOfType<PlayerManager>());
         enemysManager = new List<EnemyManager>(FindObjectsOfType<EnemyManager>());
+        IgnoreCollision();
+
     }
 
     private void Start()
     {
-        IgnoreCollision();
     }
     private void Update()
     {
@@ -62,7 +63,7 @@ public class MyScene : MonoBehaviour
         gameIsStart = true;
     }
 
-    public List<Collider> a;
+    private List<Collider> a = new List<Collider>();
     public void IgnoreCollision()
     {
         for (int i = 0; i < listOfPlayer.Count; i++)

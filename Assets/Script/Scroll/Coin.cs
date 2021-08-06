@@ -7,6 +7,7 @@ public class Coin : MonoBehaviour
 {
     private float a;
     public float speed;
+    public GameObject particle;
 
     private void Update()
     {
@@ -19,6 +20,8 @@ public class Coin : MonoBehaviour
         if (other.transform.CompareTag("Player"))
         {
             AudioManager.Instance.PlayAudio("coin");
+            Instantiate(particle, transform.position, Quaternion.identity);
+            VibrateManager.Instance.RigidBibrate();
             PlayerData.Instance.coinEarnThisRun++;
             Destroy(transform.parent.gameObject);
         }

@@ -22,7 +22,7 @@ public class VibrateBtn : MonoBehaviour
 
     public void Click()
     {
-        VibrateManager.Instance.RigidBibrate();
+        VibrateManager.Instance.SmallVibrate();
 
         if (GameDataManager.Instance.gameDataScrObj.vibrateOn)
         {

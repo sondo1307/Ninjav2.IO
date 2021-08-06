@@ -44,7 +44,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &697067726952517455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,7 +66,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 697067727359243289}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spike1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

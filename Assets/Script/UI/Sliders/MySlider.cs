@@ -11,6 +11,11 @@ public class MySlider : MonoBehaviour
     public Transform player;
     private Vector3 startPosition;
 
+    private void Awake()
+    {
+        player = FindObjectOfType<PlayerInput>().transform;
+    }
+
     private void Start()
     {
         sliderParent = GetComponentInParent<SliderParent>();

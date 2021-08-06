@@ -78,8 +78,9 @@ public class PlayerManager : MonoBehaviour
             playerIsDead = true;
             gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Default");
             rb.velocity = new Vector3(0, rb.velocity.y, 0);
+            rb.useGravity = false;
+
             transform.GetComponent<PlayerInput>().enabled = false;
-            animator.SetBool("run", false);
 
             yield return new WaitForSeconds(0.5f);
             StartCoroutine(deathCylinder.Instance(transform.position));
@@ -99,6 +100,7 @@ public class PlayerManager : MonoBehaviour
             yield return tween2.WaitForCompletion();
             rb.velocity = Vector3.zero;
             transform.position = checkPointPosition + new Vector3(0, 2, 0);
+            rb.useGravity = true;
 
             gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Player");
             animator.SetTrigger("get_up");
@@ -113,6 +115,7 @@ public class PlayerManager : MonoBehaviour
             myCamera.player = transform.gameObject;
             rb.velocity = new Vector3(0, 0, 0);
             animator.SetTrigger("idle");
+            playerInput.oneTime = true;
             transform.GetComponent<PlayerInput>().enabled = true;
 
             canMove = true;
@@ -157,7 +160,6 @@ public class PlayerManager : MonoBehaviour
             rb.velocity = new Vector3(0, rb.velocity.y, 0);
             transform.GetComponent<PlayerInput>().enabled = false;
             transform.GetComponent<PlayerMovement>().enabled = false;
-            animator.SetBool("run", false);
             animator.SetTrigger(a);
             myCamera.player = null;
             Collider[] b = transform.GetComponentsInChildren<CapsuleCollider>();
@@ -182,6 +184,8 @@ public class PlayerManager : MonoBehaviour
             rb.constraints = constraintAllRotation;
 
             yield return new WaitForSeconds(0.5f);
+            playerInput.oneTime = true;
+
             canMove = true;
             playerIsDead = false;
             GetComponent<PlayerMovement>().oneTime = true;
@@ -206,7 +210,7 @@ public class PlayerManager : MonoBehaviour
             gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Default");
             canMove = false;
             rb.velocity = new Vector3(0, rb.velocity.y, 0);
-            animator.SetBool("run", false);
+            rb.useGravity = false;
             yield return new WaitForSeconds(0.5f);
             StartCoroutine(deathCylinder.Instance(transform.position));
             yield return new WaitForSeconds(0.5f);
@@ -215,18 +219,16 @@ public class PlayerManager : MonoBehaviour
             Collider[] b = transform.GetComponentsInChildren<CapsuleCollider>();
             yield return tween1.WaitForCompletion();
 
-            yield return new WaitForSeconds(0.5f);
-
             StartCoroutine(deathCylinder.Instance2(checkPointPosition));
-            transform.position = checkPointPosition + new Vector3(0, 5, 0);
-
             Tween tween2 = transform.DOScale(defaultScale, 0.5f).SetEase(Ease.Linear);
-            rb.AddForce(Vector3.down, ForceMode.Impulse);
-            animator.SetTrigger("get_up");
-
             yield return tween2.WaitForCompletion();
+            rb.velocity = Vector3.zero;
+            transform.position = checkPointPosition + new Vector3(0, 2, 0);
+            rb.useGravity = true;
 
             gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Enemy");
+
+            animator.SetTrigger("get_up");
 
             transform.rotation = Quaternion.Euler(0, 0, 0);
             //for (int i = 0; i < b.Length; i++)
@@ -234,14 +236,16 @@ public class PlayerManager : MonoBehaviour
             //    b[i].enabled = true;
             //}
             b[0].enabled = true;
-
             rb.constraints = constraintAllRotation;
-            yield return new WaitForSeconds(2f);
 
-            rb.velocity = new Vector3(0, 0, 0);
+            yield return new WaitForSeconds(0.7f);
+            Instantiate(MyScene.Instance.smokeEffectNoSmokeUp, checkPointPosition + Vector3.up * 0.25f, Quaternion.Euler(90, 0, 0));
+            yield return new WaitForSeconds(2);
+            rb.velocity = Vector3.zero;
             animator.SetTrigger("idle");
+
             yield return new WaitForSeconds(0.5f);
-            animator.SetBool("run", true);
+            animator.SetTrigger("run");
             GetComponent<EnemyMovement>().enabled = true;
             GetComponent<EnemyDodge>().enabled = true;
 
@@ -266,7 +270,6 @@ public class PlayerManager : MonoBehaviour
             StopCoroutine(GetComponent<EnemyMovement>().DelayJump());
             rb.velocity = Vector3.zero;
             transform.GetComponent<EnemyMovement>().enabled = false;
-            animator.SetBool("run", false);
             animator.SetTrigger(a);
             Collider[] b = transform.GetComponentsInChildren<CapsuleCollider>();
             // sau delay giay thi sinh ra cho moi
@@ -295,7 +298,7 @@ public class PlayerManager : MonoBehaviour
             GetComponent<EnemyDodge>().enabled = true;
             transform.GetComponent<EnemyMovement>().enabled = true;
             rb.velocity = new Vector3(0, 0, GetComponent<EnemyMovement>().rbSpeed);
-            animator.SetBool("run", true);
+            animator.SetTrigger("run");
             enemyIsDead = false;
             canMove = true;
         }

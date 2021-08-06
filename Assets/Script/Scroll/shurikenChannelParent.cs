@@ -47,7 +47,7 @@ public class shurikenChannelParent : MonoBehaviour
             CameraFollow.Instance.check = true;
             StartCoroutine(Delay(other));
             Instantiate(MyScene.Instance.hitEffect, transform.position + Vector3.forward * 3f, Quaternion.identity);
-
+            VibrateManager.Instance.HeavyVibrate();
             GetComponentInParent<Rigidbody>().useGravity = true;
             GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.None;
             transform.GetComponentInParent<Rigidbody>().velocity = Vector3.zero;
@@ -59,7 +59,7 @@ public class shurikenChannelParent : MonoBehaviour
 
     IEnumerator Delay(Collider other)
     {
-        yield return new WaitForSecondsRealtime(0.2f);
+        yield return new WaitForSecondsRealtime(0.1f);
         other.transform.GetComponent<DUmmy>().PushDummy(force);
 
         yield return new WaitForSecondsRealtime(1);

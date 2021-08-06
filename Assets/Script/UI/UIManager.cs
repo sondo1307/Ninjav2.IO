@@ -32,13 +32,18 @@ public class UIManager : MonoBehaviour
 
     public GameObject holdTxt;
 
+    [Header("Groups")]
+    public GameObject menu;
+    public GameObject shop;
 
     private void Awake()
     {
         Instance = this;
     }
 
-
+    private void Update()
+    {
+    }
     private void Start()
     {
         Time.timeScale = 1;
@@ -67,9 +72,11 @@ public class UIManager : MonoBehaviour
     }
     public void ShopBtnClick()
     {
-        //shopButton.gameObject.SetActive(false);
-        //panel.gameObject.SetActive(false);
+        menu.SetActive(false);
+        shop.SetActive(true);
     }
+
+
 
     public void StartGame()
     {
@@ -154,4 +161,12 @@ public class UIManager : MonoBehaviour
         countDown.transform.GetChild(3).gameObject.SetActive(false);
 
     }
+    #region INSHOP
+    public void ExitBtnShopClick()
+    {
+        menu.SetActive(true);
+        shop.SetActive(false);
+    }
+
+    #endregion
 }

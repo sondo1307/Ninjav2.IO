@@ -17,7 +17,7 @@ public class EnemyMovement : MonoBehaviour
     public float jumpForce;
     public GameObject child;
     public LayerMask layer;
-    private bool checkJump;
+    public bool checkJump { get; set; }
 
     [Header("Slide")]
     public float slideForce;
@@ -142,12 +142,12 @@ public class EnemyMovement : MonoBehaviour
                     int temp3 = Random.Range(0, 10);
                     if (temp3 <= 4 && FrameCount(30))
                     {
-                        if (RayCastLeft())
+                        if (RayCastLeft() && !RayCastRight())
                         {
                             transform.DOMoveX(transform.position.x - 0.5f, 1).SetEase(Ease.Linear);
 
                         }
-                        else if (RayCastRight())
+                        else if (RayCastRight()&& !RayCastLeft())
                         {
                             transform.DOMoveX(transform.position.x + 0.5f, 1).SetEase(Ease.Linear);
                         }
@@ -188,11 +188,11 @@ public class EnemyMovement : MonoBehaviour
                         int temp3 = Random.Range(0, 10);
                         if (temp3 <= 4 && FrameCount(30))
                         {
-                            if (RayCastLeft())
+                            if (RayCastLeft() && !RayCastRight())
                             {
                                 transform.DOMoveX(transform.position.x + 0.5f, 1).SetEase(Ease.Linear);
                             }
-                            else if (RayCastRight())
+                            else if (RayCastRight()&& !RayCastLeft())
                             {
                                 transform.DOMoveX(transform.position.x - 0.5f, 1).SetEase(Ease.Linear);
                             }
@@ -225,12 +225,12 @@ public class EnemyMovement : MonoBehaviour
                         int temp3 = Random.Range(0, 10);
                         if (temp3 <= 7 && FrameCount(30))
                         {
-                            if (RayCastLeft())
+                            if (RayCastLeft() && !RayCastRight())
                             {
                                 transform.DOMoveX(transform.position.x + 1f, 1).SetEase(Ease.Linear);
 
                             }
-                            else if (RayCastRight())
+                            else if (RayCastRight() && !RayCastLeft())
                             {
                                 transform.DOMoveX(transform.position.x - 1f, 1).SetEase(Ease.Linear);
                             }
@@ -262,12 +262,13 @@ public class EnemyMovement : MonoBehaviour
                 }
                 else
                 {
-                    if (RayCastLeft())
+                    if (RayCastLeft() && !RayCastRight())
                     {
                         transform.DOMoveX(transform.position.x + 2f, 2).SetEase(Ease.Linear);
                     }
-                    else if (RayCastRight())
+                    else if (RayCastRight() && !RayCastLeft())
                     {
+
                         transform.DOMoveX(transform.position.x - 2f, 2).SetEase(Ease.Linear);
                     }
                     else if (RayCastRight() && RayCastLeft())
@@ -303,7 +304,6 @@ public class EnemyMovement : MonoBehaviour
     {
         if (Physics.Raycast(child.transform.position, -Vector3.right, 3f, wallLayer))
         {
-
             return true;
         }
         return false;
@@ -359,6 +359,29 @@ public class EnemyMovement : MonoBehaviour
         StartCoroutine(DelayJump());
     }
 
+    //public bool jump { get; set; }
+    //public bool superJump { get; set; }
+    public void CheckGround()
+    {
+        if (Physics.Raycast(child.transform.position, Vector3.down, 0.11f, layer))
+        {
+            //if (checkJump && jump)
+            //{
+            //    animator.SetBool("jump", false);
+            //    checkJump = false;
+            //    playerManager.jumping = false;
+            //    //jump = false;
+            //}
+            if (checkJump)
+            {
+                animator.SetTrigger("roll");
+                checkJump = false;
+                //superJump = false;
+
+            }
+        }
+    }
+
     public IEnumerator PushBack(Vector3 dir)
     {
         rb.velocity = Vector3.zero;
@@ -370,18 +393,7 @@ public class EnemyMovement : MonoBehaviour
         isPushed = false;
     }
 
-    public void CheckGround()
-    {
-        if (Physics.Raycast(child.transform.position, Vector3.down, 0.05f, layer))
-        {
-            if (checkJump)
-            {
-                animator.SetBool("jump", false);
-                //agent.enabled = true;
-                checkJump = false;
-            }
-        }
-    }
+
 
     public IEnumerator DelayJump()
     {

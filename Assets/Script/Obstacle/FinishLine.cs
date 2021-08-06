@@ -20,7 +20,7 @@ public class FinishLine : MonoBehaviour
             int a =  MyScene.Instance.placeCount;
             PlayerData.Instance.place = a;
             UIManager.Instance.ReachFinishLine();
-
+            CameraFollow.Instance.transferToLate = true;
             StartCoroutine(other.GetComponentInParent<PlayerDoEndRun>().PlayerEndRun());
         }
         else if (other.transform.tag == "Enemy")

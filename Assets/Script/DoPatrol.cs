@@ -10,7 +10,6 @@ public class DoPatrol : MonoBehaviour
     public bool moveZ;
     public float pointReach;
     public float second;
-
     private void Start()
     {
         if (moveX)

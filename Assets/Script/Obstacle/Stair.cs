@@ -9,7 +9,7 @@ public class Stair : MonoBehaviour
     {
         if (transform.CompareTag("StairUp"))
         {
-            if (other.transform.tag == "Player")
+            if (other.transform.CompareTag("Player"))
             {
                 other.GetComponentInParent<PlayerMovement>().rb.velocity = new Vector3(other.GetComponentInParent<PlayerMovement>().rb.velocity.x, 0, other.GetComponentInParent<PlayerMovement>().rb.velocity.z);
             }
@@ -27,9 +27,8 @@ public class Stair : MonoBehaviour
     {
         if (transform.CompareTag("StairDown"))
         {
-            if (other.transform.tag == "Player")
+            if (other.transform.CompareTag("Player"))
             {
-                Debug.Log(other.transform.name);
                 other.GetComponentInParent<PlayerMovement>().rb.AddForce(new Vector3(0, -5, 0), ForceMode.Impulse);
             }
             if (other.transform.CompareTag("Enemy"))

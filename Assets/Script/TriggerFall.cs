@@ -6,11 +6,19 @@ public class TriggerFall : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.CompareTag("Player")|| other.transform.CompareTag("Enemy"))
+        if (other.transform.CompareTag("Player"))
         {
             other.GetComponent<Animator>().SetTrigger("fall_idle");
+            AudioManager.Instance.StopAudio("footstep");
             other.GetComponentInParent<PlayerMovement>().checkJump = true;
-            other.GetComponentInParent<PlayerMovement>().superJump = true;
+            Physics.IgnoreCollision(GetComponent<BoxCollider>(), other);
+            //other.GetComponentInParent<PlayerMovement>().superJump = true;
+        }
+        else if (other.transform.CompareTag("Enemy"))
+        {
+            other.GetComponent<Animator>().SetTrigger("fall_idle");
+            Physics.IgnoreCollision(GetComponent<BoxCollider>(), other);
+            other.GetComponentInParent<EnemyMovement>().checkJump = true;
         }
     }
 }
