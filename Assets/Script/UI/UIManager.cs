@@ -36,6 +36,9 @@ public class UIManager : MonoBehaviour
     public GameObject menu;
     public GameObject shop;
 
+    [Header("Shop")]
+    public ShopGroupManager shopGroupManager;
+
     private void Awake()
     {
         Instance = this;
@@ -70,10 +73,12 @@ public class UIManager : MonoBehaviour
             .Append(dragTxt.GetComponentInChildren<Image>().DOFade(1, 0.5f))
             .Append(dragTxt.GetComponentInChildren<Image>().DOFade(0, 1)).SetLoops(-1, LoopType.Yoyo);
     }
+
     public void ShopBtnClick()
     {
         menu.SetActive(false);
         shop.SetActive(true);
+        shopGroupManager.OnShopEnter();
     }
 
 

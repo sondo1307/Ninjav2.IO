@@ -70,6 +70,26 @@ public class GameDataManager : MonoBehaviour
         }
     }
 
+    public void SetSkin1Mesh(Mesh a)
+    {
+        gameDataScrObj.skin1Mesh = a;
+    }
+
+    public void SetSkin1Material(Material a)
+    {
+        gameDataScrObj.skin1Material = a;
+    }
+
+    public void SetSkin2Mesh(Mesh a)
+    {
+        gameDataScrObj.skin2MeshFilterMesh = a;
+    }
+
+    public void SetSkin2Material(Material a)
+    {
+        gameDataScrObj.skin2MeshRendererMat = a;
+    }
+
     public void SaveGameData()
     {
         SetCoin(PlayerData.Instance.coinEarnThisRun);
@@ -101,12 +121,4 @@ public class GameDataManager : MonoBehaviour
             //return Resources.Load("Data") as GameDataScrObj;
         }
     }
-}
-
-public static class GameData
-{
-    public static int level;
-    public static int totalCoin;
-    public static GameObject skin1;
-    public static GameObject skin2;
 }

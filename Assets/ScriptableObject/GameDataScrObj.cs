@@ -8,11 +8,10 @@ public class GameDataScrObj : ScriptableObject
     public int keys;
     public int level;
     public int totalCoin;
-    public GameObject skin1;
     public Mesh skin1Mesh;
     public Material skin1Material;
-    public MeshFilter skin2MeshFilter;
-    public MeshRenderer skin2MeshRenderer;
+    public Mesh skin2MeshFilterMesh;
+    public Material skin2MeshRendererMat;
 
     public int howManySkin1Unlock;
     public int howManySkin2Unlock;
