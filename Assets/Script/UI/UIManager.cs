@@ -49,6 +49,8 @@ public class UIManager : MonoBehaviour
     }
     private void Start()
     {
+        GetComponent<Canvas>().worldCamera = FindObjectOfType<CanvasCamera>().GetComponent<Camera>();
+
         Time.timeScale = 1;
         shurikenInGame.SetActive(false);
         coinInGame.SetActive(false);
@@ -59,6 +61,8 @@ public class UIManager : MonoBehaviour
         nextLevelBtn.gameObject.SetActive(false);
         sliders.SetActive(false);
         StartMenu();
+        menu.SetActive(true);
+        shop.SetActive(false);
     }
 
     public void StartMenu()

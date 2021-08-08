@@ -5,15 +5,32 @@ using UnityEngine.UI;
 
 public class SkinBtnClick : MonoBehaviour
 {
+    public int number;
+
     public GameObject outline;
     [SerializeField] private PlayerSkinUI playerSkinUI;
     private PlayerLoadSkin playerLoadSkin;
     public Mesh mesh;
     public Material mat;
-    private bool isBought;
+    [SerializeField] private bool isBought;
     private void Awake()
     {
         playerLoadSkin = FindObjectOfType<PlayerLoadSkin>();
+    }
+
+    private void Start()
+    {
+        for (int i = 0; i < GameDataManager.Instance.gameDataScrObj.numberOfSkin1Unlocked.Count; i++)
+        {
+            if (GameDataManager.Instance.gameDataScrObj.numberOfSkin1Unlocked[i] == number)
+            {
+                isBought = true;
+            }
+        }
+        if (isBought)
+        {
+            transform.parent.GetChild(1).gameObject.SetActive(false);
+        }
     }
 
     public void OnItemClick()
@@ -26,8 +43,12 @@ public class SkinBtnClick : MonoBehaviour
         {
             playerLoadSkin.SetRealSkin(mesh, mat);
             outline.GetComponent<OutlineScript>().currentFatherObj = gameObject;
-            playerSkinUI.curMesh = mesh;
-            playerSkinUI.curMat = mat;
+            //playerSkinUI.curMesh = mesh;
+            //playerSkinUI.curMat = mat;
+            GameDataManager.Instance.gameDataScrObj.skin1Mesh = mesh;
+            GameDataManager.Instance.gameDataScrObj.skin1Material = mat;
+            GameDataManager.Instance.gameDataScrObj.outlineSkin1Position = transform.position;
+            GameDataManager.Instance.gameDataScrObj.outlineSkin1FatherInContentGroup = number;
         }
     }
 
@@ -39,7 +60,14 @@ public class SkinBtnClick : MonoBehaviour
         transform.parent.GetChild(1).gameObject.SetActive(false);
         playerLoadSkin.SetRealSkin(mesh, mat);
         outline.GetComponent<OutlineScript>().currentFatherObj = gameObject;
-        playerSkinUI.curMesh = mesh;
-        playerSkinUI.curMat = mat;
+        //playerSkinUI.curMesh = mesh;
+        //playerSkinUI.curMat = mat;
+
+        GameDataManager.Instance.gameDataScrObj.skin1Mesh = mesh;
+        GameDataManager.Instance.gameDataScrObj.skin1Material = mat;
+        GameDataManager.Instance.gameDataScrObj.outlineSkin1Position = transform.position;
+        GameDataManager.Instance.gameDataScrObj.outlineSkin1FatherInContentGroup = number;
+        GameDataManager.Instance.gameDataScrObj.numberOfSkin1Unlocked.Add(number);
+
     }
 }

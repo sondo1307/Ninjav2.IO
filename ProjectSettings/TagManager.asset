@@ -17,6 +17,8 @@ TagManager:
   - Teacher
   - Dummy
   - Immune
+  - OutlineSkin1
+  - OutlineSkin2
   layers:
   - Default
   - TransparentFX

@@ -4,15 +4,32 @@ using UnityEngine;
 
 public class CapsuleSkinBtnClick : MonoBehaviour
 {
+    public int number;
+
     public OutlineScript outline;
     public Mesh mesh;
     public Material mat;
     public CapsuleSkinUI capsuleSkinUI;
-    private bool isBought;
+    [SerializeField]private bool isBought;
     public PlayerLoadSkin playerLoadSkin;
     private void Awake()
     {
         playerLoadSkin = FindObjectOfType<PlayerLoadSkin>();
+    }
+
+    private void Start()
+    {
+        for (int i = 0; i < GameDataManager.Instance.gameDataScrObj.numberOfSkin2Unlocked.Count; i++)
+        {
+            if (GameDataManager.Instance.gameDataScrObj.numberOfSkin2Unlocked[i] == number)
+            {
+                isBought = true;
+            }
+        }
+        if (isBought)
+        {
+            transform.parent.GetChild(1).gameObject.SetActive(false);
+        }
     }
 
     public void OnItemClick()
@@ -25,8 +42,12 @@ public class CapsuleSkinBtnClick : MonoBehaviour
         {
             outline.GetComponent<OutlineScript>().currentFatherObj = gameObject;
             playerLoadSkin.SetRealCapsuleSkin(mesh, mat);
-            capsuleSkinUI.curMeshF.mesh = mesh;
-            capsuleSkinUI.curMeshR.material = mat;
+            //capsuleSkinUI.curMeshF.mesh = mesh;
+            //capsuleSkinUI.curMeshR.material = mat;
+            GameDataManager.Instance.gameDataScrObj.skin2MeshFilterMesh = mesh;
+            GameDataManager.Instance.gameDataScrObj.skin2MeshRendererMat = mat;
+            GameDataManager.Instance.gameDataScrObj.outlineSkin2Position = transform.position;
+            GameDataManager.Instance.gameDataScrObj.outlineSkin2FatherInContentGroup = number;
         }
     }
 
@@ -38,7 +59,12 @@ public class CapsuleSkinBtnClick : MonoBehaviour
         transform.parent.GetChild(1).gameObject.SetActive(false);
         outline.GetComponent<OutlineScript>().currentFatherObj = gameObject;
         playerLoadSkin.SetRealCapsuleSkin(mesh, mat);
-        capsuleSkinUI.meshFilter.mesh = mesh;
-        capsuleSkinUI.meshRenderer.material = mat;
+        //capsuleSkinUI.meshFilter.mesh = mesh;
+        //capsuleSkinUI.meshRenderer.material = mat;
+        GameDataManager.Instance.gameDataScrObj.skin2MeshFilterMesh = mesh;
+        GameDataManager.Instance.gameDataScrObj.skin2MeshRendererMat = mat;
+        GameDataManager.Instance.gameDataScrObj.outlineSkin2Position = transform.position;
+        GameDataManager.Instance.gameDataScrObj.outlineSkin2FatherInContentGroup = number;
+        GameDataManager.Instance.gameDataScrObj.numberOfSkin2Unlocked.Add(number);
     }
 }

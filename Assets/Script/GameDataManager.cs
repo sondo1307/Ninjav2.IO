@@ -3,17 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using UnityEditor;
 
 public class GameDataManager : MonoBehaviour
 {
     public static GameDataManager Instance;
     public GameDataScrObj gameDataScrObj;
 
+    public GameObject newCanvas;
     private void Awake()
     {
         Instance = this;
         gameDataScrObj = Resources.Load("data") as GameDataScrObj;
         LoadGameData();
+
+        //newCanvas = Instantiate(gameDataScrObj.canvas) as GameObject;
+        //newCanvas = PrefabUtility.InstantiatePrefab(gameDataScrObj.canvas) as GameObject;
+        //newCanvas = ScriptableObject.Instantiate(gameDataScrObj.canvas) as GameObject;
     }
 
     public bool CheckFirstTimePlay()
@@ -90,13 +96,14 @@ public class GameDataManager : MonoBehaviour
         gameDataScrObj.skin2MeshRendererMat = a;
     }
 
+
     public void SaveGameData()
     {
         SetCoin(PlayerData.Instance.coinEarnThisRun);
         SetLevel();
 
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "player.data";
+        string path = Application.persistentDataPath + "PlayerV1.data";
         FileStream stream = new FileStream(path, FileMode.Create);
         var json = JsonUtility.ToJson(gameDataScrObj);
         formatter.Serialize(stream, json);
@@ -105,7 +112,7 @@ public class GameDataManager : MonoBehaviour
 
     public void LoadGameData()
     {
-        string path = Application.persistentDataPath + "player.data";
+        string path = Application.persistentDataPath + "PlayerV1.data";
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();

@@ -12,14 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 183d922ee5cf25e48b2066dbf682858a, type: 3}
   m_Name: Data
   m_EditorClassIdentifier: 
-  keys: 4
-  level: 46
-  totalCoin: 10708
-  skin1Mesh: {fileID: 4300000, guid: 2cc72a53887f4544a98a86c523c6ad2a, type: 2}
-  skin1Material: {fileID: 2100000, guid: 366cb5460970a614aba2483c6724b6ef, type: 2}
-  skin2MeshFilterMesh: {fileID: 6095894394530886856, guid: c7e13347ac9f07a46a22d160948fac5c, type: 3}
-  skin2MeshRendererMat: {fileID: -3721096122249686530, guid: c7e13347ac9f07a46a22d160948fac5c, type: 3}
-  howManySkin1Unlock: 0
-  howManySkin2Unlock: 1
+  keys: 0
+  level: 1
+  totalCoin: 0
+  skin1Mesh: {fileID: 4300000, guid: 05c08b0ee2420884e8df40ed0c6a3fe3, type: 2}
+  skin1Material: {fileID: 2100000, guid: e5a7d4d91e45a334dae786d6954904df, type: 2}
+  skin2MeshFilterMesh: {fileID: 6865981403698351632, guid: 1ec3a62aef209c14684e6f8718cdd95e, type: 3}
+  skin2MeshRendererMat: {fileID: -3721096122249686530, guid: 1ec3a62aef209c14684e6f8718cdd95e, type: 3}
   vibrateOn: 1
   musicOn: 1
+  numberOfSkin1Unlocked: 00000000
+  numberOfSkin2Unlocked: 00000000
+  outlineSkin1Position: {x: 0, y: 0, z: 0}
+  outlineSkin1FatherInContentGroup: 0
+  outlineSkin2Position: {x: 0, y: 0, z: 0}
+  outlineSkin2FatherInContentGroup: 0

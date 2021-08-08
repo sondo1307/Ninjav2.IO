@@ -989,7 +989,7 @@ GameObject:
   - component: {fileID: 1148505542426892927}
   m_Layer: 5
   m_Name: OutlineSkin2
-  m_TagString: Untagged
+  m_TagString: OutlineSkin2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1377,10 +1377,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9324e8c92a6919b4f861b49137adecdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  number: 6
   outline: {fileID: 8978529584428337488}
   playerSkinUI: {fileID: 7603715565542669414}
   mesh: {fileID: 4300000, guid: 1963d01a13a51154e8e4fd7dae38a341, type: 2}
   mat: {fileID: 2100000, guid: db8d827047dc00347b597bde3a375993, type: 2}
+  isBought: 0
 --- !u!1 &525380651049753082
 GameObject:
   m_ObjectHideFlags: 0
@@ -2277,7 +2279,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8711956386007744887
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5010,10 +5012,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9324e8c92a6919b4f861b49137adecdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  number: 4
   outline: {fileID: 8978529584428337488}
   playerSkinUI: {fileID: 7603715565542669414}
   mesh: {fileID: 4300000, guid: e788e105c81e786439eadd219ed4122c, type: 2}
   mat: {fileID: 2100000, guid: e7a2db34ad6acdf44af624274ba3acfc, type: 2}
+  isBought: 0
 --- !u!1 &3073004430376095379
 GameObject:
   m_ObjectHideFlags: 0
@@ -6060,8 +6064,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5336866415596166895}
   m_HandleRect: {fileID: 5548604883241150384}
   m_Direction: 0
-  m_Value: 0.00000010345832
-  m_Size: 0.6193751
+  m_Value: -0.00000020691668
+  m_Size: 0.61937517
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6444,10 +6448,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9324e8c92a6919b4f861b49137adecdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  number: 0
   outline: {fileID: 8978529584428337488}
   playerSkinUI: {fileID: 7603715565542669414}
   mesh: {fileID: 4300000, guid: 05c08b0ee2420884e8df40ed0c6a3fe3, type: 2}
   mat: {fileID: 2100000, guid: e5a7d4d91e45a334dae786d6954904df, type: 2}
+  isBought: 0
 --- !u!1 &3980030122829318238
 GameObject:
   m_ObjectHideFlags: 0
@@ -7651,10 +7657,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd3520a672eb11941a2640fae8f9bf25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  number: 2
   outline: {fileID: 1148505542426892927}
   mesh: {fileID: 6095894394530886856, guid: c7e13347ac9f07a46a22d160948fac5c, type: 3}
   mat: {fileID: -3721096122249686530, guid: c7e13347ac9f07a46a22d160948fac5c, type: 3}
   capsuleSkinUI: {fileID: 7155181626352399760}
+  isBought: 0
   playerLoadSkin: {fileID: 0}
 --- !u!1 &4599409184287421483
 GameObject:
@@ -8005,7 +8013,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 589.9659, y: 291.5}
+  m_AnchoredPosition: {x: 589.94946, y: 291.5}
   m_SizeDelta: {x: 3099.8984, y: 17}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6334998786366615899
@@ -9299,10 +9307,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9324e8c92a6919b4f861b49137adecdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  number: 7
   outline: {fileID: 8978529584428337488}
   playerSkinUI: {fileID: 7603715565542669414}
   mesh: {fileID: 4300000, guid: 9d88371ef07d0824eb3d745ebcd44d5e, type: 2}
   mat: {fileID: 2100000, guid: 26c5694163063a444aea2e6933c39b99, type: 2}
+  isBought: 0
 --- !u!1 &5890453919515571335
 GameObject:
   m_ObjectHideFlags: 0
@@ -9448,10 +9458,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9324e8c92a6919b4f861b49137adecdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  number: 3
   outline: {fileID: 8978529584428337488}
   playerSkinUI: {fileID: 7603715565542669414}
   mesh: {fileID: 4300000, guid: 3f0486c6408b62a4f8ef7d2eab424d04, type: 2}
   mat: {fileID: 2100000, guid: a36df8b6d138d854998eb7b1bc245066, type: 2}
+  isBought: 0
 --- !u!1 &6061269822439291297
 GameObject:
   m_ObjectHideFlags: 0
@@ -9597,10 +9609,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9324e8c92a6919b4f861b49137adecdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  number: 5
   outline: {fileID: 8978529584428337488}
   playerSkinUI: {fileID: 7603715565542669414}
   mesh: {fileID: 4300000, guid: 1ab7d3abbd8df894f9da94c1d47636b8, type: 2}
   mat: {fileID: 2100000, guid: f7e2caed10e16ed40a4b26961347a372, type: 2}
+  isBought: 0
 --- !u!1 &6062057491152654497
 GameObject:
   m_ObjectHideFlags: 0
@@ -10102,7 +10116,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 589.9659, y: 291.5}
+  m_AnchoredPosition: {x: 589.94946, y: 291.5}
   m_SizeDelta: {x: 3099.8984, y: 17}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2940106454569250388
@@ -10315,7 +10329,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8842124569195056120
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11494,10 +11508,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd3520a672eb11941a2640fae8f9bf25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  number: 0
   outline: {fileID: 1148505542426892927}
   mesh: {fileID: 6865981403698351632, guid: 1ec3a62aef209c14684e6f8718cdd95e, type: 3}
   mat: {fileID: -3721096122249686530, guid: 1ec3a62aef209c14684e6f8718cdd95e, type: 3}
   capsuleSkinUI: {fileID: 7155181626352399760}
+  isBought: 0
   playerLoadSkin: {fileID: 0}
 --- !u!1 &7681029006997447846
 GameObject:
@@ -12187,10 +12203,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9324e8c92a6919b4f861b49137adecdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  number: 2
   outline: {fileID: 8978529584428337488}
   playerSkinUI: {fileID: 7603715565542669414}
   mesh: {fileID: 4300000, guid: 2cc72a53887f4544a98a86c523c6ad2a, type: 2}
   mat: {fileID: 2100000, guid: 366cb5460970a614aba2483c6724b6ef, type: 2}
+  isBought: 0
 --- !u!1 &8062269424872823601
 GameObject:
   m_ObjectHideFlags: 0
@@ -12601,10 +12619,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd3520a672eb11941a2640fae8f9bf25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  number: 1
   outline: {fileID: 1148505542426892927}
   mesh: {fileID: -2640325642919542454, guid: 2f959f1fdb6c85347801652c7c1727e3, type: 3}
   mat: {fileID: -3721096122249686530, guid: 2f959f1fdb6c85347801652c7c1727e3, type: 3}
   capsuleSkinUI: {fileID: 7155181626352399760}
+  isBought: 0
   playerLoadSkin: {fileID: 0}
 --- !u!1 &8406976078690205335
 GameObject:
@@ -13368,10 +13388,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9324e8c92a6919b4f861b49137adecdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  number: 1
   outline: {fileID: 8978529584428337488}
   playerSkinUI: {fileID: 7603715565542669414}
   mesh: {fileID: 4300000, guid: 72e8fe46318610246bb19cb756183988, type: 2}
   mat: {fileID: 2100000, guid: 36c8a7fb0bde08f4aa672828be1e37b0, type: 2}
+  isBought: 0
 --- !u!1 &8551467902135380891
 GameObject:
   m_ObjectHideFlags: 0
@@ -13790,7 +13812,7 @@ GameObject:
   - component: {fileID: 288809609}
   m_Layer: 5
   m_Name: OutlineSkin1
-  m_TagString: Untagged
+  m_TagString: OutlineSkin1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14155,8 +14177,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4428921982652455342}
   m_HandleRect: {fileID: 7921572483780464373}
   m_Direction: 0
-  m_Value: 0.00000010345832
-  m_Size: 0.6193751
+  m_Value: -0.00000020691668
+  m_Size: 0.61937517
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -14179,7 +14201,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6391672607257376055
 RectTransform:
   m_ObjectHideFlags: 0

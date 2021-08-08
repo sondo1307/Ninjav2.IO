@@ -5,13 +5,14 @@ using UnityEngine;
 public class PlayerSkinUI : MonoBehaviour
 {
     [SerializeField] private SkinnedMeshRenderer skin1;
-    public Mesh curMesh;
-    public Material curMat;
+    //public Mesh curMesh;
+    //public Material curMat;
 
     private void Start()
     {
-        curMesh = skin1.sharedMesh;
-        curMat = skin1.sharedMaterial;
+        //curMesh = skin1.sharedMesh;
+        //curMat = skin1.sharedMaterial;
+        SetSkin(GameDataManager.Instance.gameDataScrObj.skin1Mesh, GameDataManager.Instance.gameDataScrObj.skin1Material);
     }
 
     public void SetSkin(Mesh a, Material b)

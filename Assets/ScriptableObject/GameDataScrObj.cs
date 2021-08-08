@@ -13,12 +13,14 @@ public class GameDataScrObj : ScriptableObject
     public Mesh skin2MeshFilterMesh;
     public Material skin2MeshRendererMat;
 
-    public int howManySkin1Unlock;
-    public int howManySkin2Unlock;
-
-
     public bool vibrateOn;
     public bool musicOn;
-    //public List<MeshRenderer> listSkin2_1 = new List<MeshRenderer>();
-    //public List<MeshFilter> listSkin2_2 = new List<MeshFilter>();
+
+    public List<int> numberOfSkin1Unlocked = new List<int>();
+    public List<int> numberOfSkin2Unlocked = new List<int>();
+
+    public Vector3 outlineSkin1Position;
+    public int outlineSkin1FatherInContentGroup;
+    public Vector3 outlineSkin2Position;
+    public int outlineSkin2FatherInContentGroup;
 }
