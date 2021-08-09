@@ -39,9 +39,13 @@ public class UIManager : MonoBehaviour
     [Header("Shop")]
     public ShopGroupManager shopGroupManager;
 
+    [Header("Black")]
+    public GameObject blackPanel;
     private void Awake()
     {
         Instance = this;
+        shop.SetActive(true);
+
     }
 
     private void Update()
@@ -50,7 +54,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         GetComponent<Canvas>().worldCamera = FindObjectOfType<CanvasCamera>().GetComponent<Camera>();
-
+        blackPanel.SetActive(true);
         Time.timeScale = 1;
         shurikenInGame.SetActive(false);
         coinInGame.SetActive(false);
@@ -62,6 +66,13 @@ public class UIManager : MonoBehaviour
         sliders.SetActive(false);
         StartMenu();
         menu.SetActive(true);
+        StartCoroutine(Delay());
+    }
+
+    IEnumerator Delay()
+    {
+        yield return new WaitForEndOfFrame();
+        blackPanel.SetActive(false);
         shop.SetActive(false);
     }
 
@@ -175,6 +186,7 @@ public class UIManager : MonoBehaviour
     {
         menu.SetActive(true);
         shop.SetActive(false);
+        Debug.Log(1);
     }
 
     #endregion

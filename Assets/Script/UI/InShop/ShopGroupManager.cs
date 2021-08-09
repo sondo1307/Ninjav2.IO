@@ -11,10 +11,10 @@ public class ShopGroupManager : MonoBehaviour
 
     void Start()
     {
-        tab1.SetActive(true);
-        skin1.SetActive(true);
-        tab2.SetActive(false);
-        skin2.SetActive(false);
+        //tab1.SetActive(true);
+        //skin1.SetActive(true);
+        //tab2.SetActive(false);
+        //skin2.SetActive(false);
     }
 
     public void OnShopEnter()

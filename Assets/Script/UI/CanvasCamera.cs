@@ -9,10 +9,4 @@ public class CanvasCamera : MonoBehaviour
     {
         
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
