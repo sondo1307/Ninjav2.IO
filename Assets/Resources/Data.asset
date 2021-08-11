@@ -23,7 +23,5 @@ MonoBehaviour:
   musicOn: 1
   numberOfSkin1Unlocked: 00000000
   numberOfSkin2Unlocked: 00000000
-  outlineSkin1Position: {x: 0, y: 0, z: 0}
-  outlineSkin1FatherInContentGroup: 0
-  outlineSkin2Position: {x: 0, y: 0, z: 0}
-  outlineSkin2FatherInContentGroup: 0
+  outlineSkin1Cur: 0
+  outlineSkin2Cur: 0

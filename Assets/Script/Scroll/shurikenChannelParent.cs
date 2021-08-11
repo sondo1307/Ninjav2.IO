@@ -8,7 +8,7 @@ public class shurikenChannelParent : MonoBehaviour
     public Vector3 desiredScale;
     public Vector3 scaling;
     public ShurikenControl shurikenControl;
-    public int force;
+    public int force { get; set; }
     void Start()
     {
         
@@ -17,16 +17,16 @@ public class shurikenChannelParent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        desiredScale.x = Mathf.Clamp(desiredScale.x, 1, 5);
-        desiredScale.z = Mathf.Clamp(desiredScale.z, 1, 5);
+        desiredScale.x = Mathf.Clamp(desiredScale.x, 1, 7);
+        desiredScale.z = Mathf.Clamp(desiredScale.z, 1, 7);
     }
 
     public void CaculateScaleUpShurilenChannel()
     {
         shurikenControl.totalShuriken = shurikenControl.shuriken;
         desiredScale = transform.localScale + shurikenControl.totalShuriken * scaling;
-        desiredScale.x = Mathf.Clamp(desiredScale.x, 1, 5);
-        desiredScale.z = Mathf.Clamp(desiredScale.z, 1, 5);
+        desiredScale.x = Mathf.Clamp(desiredScale.x, 1, 7);
+        desiredScale.z = Mathf.Clamp(desiredScale.z, 1, 7);
     }
 
     public void ScaleUpShurilenChannel()
@@ -60,7 +60,7 @@ public class shurikenChannelParent : MonoBehaviour
     IEnumerator Delay(Collider other)
     {
         yield return new WaitForSecondsRealtime(0.1f);
-        other.transform.GetComponent<DUmmy>().PushDummy(force);
+        other.transform.GetComponent<DUmmy>().PushDummy(force/10);
 
         yield return new WaitForSecondsRealtime(1);
         Time.timeScale = 1;

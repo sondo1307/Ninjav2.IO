@@ -94,6 +94,7 @@ public class UIManager : MonoBehaviour
         menu.SetActive(false);
         shop.SetActive(true);
         shopGroupManager.OnShopEnter();
+        AudioManager.Instance.PlayAudio("tab");
     }
 
 
@@ -118,7 +119,7 @@ public class UIManager : MonoBehaviour
         backGrounds.SetActive(true);
         Tween a = levelCompleteImg.DOAnchorPosX(0, 0.5f, true).SetEase(Ease.Linear).SetUpdate(true);
         yield return a.WaitForCompletion();
-        Tween b = levelCompleteTxt.DOAnchorPosY(15, 1, true).SetEase(Ease.OutBounce).SetUpdate(true);
+        Tween b = levelCompleteTxt.DOAnchorPosY(14f, 1, true).SetEase(Ease.OutBounce).SetUpdate(true);
         yield return b.WaitForCompletion();
         yield return new WaitForSecondsRealtime(0.25f);
         SetNextLevelTxt();
@@ -184,9 +185,10 @@ public class UIManager : MonoBehaviour
     #region INSHOP
     public void ExitBtnShopClick()
     {
+        AudioManager.Instance.PlayAudio("tab");
+
         menu.SetActive(true);
         shop.SetActive(false);
-        Debug.Log(1);
     }
 
     #endregion

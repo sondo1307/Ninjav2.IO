@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (MyScene.Instance.gameIsStart == true && !isPushed)
+        if (MyScene.Instance.gameIsStart == true && !isPushed && !MyScene.Instance.bonusRun)
         {
             if (MoveForward())
             {
@@ -77,7 +77,10 @@ public class PlayerMovement : MonoBehaviour
                 AudioManager.Instance.StopAudio("footstep");
             }
         }
-        //MoveHorizontal2();
+        else if (MyScene.Instance.gameIsStart == true && !isPushed && MyScene.Instance.bonusRun)
+        {
+            rb.velocity = new Vector3(0, rb.velocity.y, Mathf.Clamp(1 * moveSpeed, 0, moveSpeed));
+        }
     }
     public bool MoveForward()
     {
@@ -92,7 +95,18 @@ public class PlayerMovement : MonoBehaviour
         return false;
     }
 
-    
+    public bool slow { get; set; }
+    public IEnumerator DelaySlowSpeed()
+    {
+        if (!slow)
+        {
+            slow = true;
+            moveSpeed = slowSpeed;
+            yield return new WaitForSeconds(0.5f);
+            moveSpeed = originMoveSpeed;
+            slow = false;
+        }
+    }
 
     public Vector2 WorldMousePos() => Input.mousePosition;
 
@@ -123,57 +137,6 @@ public class PlayerMovement : MonoBehaviour
             rb.position = new Vector3(Mathf.Clamp(transform.position.x + move, -halfRange, halfRange), rb.position.y, rb.position.z);
         }
     }
-
-    //float x1;
-    //public float slideSpeed;
-    //public float lerpSlideSpeed;
-    //public float lerpSpeed;
-
-    //void MoveHorizontal2()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Mouse0))
-    //    {
-    //        x1 = Input.mousePosition.x;
-    //    }
-    //    if (Input.GetKey(KeyCode.Mouse0))
-    //    {
-    //        if (Input.mousePosition.x - x1 > 15 && transform.position.x < 1.4f)
-    //        {
-    //            //rb.velocity = transform.right * slideSpeed + new Vector3(0, rb.velocity.y, rb.velocity.z);
-    //            Debug.Log(1);
-    //            rb.velocity = Vector3.Lerp(rb.velocity,
-    //                (transform.right * slideSpeed + new Vector3(0, rb.velocity.y, rb.velocity.z)), lerpSlideSpeed);
-
-    //            //rb.AddForce(transform.right * slideSpeed, ForceMode.Impulse);
-    //            //x1 = Mathf.Lerp(x1, Input.mousePosition.x, lerpSpeed);
-    //        }
-    //        else if (Input.mousePosition.x - x1 < -15 && transform.position.x > -1.4f)
-    //        {
-    //            //rb.velocity = transform.right * -slideSpeed + new Vector3(0, rb.velocity.y, rb.velocity.z);
-
-    //            rb.velocity = Vector3.Lerp(rb.velocity,
-    //                (transform.right * -slideSpeed + new Vector3(0, rb.velocity.y, rb.velocity.z)), lerpSlideSpeed);
-
-    //            //rb.AddForce(transform.right * -slideSpeed, ForceMode.Impulse);
-
-    //            //x1 = Input.mousePosition.x;
-    //            //x1 = Mathf.Lerp(x1, Input.mousePosition.x, lerpSpeed);
-    //        }
-    //        //if (Input.mousePosition.x - x1 > -5 && Input.mousePosition.x - x1 < 5)
-    //        //{
-    //        //    rb.velocity = new Vector3(0, rb.velocity.y, rb.velocity.z);
-    //        //}
-    //        x1 = Mathf.Lerp(x1, Input.mousePosition.x, lerpSpeed);
-    //        if (Mathf.Abs(x1 - Input.mousePosition.x) < 0.5f)
-    //        {
-    //            rb.velocity = new Vector3(0, rb.velocity.y, rb.velocity.z);
-    //        }
-    //    }
-    //    else
-    //    {
-    //        rb.velocity = new Vector3(0, rb.velocity.y, rb.velocity.z);
-    //    }
-    //}
 
     IEnumerator Delay()
     {

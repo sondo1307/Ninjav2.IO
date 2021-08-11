@@ -10,15 +10,15 @@ public class OutlineScript : MonoBehaviour
     {
         if (transform.CompareTag("OutlineSkin1"))
         {
-            transform.position = content.transform.GetChild(GameDataManager.Instance.gameDataScrObj.outlineSkin1FatherInContentGroup).transform.position;
-            transform.SetParent(content.transform.GetChild(GameDataManager.Instance.gameDataScrObj.outlineSkin1FatherInContentGroup).GetChild(0).transform);
-            currentFatherObj = content.transform.GetChild(GameDataManager.Instance.gameDataScrObj.outlineSkin1FatherInContentGroup).GetChild(0).gameObject;
+            transform.position = content.transform.GetChild(GameDataManager.Instance.gameDataScrObj.outlineSkin1Cur).transform.position;
+            transform.SetParent(content.transform.GetChild(GameDataManager.Instance.gameDataScrObj.outlineSkin1Cur).GetChild(0).transform);
+            currentFatherObj = content.transform.GetChild(GameDataManager.Instance.gameDataScrObj.outlineSkin1Cur).GetChild(0).gameObject;
         }
         else if (transform.CompareTag("OutlineSkin2"))
         {
-            transform.position = content.transform.GetChild(GameDataManager.Instance.gameDataScrObj.outlineSkin2FatherInContentGroup).transform.position;
-            transform.SetParent(content.transform.GetChild(GameDataManager.Instance.gameDataScrObj.outlineSkin2FatherInContentGroup).GetChild(0).transform);
-            currentFatherObj = content.transform.GetChild(GameDataManager.Instance.gameDataScrObj.outlineSkin2FatherInContentGroup).GetChild(0).gameObject;
+            transform.position = content.transform.GetChild(GameDataManager.Instance.gameDataScrObj.outlineSkin2Cur).transform.position;
+            transform.SetParent(content.transform.GetChild(GameDataManager.Instance.gameDataScrObj.outlineSkin2Cur).GetChild(0).transform);
+            currentFatherObj = content.transform.GetChild(GameDataManager.Instance.gameDataScrObj.outlineSkin2Cur).GetChild(0).gameObject;
         }
     }
 

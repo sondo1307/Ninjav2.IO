@@ -26,7 +26,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3b5a4bb221a2144b97c1797d3da08e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plus: 10
+  plus: 5
 --- !u!114 &7521749827994505416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42,7 +42,7 @@ MonoBehaviour:
   moveX: 0
   moveY: 1
   moveZ: 0
-  pointReach: 0
+  pointReach: 0.15
   second: 1
 --- !u!1 &7521749827447266360
 GameObject:

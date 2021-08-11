@@ -11,6 +11,8 @@ public class TabBtnFather : MonoBehaviour
 
     public void Tab1Click()
     {
+        AudioManager.Instance.PlayAudio("tab");
+
         tab1.SetActive(true);
         tab2.SetActive(false);
         playerSkin1.SetActive(true);
@@ -19,6 +21,8 @@ public class TabBtnFather : MonoBehaviour
 
     public void Tab2Click()
     {
+        AudioManager.Instance.PlayAudio("tab");
+
         tab1.SetActive(false);
         tab2.SetActive(true);
         playerSkin1.SetActive(false);

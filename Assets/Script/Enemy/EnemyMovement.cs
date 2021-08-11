@@ -11,6 +11,7 @@ public class EnemyMovement : MonoBehaviour
     public Rigidbody rb { get; set; }
     public float rbSpeed;
     public float rbSpeedOrigin;
+    public float slowSpeed;
     public Animator animator { get; set; }
     private bool oneTime = true;
 
@@ -381,7 +382,7 @@ public class EnemyMovement : MonoBehaviour
             }
         }
     }
-
+    public bool slow { get; set; }
     public IEnumerator PushBack(Vector3 dir)
     {
         rb.velocity = Vector3.zero;
@@ -393,13 +394,23 @@ public class EnemyMovement : MonoBehaviour
         isPushed = false;
     }
 
-
-
     public IEnumerator DelayJump()
     {
         yield return new WaitForSeconds(1);
         checkJump = true;
 
+    }
+
+    public IEnumerator DelaySlowSpeed()
+    {
+        if (!slow)
+        {
+            slow = true;
+            rbSpeed = slowSpeed;
+            yield return new WaitForSeconds(0.5f);
+            rbSpeed = rbSpeedOrigin;
+            slow = false;
+        }
     }
 
     private void OnDrawGizmos()

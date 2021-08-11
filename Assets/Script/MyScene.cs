@@ -10,10 +10,12 @@ public class MyScene : MonoBehaviour
     public bool gameIsStart;
     public bool runIsFinish { get; set; }
     public float finishZ;
-    //public List<GameObject> listOfTeacher = new List<GameObject>();
+
+    public bool bonusRun { get; set; }
+
+    public Transform finishLine;
     public int placeCount = 0;
 
-    private PlayerInput playerInput;
     private List<EnemyManager> enemysManager;
     private List<PlayerManager> listOfPlayer;
     public bool oneTime { get; set; }
@@ -23,12 +25,12 @@ public class MyScene : MonoBehaviour
     public GameObject hitEffect;
     public GameObject smokeEffect;
     public GameObject smokeEffectNoSmokeUp;
+    public GameObject floatingText;
     private void Awake()
     {
         Instance = this;
-
+        finishLine = FindObjectOfType<FinishLine>().transform;
         Application.targetFrameRate = 60;
-        playerInput = FindObjectOfType<PlayerInput>();
         listOfPlayer = new List<PlayerManager>(FindObjectsOfType<PlayerManager>());
         enemysManager = new List<EnemyManager>(FindObjectsOfType<EnemyManager>());
         IgnoreCollision();
@@ -37,6 +39,7 @@ public class MyScene : MonoBehaviour
 
     private void Start()
     {
+        finishZ = finishLine.position.z;
     }
     private void Update()
     {

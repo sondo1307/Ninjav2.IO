@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: 453614843}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  slowSpeed: 1
+  slowSpeed: 5
   originMoveSpeed: 10
   jumpForce: 6
   child: {fileID: 564572455089152339}
@@ -181,9 +181,6 @@ MonoBehaviour:
   groupOfFinish: {fileID: 0}
   shurikenChannel: {fileID: 1184932332}
   cameraFollow: {fileID: 0}
-  a: 60
-  defaulta: 50
-  scaleShurikenChannel: {x: 0.15, y: 0, z: 0.15}
 --- !u!114 &6508432511309980255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,7 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d40d3b8380aed7f4fa0ba59d538f86c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shuriken: 0
+  shuriken: 50
   totalShuriken: 0
   shurikenPrefab: {fileID: 7702846590953744120, guid: 8ff1dda8ca1f313478c6f2ed176cb042, type: 3}
   throwPoint: {fileID: 5219907797676408934}
@@ -292,7 +289,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.15, z: 0.1}
-  m_Center: {x: 0, y: -0.225, z: 0.14}
+  m_Center: {x: 0, y: -0.2, z: 0.14}
 --- !u!136 &908714196
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -351,19 +348,6 @@ Transform:
   m_Father: {fileID: 564572456169107237}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2063058985
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7045115910721797771}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.5, y: 1, z: 0.1}
-  m_Center: {x: 0, y: 0.6, z: -0.25}
 --- !u!136 &6918959692195567901
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -598,6 +582,14 @@ PrefabInstance:
       value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 4664729729261286373, guid: 6bce32f62ee776145b3d88e709afb1d0, type: 3}
+      propertyPath: scaling.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664729729261286373, guid: 6bce32f62ee776145b3d88e709afb1d0, type: 3}
+      propertyPath: scaling.z
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664729729261286373, guid: 6bce32f62ee776145b3d88e709afb1d0, type: 3}
       propertyPath: shurikenControl
       value: 
       objectReference: {fileID: 8443736471117452376}
@@ -818,10 +810,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2f959f1fdb6c85347801652c7c1727e3, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f959f1fdb6c85347801652c7c1727e3, type: 3}
+--- !u!4 &7678240666567451697 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2f959f1fdb6c85347801652c7c1727e3, type: 3}
+  m_PrefabInstance: {fileID: 7855454545269965786}
+  m_PrefabAsset: {fileID: 0}
 --- !u!33 &6710729177365556116 stripped
 MeshFilter:
   m_CorrespondingSourceObject: {fileID: -5754084199372789682, guid: 2f959f1fdb6c85347801652c7c1727e3, type: 3}
@@ -830,11 +827,6 @@ MeshFilter:
 --- !u!23 &8846683648861790046 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 2f959f1fdb6c85347801652c7c1727e3, type: 3}
-  m_PrefabInstance: {fileID: 7855454545269965786}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &7678240666567451697 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2f959f1fdb6c85347801652c7c1727e3, type: 3}
   m_PrefabInstance: {fileID: 7855454545269965786}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &7045115910721797771 stripped

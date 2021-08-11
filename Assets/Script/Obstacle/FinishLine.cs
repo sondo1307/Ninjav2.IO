@@ -7,11 +7,12 @@ public class FinishLine : MonoBehaviour
     public GameObject confettiParticle;
     private void OnTriggerEnter(Collider other)
     {
-        MyScene.Instance.placeCount++;
-        if (other.transform.tag == "Player")
+        if (other.transform.CompareTag("Player"))
         {
+            MyScene.Instance.placeCount++;
+
             VibrateManager.Instance.LongVibrate();
-            Collider[] list = other.GetComponentsInChildren<CapsuleCollider>();
+            Collider[] list = other.transform.parent.GetComponentsInChildren<Collider>();
             for (int i = 0; i < list.Length; i++)
             {
                 Physics.IgnoreCollision(transform.GetComponent<BoxCollider>(), list[i]);
@@ -21,17 +22,21 @@ public class FinishLine : MonoBehaviour
             PlayerData.Instance.place = a;
             UIManager.Instance.ReachFinishLine();
             CameraFollow.Instance.transferToLate = true;
-            StartCoroutine(other.GetComponentInParent<PlayerDoEndRun>().PlayerEndRun());
+            FindObjectOfType<BonusGroupControl>().GetBonus(a);
+            MyScene.Instance.bonusRun = true;
+            other.GetComponentInParent<PlayerInput>().enabled = false;
         }
-        else if (other.transform.tag == "Enemy")
+        else if (other.transform.CompareTag("Enemy"))
         {
+            MyScene.Instance.placeCount++;
+
             other.GetComponentInParent<EnemyMovement>().rb.velocity = Vector3.zero;
             other.GetComponentInParent<EnemyMovement>().rb.isKinematic = true;
             //other.GetComponentInParent<EnemyMovement>().animator.SetTrigger("victory");
             other.GetComponentInParent<EnemyManager>().StartParticleSystem();
             other.GetComponentInParent<EnemyManager>().KillEnemy();
             other.GetComponentInParent<EnemyMovement>().enabled = false;
-            Collider[] list = other.GetComponentsInChildren<CapsuleCollider>();
+            Collider[] list = other.transform.parent.GetComponentsInChildren<Collider>();
             for (int i = 0; i < list.Length; i++)
             {
                 Physics.IgnoreCollision(transform.GetComponent<BoxCollider>(), list[i]);
@@ -42,9 +47,9 @@ public class FinishLine : MonoBehaviour
 
     public void StartParticle(Vector3 position1, Vector3 position2)
     {
-         Instantiate(confettiParticle, position1, Quaternion.Euler(-90, 0, 0));
-         Instantiate(confettiParticle, position2, Quaternion.Euler(-90, 0, 0));
-         Instantiate(confettiParticle, transform.position, Quaternion.Euler(-90, 0, 0));
+         Instantiate(confettiParticle, position1, Quaternion.Euler(-45, 0, 0));
+         Instantiate(confettiParticle, position2, Quaternion.Euler(-45, 0, 0));
+         Instantiate(confettiParticle, transform.position, Quaternion.Euler(-45, 0, 0));
     }
 
 }

@@ -15,12 +15,13 @@ public class Brick : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if ((collision.transform.CompareTag("Player") || collision.transform.CompareTag("Enemy")) && check)
+        if ((collision.transform.CompareTag("Player") && check))
         {
             rb.AddForce((transform.position - collision.transform.position) * 10, ForceMode.Impulse);
 
             Physics.IgnoreCollision(transform.GetComponent<BoxCollider>(), collision.transform.GetComponentInChildren<CapsuleCollider>());
             transform.GetComponent<BoxCollider>().isTrigger = true;
+            StartCoroutine(collision.transform.GetComponent<PlayerMovement>().DelaySlowSpeed());
             check = false;
         }
 
@@ -28,8 +29,8 @@ public class Brick : MonoBehaviour
         {
             rb.AddForce((transform.position - collision.transform.position) * 10, ForceMode.Impulse);
             Physics.IgnoreCollision(transform.GetComponent<BoxCollider>(), collision.transform.GetComponentInChildren<CapsuleCollider>());
+            StartCoroutine(collision.transform.GetComponent<EnemyMovement>().DelaySlowSpeed());
             transform.GetComponent<BoxCollider>().isTrigger = true;
-
             check = false;
         }
     }

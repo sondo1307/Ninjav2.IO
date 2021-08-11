@@ -6,14 +6,18 @@ public class CapsuleSkinBtnClick : MonoBehaviour
 {
     public int number;
 
-    public OutlineScript outline;
+    private GameObject outline;
     public Mesh mesh;
     public Material mat;
     public CapsuleSkinUI capsuleSkinUI;
     [SerializeField]private bool isBought;
     public PlayerLoadSkin playerLoadSkin;
+    private ContentManager contentManager;
     private void Awake()
     {
+        outline = transform.parent.GetChild(2).gameObject;
+        contentManager = transform.parent.parent.GetComponent<ContentManager>();
+
         playerLoadSkin = FindObjectOfType<PlayerLoadSkin>();
     }
 
@@ -34,37 +38,43 @@ public class CapsuleSkinBtnClick : MonoBehaviour
 
     public void OnItemClick()
     {
-        //outline.transform.position = transform.position;
-        //outline.transform.SetParent(transform, true);
-        outline.GetComponent<OutlineScript>().SetPosition(transform.position, transform);
+        SetOutline(true);
+        contentManager.SetOutlineChildOff(number);
+
         capsuleSkinUI.SetCapsuleSkin(mesh, mat);
+        AudioManager.Instance.PlayAudio("tab");
+
         if (isBought)
         {
-            outline.GetComponent<OutlineScript>().currentFatherObj = gameObject;
             playerLoadSkin.SetRealCapsuleSkin(mesh, mat);
-            //capsuleSkinUI.curMeshF.mesh = mesh;
-            //capsuleSkinUI.curMeshR.material = mat;
+
             GameDataManager.Instance.gameDataScrObj.skin2MeshFilterMesh = mesh;
             GameDataManager.Instance.gameDataScrObj.skin2MeshRendererMat = mat;
-            GameDataManager.Instance.gameDataScrObj.outlineSkin2Position = transform.position;
-            GameDataManager.Instance.gameDataScrObj.outlineSkin2FatherInContentGroup = number;
+            GameDataManager.Instance.gameDataScrObj.outlineSkin2Cur = number;
         }
+    }
+
+    public void SetOutline(bool a)
+    {
+        outline.SetActive(a);
     }
 
     public void SetSkinIsBought()
     {
+        AudioManager.Instance.PlayAudio("tab");
+
         isBought = true;
-        outline.GetComponent<OutlineScript>().SetPosition(transform.position, transform);
+
+        SetOutline(true);
+        contentManager.SetOutlineChildOff(number);
+
         capsuleSkinUI.SetCapsuleSkin(mesh, mat);
         transform.parent.GetChild(1).gameObject.SetActive(false);
-        outline.GetComponent<OutlineScript>().currentFatherObj = gameObject;
         playerLoadSkin.SetRealCapsuleSkin(mesh, mat);
-        //capsuleSkinUI.meshFilter.mesh = mesh;
-        //capsuleSkinUI.meshRenderer.material = mat;
+
         GameDataManager.Instance.gameDataScrObj.skin2MeshFilterMesh = mesh;
         GameDataManager.Instance.gameDataScrObj.skin2MeshRendererMat = mat;
-        GameDataManager.Instance.gameDataScrObj.outlineSkin2Position = transform.position;
-        GameDataManager.Instance.gameDataScrObj.outlineSkin2FatherInContentGroup = number;
+        GameDataManager.Instance.gameDataScrObj.outlineSkin2Cur = number;
         GameDataManager.Instance.gameDataScrObj.numberOfSkin2Unlocked.Add(number);
     }
 }

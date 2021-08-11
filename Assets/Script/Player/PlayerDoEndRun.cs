@@ -11,9 +11,6 @@ public class PlayerDoEndRun : MonoBehaviour
     public GameObject groupOfFinish;
     public GameObject shurikenChannel;
     public CameraFollow cameraFollow;
-    public int a;
-    public int defaulta;
-    public Vector3 scaleShurikenChannel;
     [Header("GroupOfFinishInOrder")]
     private GameObject finishRoad;
     private Transform cylinder;
@@ -29,11 +26,11 @@ public class PlayerDoEndRun : MonoBehaviour
     {
         oneTime = true;
 
-        a = defaulta;
         finishRoad = groupOfFinish.transform.GetChild(0).gameObject;
         cylinder = groupOfFinish.transform.GetChild(1);
-        dummy = groupOfFinish.transform.GetChild(2).gameObject;
-        gatherPowerParticle = groupOfFinish.transform.GetChild(4).gameObject;
+        gatherPowerParticle = groupOfFinish.transform.GetChild(2).gameObject;
+
+        dummy = FindObjectOfType<DUmmy>().gameObject;
         shurikenControl = GetComponent<ShurikenControl>();
         cameraFollow = GetComponent<PlayerManager>().myCamera;
         rb = GetComponent<Rigidbody>();

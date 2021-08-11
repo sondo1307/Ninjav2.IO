@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 564572456169107241}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 1474.8088, y: 1474.8088, z: 1474.8088}
+  m_LocalScale: {x: 881.6441, y: 1763.2882, z: 881.6441}
   m_Children:
   - {fileID: 2285643892353506381}
   - {fileID: 7678240666567451697}
@@ -47,8 +47,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meshFilter: {fileID: 6710729177365556116}
   meshRenderer: {fileID: 8846683648861790046}
-  curMeshF: {fileID: 0}
-  curMeshR: {fileID: 0}
 --- !u!1001 &1743601690507541414
 PrefabInstance:
   m_ObjectHideFlags: 0

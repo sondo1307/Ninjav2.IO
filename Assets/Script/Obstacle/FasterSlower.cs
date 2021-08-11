@@ -15,7 +15,6 @@ public class FasterSlower : MonoBehaviour
                 Rigidbody rb = other.transform.GetComponentInParent<Rigidbody>();
                 rb.AddForce(Vector3.forward * force, ForceMode.VelocityChange);
             }
-
         }
         else if (transform.CompareTag("Slower"))
         {

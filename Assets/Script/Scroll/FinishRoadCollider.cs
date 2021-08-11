@@ -7,6 +7,7 @@ public class FinishRoadCollider : MonoBehaviour
 {
     public TMP_Text txt;
     public float multiplePoint;
+    public Material color;
 
     private void Awake()
     {
@@ -14,11 +15,11 @@ public class FinishRoadCollider : MonoBehaviour
     }
 
 
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.transform.CompareTag("Dummy"))
-    //    {
-    //        PlayerData.Instance.multipleCoin = (int)multiplePoint;
-    //    }
-    //}
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.CompareTag("Dummy"))
+        {
+            GetComponent<Renderer>().material = color;
+        }
+    }
 }

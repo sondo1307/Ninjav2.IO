@@ -19,8 +19,6 @@ public class GameDataScrObj : ScriptableObject
     public List<int> numberOfSkin1Unlocked = new List<int>();
     public List<int> numberOfSkin2Unlocked = new List<int>();
 
-    public Vector3 outlineSkin1Position;
-    public int outlineSkin1FatherInContentGroup;
-    public Vector3 outlineSkin2Position;
-    public int outlineSkin2FatherInContentGroup;
+    public int outlineSkin1Cur;
+    public int outlineSkin2Cur;
 }

@@ -7,15 +7,20 @@ public class SkinBtnClick : MonoBehaviour
 {
     public int number;
 
-    public GameObject outline;
+    private GameObject outline;
     [SerializeField] private PlayerSkinUI playerSkinUI;
     private PlayerLoadSkin playerLoadSkin;
     public Mesh mesh;
     public Material mat;
     [SerializeField] private bool isBought;
+    private ContentManager contentManager;
+
+    public Animator animator;
     private void Awake()
     {
         playerLoadSkin = FindObjectOfType<PlayerLoadSkin>();
+        outline = transform.parent.GetChild(2).gameObject;
+        contentManager = transform.parent.parent.GetComponent<ContentManager>();
     }
 
     private void Start()
@@ -35,38 +40,45 @@ public class SkinBtnClick : MonoBehaviour
 
     public void OnItemClick()
     {
-        //outline.transform.position = transform.position;
-        //outline.transform.SetParent(transform, true);
-        outline.GetComponent<OutlineScript>().SetPosition(transform.position, transform);
+        SetOutline(true);
+        contentManager.SetOutlineChildOff(number);
         playerSkinUI.SetSkin(mesh, mat);
+        AudioManager.Instance.PlayAudio("tab");
+
+        int a = 0;
+        a = Random.Range(1, 5);
+        animator.SetTrigger("" + a);
         if (isBought)
         {
             playerLoadSkin.SetRealSkin(mesh, mat);
-            outline.GetComponent<OutlineScript>().currentFatherObj = gameObject;
-            //playerSkinUI.curMesh = mesh;
-            //playerSkinUI.curMat = mat;
+
+            //outline.GetComponent<OutlineScript>().currentFatherObj = gameObject;
+
             GameDataManager.Instance.gameDataScrObj.skin1Mesh = mesh;
             GameDataManager.Instance.gameDataScrObj.skin1Material = mat;
-            GameDataManager.Instance.gameDataScrObj.outlineSkin1Position = transform.position;
-            GameDataManager.Instance.gameDataScrObj.outlineSkin1FatherInContentGroup = number;
+            GameDataManager.Instance.gameDataScrObj.outlineSkin1Cur = number;
         }
+    }
+
+    public void SetOutline(bool a)
+    {
+        outline.SetActive(a);
     }
 
     public void SetSkinIsBought()
     {
         isBought = true;
+
+        SetOutline(true);
+        contentManager.SetOutlineChildOff(number);
+
         playerSkinUI.SetSkin(mesh, mat);
-        outline.GetComponent<OutlineScript>().SetPosition(transform.position, transform);
         transform.parent.GetChild(1).gameObject.SetActive(false);
         playerLoadSkin.SetRealSkin(mesh, mat);
-        outline.GetComponent<OutlineScript>().currentFatherObj = gameObject;
-        //playerSkinUI.curMesh = mesh;
-        //playerSkinUI.curMat = mat;
 
         GameDataManager.Instance.gameDataScrObj.skin1Mesh = mesh;
         GameDataManager.Instance.gameDataScrObj.skin1Material = mat;
-        GameDataManager.Instance.gameDataScrObj.outlineSkin1Position = transform.position;
-        GameDataManager.Instance.gameDataScrObj.outlineSkin1FatherInContentGroup = number;
+        GameDataManager.Instance.gameDataScrObj.outlineSkin1Cur = number;
         GameDataManager.Instance.gameDataScrObj.numberOfSkin1Unlocked.Add(number);
 
     }
