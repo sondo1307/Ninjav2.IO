@@ -12,6 +12,10 @@ public class ChangeColorBase : MonoBehaviour
     {
         renderComp = GetComponent<Renderer>();
 
-        renderComp.sharedMaterial.SetColor(MainColorID, mainColor);
+        // Long's origin code;
+        //renderComp.sharedMaterial.SetColor(MainColorID, mainColor);
+        //mine
+        renderComp.sharedMaterial.SetColor("_Color", mainColor);
+
     }
 }

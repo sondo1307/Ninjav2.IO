@@ -19,8 +19,6 @@ public class Stair : MonoBehaviour
                 other.GetComponentInParent<EnemyMovement>().rb.velocity = new Vector3(other.GetComponentInParent<EnemyMovement>().rb.velocity.x, 0, other.GetComponentInParent<EnemyMovement>().rb.velocity.z);
             }
         }
-
-
     }
 
     private void OnTriggerEnter(Collider other)
@@ -29,13 +27,13 @@ public class Stair : MonoBehaviour
         {
             if (other.transform.CompareTag("Player"))
             {
-                other.GetComponentInParent<PlayerMovement>().rb.AddForce(new Vector3(0, -5, 0), ForceMode.Impulse);
+                other.GetComponentInParent<PlayerMovement>().rb.AddForce(new Vector3(0, -7, 0), ForceMode.Impulse);
             }
             if (other.transform.CompareTag("Enemy"))
             {
                 //other.transform.position = new Vector3(other.transform.position.x, 0.5f, other.transform.position.z);
                 //other.GetComponentInParent<NavMeshAgent>().velocity = new Vector3(other.GetComponentInParent<NavMeshAgent>().velocity.x, 0, other.GetComponentInParent<NavMeshAgent>().velocity.z);
-                other.GetComponentInParent<EnemyMovement>().rb.AddForce(new Vector3(0, -5, 0), ForceMode.Impulse);
+                other.GetComponentInParent<EnemyMovement>().rb.AddForce(new Vector3(0, -7, 0), ForceMode.Impulse);
             }
         }
         //if (transform.CompareTag("StairDown2"))

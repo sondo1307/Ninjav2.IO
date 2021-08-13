@@ -10,8 +10,6 @@ TagManager:
   - StairUp
   - StairDown
   - TriggerDie
-  - Faster
-  - Slower
   - FxTemporaire
   - Shuriken
   - Teacher

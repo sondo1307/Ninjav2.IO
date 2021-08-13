@@ -15,7 +15,16 @@ public class ShurikenItem : MonoBehaviour
             other.GetComponentInParent<ShurikenControl>().shuriken+=plus;
             DOTween.Kill(transform);
             Destroy(transform.parent.gameObject);
-            other.GetComponentInParent<ShurikenControl>().PlusShurikenFloatingTxt();
+            if (plus==1)
+            {
+                other.GetComponentInParent<ShurikenControl>().PlusShurikenFloatingTxt();
+
+            }
+            else
+            {
+                other.GetComponentInParent<ShurikenControl>().PlusShurikenFloatingTxt5();
+
+            }
         }
 
     }

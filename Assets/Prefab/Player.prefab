@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: 453614843}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d40d3b8380aed7f4fa0ba59d538f86c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shuriken: 50
+  shuriken: 0
   totalShuriken: 0
   shurikenPrefab: {fileID: 7702846590953744120, guid: 8ff1dda8ca1f313478c6f2ed176cb042, type: 3}
   throwPoint: {fileID: 5219907797676408934}
@@ -216,6 +216,7 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 128
+  a: {fileID: 0}
 --- !u!114 &477628904789224675
 MonoBehaviour:
   m_ObjectHideFlags: 0

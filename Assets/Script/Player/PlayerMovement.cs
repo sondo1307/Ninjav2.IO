@@ -53,7 +53,6 @@ public class PlayerMovement : MonoBehaviour
             }
             lastCursorPosition = Input.mousePosition;
         }
-
         CheckGround();
     }
     private void FixedUpdate()

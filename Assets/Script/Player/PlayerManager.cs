@@ -73,7 +73,7 @@ public class PlayerManager : MonoBehaviour
             AudioManager.Instance.StopAudio("footstep");
             StartCoroutine(playerInput.Skin2ToSkin1());
             canMove = false;
-
+            VibrateManager.Instance.HeavyVibrate();
             animator.SetTrigger("angry");
             playerIsDead = true;
             gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Default");
@@ -110,6 +110,7 @@ public class PlayerManager : MonoBehaviour
             b[0].enabled = true;
             rb.constraints = constraintAllRotation;
             yield return new WaitForSecondsRealtime(0.7f);
+            VibrateManager.Instance.RigidBibrate();
             Instantiate(MyScene.Instance.smokeEffectNoSmokeUp, checkPointPosition + Vector3.up*0.25f, Quaternion.Euler(90, 0, 0));
             yield return new WaitForSeconds(2f);
             myCamera.player = transform.gameObject;
@@ -153,6 +154,7 @@ public class PlayerManager : MonoBehaviour
         if (!playerIsDead)
         {
             AudioManager.Instance.StopAudio("footstep");
+            VibrateManager.Instance.HeavyVibrate();
             StartCoroutine(playerInput.Skin2ToSkin1());
             gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Default");
             playerIsDead = true;
@@ -164,6 +166,7 @@ public class PlayerManager : MonoBehaviour
             myCamera.player = null;
             Collider[] b = transform.GetComponentsInChildren<CapsuleCollider>();
             yield return new WaitForSeconds(delay);
+            VibrateManager.Instance.RigidBibrate();
             playerInput.StartParticleSystem();
             gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Player");
             animator.SetTrigger("idle");

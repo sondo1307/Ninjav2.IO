@@ -60,13 +60,13 @@ public class Laser : MonoBehaviour
         allowRaycast = true;
         lineRenderer.enabled = true;
         lineRenderer.SetPosition(0, transform.position);
-        Instantiate(laserSparkParticle, transform.position - transform.right * 5.5f, Quaternion.Euler(0,90,0));
+        GameObject a =Instantiate(laserSparkParticle, transform.position - transform.right * 5.5f, Quaternion.Euler(0,90,0));
         //Instantiate(laserSparkParticle, transform.position , Quaternion.Euler(0,-90,0));
         lineRenderer.SetPosition(1, transform.position-transform.right*5.5f);
         yield return new WaitForSeconds(2);
         dangerSignal.DauChamThanTat();
         boxForEnemyScan.enabled = false;
-
+        Destroy(a);
         allowRaycast = false;
         sol.enabled = false;
         particle.gameObject.SetActive(false);

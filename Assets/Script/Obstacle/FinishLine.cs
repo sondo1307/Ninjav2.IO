@@ -21,10 +21,10 @@ public class FinishLine : MonoBehaviour
             int a =  MyScene.Instance.placeCount;
             PlayerData.Instance.place = a;
             UIManager.Instance.ReachFinishLine();
-            CameraFollow.Instance.transferToLate = true;
             FindObjectOfType<BonusGroupControl>().GetBonus(a);
             MyScene.Instance.bonusRun = true;
             other.GetComponentInParent<PlayerInput>().enabled = false;
+            other.GetComponentInParent<PlayerDoEndRun>().FreezeY();
         }
         else if (other.transform.CompareTag("Enemy"))
         {

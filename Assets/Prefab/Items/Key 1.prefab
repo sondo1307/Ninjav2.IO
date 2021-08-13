@@ -60,11 +60,11 @@ PrefabInstance:
     - target: {fileID: 811029909430810202, guid: b8485592076c0e04ba31171d6ab70e37, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 96a448ec6a9a7764da77e70520a95f0c, type: 2}
+      objectReference: {fileID: -3721096122249686530, guid: 8f1e8a4a13beead41bf12ff95b548009, type: 3}
     - target: {fileID: 811029909430810203, guid: b8485592076c0e04ba31171d6ab70e37, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 5775506293767808899, guid: d4818ddbd701ac34e987422acf4dcd4e, type: 3}
+      objectReference: {fileID: -5546940888850326318, guid: 8f1e8a4a13beead41bf12ff95b548009, type: 3}
     - target: {fileID: 811029909430810204, guid: b8485592076c0e04ba31171d6ab70e37, type: 3}
       propertyPath: m_RootOrder
       value: 1

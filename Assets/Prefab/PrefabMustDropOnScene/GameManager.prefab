@@ -47,11 +47,14 @@ MonoBehaviour:
   rangeOfActive: 10
   gameIsStart: 0
   finishZ: 96
+  finishLine: {fileID: 0}
   placeCount: 0
   confettiPrefab: {fileID: 4777693137976714930, guid: a9e8b2b34c4895b42819fb3d126f9a61, type: 3}
   hitEffect: {fileID: 100000, guid: 3156817f64ec68948ad6bb26569b9ef5, type: 3}
   smokeEffect: {fileID: 1965343156803978, guid: e589125f4f683604cbed1b5a7c6e16b2, type: 3}
   smokeEffectNoSmokeUp: {fileID: 1965343156803978, guid: 5b3999da54bf19c45a8a15c6294a0f61, type: 3}
+  floatingText: {fileID: 9054000571062022353, guid: 2d5dbe7b831897344a3d30f91c2619e4, type: 3}
+  floatingText5: {fileID: 9054000571062022353, guid: 9a3bad5c1cd6ffa438912fc004962a93, type: 3}
 --- !u!114 &1214346938821779520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,3 +68,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameDataScrObj: {fileID: 0}
+  newCanvas: {fileID: 0}

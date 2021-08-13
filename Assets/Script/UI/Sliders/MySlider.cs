@@ -11,9 +11,30 @@ public class MySlider : MonoBehaviour
     public Transform player;
     private Vector3 startPosition;
 
+    public enum Player
+    {
+        Player,
+        Enemy1,
+        Enemy2,
+    
+    };
+
+    public Player choosePlayer;
+
     private void Awake()
     {
-        player = FindObjectOfType<PlayerInput>().transform;
+        if (choosePlayer == Player.Player)
+        {
+            player = FindObjectOfType<PlayerInput>().transform;
+        }
+        else if (choosePlayer == Player.Enemy1)
+        {
+            player = FindObjectsOfType<EnemyMovement>()[0].transform;
+        }
+        else
+        {
+            player = FindObjectsOfType<EnemyMovement>()[1].transform;
+        }
     }
 
     private void Start()
@@ -25,7 +46,10 @@ public class MySlider : MonoBehaviour
 
     private void Update()
     {
-        slider.value = Mathf.Abs(player.position.z - startPosition.z) / Mathf.Abs(sliderParent.finishLine.position.z - startPosition.z);
+        if (player!=null)
+        {
+            slider.value = Mathf.Abs(player.position.z - startPosition.z) / Mathf.Abs(sliderParent.finishLine.position.z - startPosition.z);
+        }
     }
 
 }
