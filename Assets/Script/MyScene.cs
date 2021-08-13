@@ -26,6 +26,7 @@ public class MyScene : MonoBehaviour
     public GameObject smokeEffect;
     public GameObject smokeEffectNoSmokeUp;
     public GameObject floatingText;
+    public GameObject floatingText5;
     private void Awake()
     {
         Instance = this;

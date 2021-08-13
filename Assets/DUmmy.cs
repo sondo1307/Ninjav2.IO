@@ -54,7 +54,7 @@ public class DUmmy : MonoBehaviour
         animator.SetTrigger("Die");
         MyScene.Instance.StartParticleConfetti(transform.position );
         MyScene.Instance.StartParticleConfetti(transform.position );
-        transform.Find("WindParticle").gameObject.SetActive(false);
+        transform.parent.Find("WindParticle").gameObject.SetActive(false);
         StartCoroutine(Delay());
     }
         public void EndRun2()
@@ -62,7 +62,7 @@ public class DUmmy : MonoBehaviour
         PlayerData.Instance.SetTotalCoinThisRun();
         MyScene.Instance.StartParticleConfetti(transform.position );
         MyScene.Instance.StartParticleConfetti(transform.position );
-        transform.Find("WindParticle").gameObject.SetActive(false);
+        transform.parent.Find("WindParticle").gameObject.SetActive(false);
         StartCoroutine(Delay());
     }
 

@@ -65,6 +65,11 @@ MonoBehaviour:
     volume: 0.35
     loop: 0
     source: {fileID: 0}
+  - name: key
+    clip: {fileID: 8300000, guid: 21373a90052db0e4a89d4f35211ca8a8, type: 3}
+    volume: 0.35
+    loop: 0
+    source: {fileID: 0}
 --- !u!114 &490020050
 MonoBehaviour:
   m_ObjectHideFlags: 0

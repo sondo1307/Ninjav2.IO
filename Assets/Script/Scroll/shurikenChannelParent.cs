@@ -51,7 +51,7 @@ public class shurikenChannelParent : MonoBehaviour
             GetComponentInParent<Rigidbody>().useGravity = true;
             GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.None;
             transform.GetComponentInParent<Rigidbody>().velocity = Vector3.zero;
-            other.transform.Find("WindParticle").gameObject.SetActive(true);
+            other.transform.parent.Find("WindParticle").gameObject.SetActive(true);
             CameraFollow.Instance.player = other.transform.gameObject;
 
         }

@@ -78,7 +78,7 @@ public class UIManager : MonoBehaviour
 
     public void StartMenu()
     {
-        shopButton.GetComponent<RectTransform>().DOAnchorPosX(-90, 0.5f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo);
+        shopButton.GetComponent<RectTransform>().DOAnchorPosX(0, 0.5f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo);
         Sequence a = DOTween.Sequence();
         a.Append(dragTxt.GetComponentInChildren<TMP_Text>().DOFade(1, 1))
             .Append(dragTxt.GetComponentInChildren<TMP_Text>().DOFade(1, 0.5f))

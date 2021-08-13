@@ -19,7 +19,7 @@ public class SkinBtnClick : MonoBehaviour
     private void Awake()
     {
         playerLoadSkin = FindObjectOfType<PlayerLoadSkin>();
-        outline = transform.parent.GetChild(2).gameObject;
+        outline = transform.parent.GetChild(3).gameObject;
         contentManager = transform.parent.parent.GetComponent<ContentManager>();
     }
 
@@ -34,7 +34,7 @@ public class SkinBtnClick : MonoBehaviour
         }
         if (isBought)
         {
-            transform.parent.GetChild(1).gameObject.SetActive(false);
+            transform.parent.GetChild(2).gameObject.SetActive(false);
         }
     }
 

@@ -60,6 +60,11 @@ public class PlayerDoEndRun : MonoBehaviour
         }
     }
 
+    public void FreezeY()
+    {
+        transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
+        rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
+    }
     public IEnumerator PlayerEndRun()
     {
         AudioManager.Instance.StopAudio("footstep");

@@ -92,11 +92,11 @@ GameObject:
   - component: {fileID: 1837820242}
   m_Layer: 7
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &139496471106514263
 Transform:
   m_ObjectHideFlags: 0
@@ -177,6 +177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rbSpeed: 10
   rbSpeedOrigin: 10
+  slowSpeed: 5
   jumpForce: 6
   child: {fileID: 727145190}
   layer:
@@ -468,7 +469,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2f959f1fdb6c85347801652c7c1727e3, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f959f1fdb6c85347801652c7c1727e3, type: 3}

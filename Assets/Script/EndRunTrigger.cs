@@ -9,6 +9,7 @@ public class EndRunTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             StartCoroutine(other.GetComponentInParent<PlayerDoEndRun>().PlayerEndRun());
+            CameraFollow.Instance.transferToLate = true;
         }
     }
 }

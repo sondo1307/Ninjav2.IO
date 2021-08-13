@@ -5,10 +5,17 @@ using UnityEngine;
 public class FasterSlower : MonoBehaviour
 {
     public float force;
+    public enum Mode
+    {
+        Faster,
+        Slower,
+    };
+
+    public Mode mode;
 
     private void OnTriggerStay(Collider other)
     {
-        if (transform.CompareTag("Faster"))
+        if (mode == Mode.Faster)
         {
             if (other.transform.CompareTag("Player")|| other.transform.CompareTag("Enemy"))
             {
@@ -16,7 +23,7 @@ public class FasterSlower : MonoBehaviour
                 rb.AddForce(Vector3.forward * force, ForceMode.VelocityChange);
             }
         }
-        else if (transform.CompareTag("Slower"))
+        else if (mode == Mode.Slower)
         {
             if (other.transform.CompareTag("Player") || other.transform.CompareTag("Enemy"))
             {

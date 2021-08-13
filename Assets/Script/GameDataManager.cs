@@ -16,24 +16,6 @@ public class GameDataManager : MonoBehaviour
         Instance = this;
         gameDataScrObj = Resources.Load("data") as GameDataScrObj;
         LoadGameData();
-
-        //newCanvas = Instantiate(gameDataScrObj.canvas) as GameObject;
-        //newCanvas = PrefabUtility.InstantiatePrefab(gameDataScrObj.canvas) as GameObject;
-        //newCanvas = ScriptableObject.Instantiate(gameDataScrObj.canvas) as GameObject;
-    }
-
-    public bool CheckFirstTimePlay()
-    {
-        if (PlayerPrefs.HasKey("level"))
-        {
-            return false;
-        }
-        return true;
-    }
-
-    public void ChestThreeKeyOpen()
-    {
-
     }
 
     public void SetKey()
@@ -99,7 +81,6 @@ public class GameDataManager : MonoBehaviour
 
     public void SaveGameData()
     {
-        SetCoin(PlayerData.Instance.coinEarnThisRun);
         SetLevel();
 
         BinaryFormatter formatter = new BinaryFormatter();
@@ -125,7 +106,6 @@ public class GameDataManager : MonoBehaviour
         else
         {
             Debug.Log("Load Game Error");
-            //return Resources.Load("Data") as GameDataScrObj;
         }
     }
 }
