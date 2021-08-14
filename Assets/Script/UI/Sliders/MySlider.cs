@@ -31,7 +31,7 @@ public class MySlider : MonoBehaviour
         {
             player = FindObjectsOfType<EnemyMovement>()[0].transform;
         }
-        else
+        else if (choosePlayer == Player.Enemy2)
         {
             player = FindObjectsOfType<EnemyMovement>()[1].transform;
         }

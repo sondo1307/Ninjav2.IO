@@ -84,7 +84,7 @@ public class GameDataManager : MonoBehaviour
         SetLevel();
 
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "PlayerV1.data";
+        string path = Application.persistentDataPath + "PlayerV2.data";
         FileStream stream = new FileStream(path, FileMode.Create);
         var json = JsonUtility.ToJson(gameDataScrObj);
         formatter.Serialize(stream, json);
@@ -93,7 +93,7 @@ public class GameDataManager : MonoBehaviour
 
     public void LoadGameData()
     {
-        string path = Application.persistentDataPath + "PlayerV1.data";
+        string path = Application.persistentDataPath + "PlayerV2.data";
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -105,7 +105,7 @@ public class GameDataManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Load Game Error");
+            Debug.Log("New Game");
         }
     }
 }

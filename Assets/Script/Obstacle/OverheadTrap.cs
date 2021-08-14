@@ -12,7 +12,7 @@ public class OverheadTrap : MonoBehaviour
 
     private void Start()
     {
-        temp = time;
+        temp = 0;
         //Sequence sequence = DOTween.Sequence();
         defaultY = transform.position.y;
         //sequence.Append(transform.DOMoveY(0.5f, 0.25f).SetEase(Ease.Linear)).Append(transform.DOMoveY(defaultY, 2).SetEase(Ease.Linear))
@@ -36,19 +36,19 @@ public class OverheadTrap : MonoBehaviour
         GetComponent<BoxCollider>().isTrigger = true;
         yield return new WaitForSeconds(0.25f);
         GetComponent<BoxCollider>().isTrigger = false;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         HoldPosition();
     }
 
     public void MoveDown()
     {
         Sequence sequence = DOTween.Sequence();
-        sequence.Append(transform.DOMoveY(0.5f, 0.25f).SetEase(Ease.Linear)).Append(transform.DOMoveY(defaultY, 2).SetEase(Ease.Linear));
+        sequence.Append(transform.DOMoveY(0.5f, 0.25f).SetEase(Ease.Linear)).Append(transform.DOMoveY(defaultY, 1).SetEase(Ease.Linear));
     }
 
     public void HoldPosition()
     {
-        transform.DOMove(transform.position, 3);
+        transform.DOMove(transform.position, 1f);
     }
 
     private void OnTriggerEnter(Collider other)

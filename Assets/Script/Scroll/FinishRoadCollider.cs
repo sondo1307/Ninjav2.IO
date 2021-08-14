@@ -7,7 +7,7 @@ public class FinishRoadCollider : MonoBehaviour
 {
     public TMP_Text txt;
     public float multiplePoint;
-    public Material color;
+    public Color color;
 
     private void Awake()
     {
@@ -19,7 +19,7 @@ public class FinishRoadCollider : MonoBehaviour
     {
         if (other.transform.CompareTag("Dummy"))
         {
-            GetComponent<Renderer>().material = color;
+            GetComponent<Renderer>().material.color = color;
         }
     }
 }

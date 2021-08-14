@@ -133,7 +133,7 @@ public class PlayerManager : MonoBehaviour
     public void PlayerFall()
     {
         rb.constraints = RigidbodyConstraints.FreezeRotation;
-        Collider[] b = transform.GetComponentsInChildren<CapsuleCollider>();
+        Collider[] b = transform.GetComponentsInChildren<Collider>();
         for (int i = 0; i < b.Length; i++)
         {
             b[i].enabled = false;
@@ -332,7 +332,7 @@ public class PlayerManager : MonoBehaviour
     public void EnemyFall()
     {
         rb.constraints = RigidbodyConstraints.FreezeRotation;
-        Collider[] b = transform.GetComponentsInChildren<CapsuleCollider>();
+        Collider[] b = transform.GetComponentsInChildren<Collider>();
         for (int i = 0; i < b.Length; i++)
         {
             b[i].enabled = false;

@@ -52,7 +52,7 @@ public class Laser : MonoBehaviour
         rol.enabled = true;
         var sol = particle.sizeOverLifetime;
         sol.enabled = true;
-        yield return new WaitForSeconds(1);
+        //yield return new WaitForSeconds(1);
 
         //rol.enabled = false;
         //var sol = particle.sizeOverLifetime;
