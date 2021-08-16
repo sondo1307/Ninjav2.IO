@@ -549,7 +549,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100148, guid: e2a5222f293d3b94f889eba315d9e3e4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400148, guid: e2a5222f293d3b94f889eba315d9e3e4, type: 3}
       propertyPath: m_RootOrder
@@ -809,6 +809,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road
       objectReference: {fileID: 0}
+    - target: {fileID: 7209038566570845190, guid: f47a3d9a40dd64842ac59fc110ad208f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2134f9d7dedfc4648979bd3d1fb6e79d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f47a3d9a40dd64842ac59fc110ad208f, type: 3}
 --- !u!4 &8328961393645402772 stripped
@@ -981,7 +985,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1601102971137874, guid: 6f7e4f57a804dda4b936963f6f4e7db3, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4758002792964466, guid: 6f7e4f57a804dda4b936963f6f4e7db3, type: 3}
       propertyPath: m_RootOrder
