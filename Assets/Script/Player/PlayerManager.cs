@@ -52,9 +52,7 @@ public class PlayerManager : MonoBehaviour
         enemyDodge = GetComponent<EnemyDodge>();
         canMove = true;
         isSkin1 = true;
-        //constraintAllRotationAndY = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
         defaultScale = transform.localScale;
-        //rb.constraints = constraintAllRotationAndY;
         checkPointPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
 
@@ -62,14 +60,14 @@ public class PlayerManager : MonoBehaviour
     public void AngryResetToCheckPoint()
     {
         StartCoroutine(DelayTeacherHit(timeBetweenResurrect, "angry"));
-        //yield return new WaitForSeconds(timeBetweenResurrect - 0.5f);
-        //playerInput.StartParticleSystem();
     }
 
     public IEnumerator DelayTeacherHit(float delay, string a)
     {
         if (!playerIsDead)
         {
+            transform.GetComponent<PlayerMovement>().StopDSP();
+
             AudioManager.Instance.StopAudio("footstep");
             StartCoroutine(playerInput.Skin2ToSkin1());
             canMove = false;
@@ -126,7 +124,6 @@ public class PlayerManager : MonoBehaviour
     }
     public void ResetPositionToCheckPoint()
     {
-        //StartCoroutine(playerInput.Skin2ToSkin1());
         StartCoroutine(Delay(timeBetweenResurrect, "die"));
     }
 
@@ -153,6 +150,8 @@ public class PlayerManager : MonoBehaviour
     {
         if (!playerIsDead)
         {
+            transform.GetComponent<PlayerMovement>().StopDSP();
+
             AudioManager.Instance.StopAudio("footstep");
             VibrateManager.Instance.HeavyVibrate();
             StartCoroutine(playerInput.Skin2ToSkin1());
@@ -169,6 +168,11 @@ public class PlayerManager : MonoBehaviour
             VibrateManager.Instance.RigidBibrate();
             playerInput.StartParticleSystem();
             gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Player");
+
+
+            //animator.SetBool("slow_run", false);
+            //transform.GetComponent<PlayerMovement>().moveSpeed = transform.GetComponent<PlayerMovement>().originMoveSpeed;
+
             animator.SetTrigger("idle");
             rb.velocity = new Vector3(0, 0, 0);
             transform.GetComponent<PlayerInput>().enabled = true;
@@ -178,10 +182,7 @@ public class PlayerManager : MonoBehaviour
             myCamera.transform.position = checkPointPosition + myCamera.offset;
             transform.rotation = Quaternion.Euler(0, 0, 0);
             transform.position = checkPointPosition;
-            //for (int i = 0; i < b.Length; i++)
-            //{
-            //    b[i].enabled = true;
-            //}
+
             b[0].enabled = true;
 
             rb.constraints = constraintAllRotation;
@@ -201,9 +202,10 @@ public class PlayerManager : MonoBehaviour
     {
         if (!enemyIsDead)
         {
+            transform.GetComponent<EnemyMovement>().StopDSP();
+
             DOTween.Kill(transform);
 
-            StopCoroutine(GetComponent<EnemyMovement>().DelayJump());
             GetComponent<EnemyDodge>().enabled = false;
             GetComponent<EnemyMovement>().enabled = false;
             StartCoroutine(enemyManager.EnemySkin2ToSkin1());
@@ -234,10 +236,7 @@ public class PlayerManager : MonoBehaviour
             animator.SetTrigger("get_up");
 
             transform.rotation = Quaternion.Euler(0, 0, 0);
-            //for (int i = 0; i < b.Length; i++)
-            //{
-            //    b[i].enabled = true;
-            //}
+
             b[0].enabled = true;
             rb.constraints = constraintAllRotation;
 
@@ -264,6 +263,8 @@ public class PlayerManager : MonoBehaviour
     {
         if (!enemyIsDead)
         {
+            transform.GetComponent<EnemyMovement>().StopDSP();
+
             DOTween.Kill(transform);
             enemyIsDead = true;
             GetComponent<EnemyDodge>().enabled = false;
@@ -284,10 +285,6 @@ public class PlayerManager : MonoBehaviour
 
             rb.velocity = new Vector3(0, 0, 0);
 
-            //for (int i = 0; i < b.Length; i++)
-            //{
-            //    b[i].enabled = true;
-            //}
             b[0].enabled = true;
 
             animator.SetTrigger("idle");
@@ -311,13 +308,10 @@ public class PlayerManager : MonoBehaviour
     public void EnemyAngryResetToCheckPoint()
     {
         StartCoroutine(EnemyDelayTeacherHit(timeBetweenResurrect, "angry"));
-        //yield return new WaitForSeconds(timeBetweenResurrect - 0.5f);
-        //enemyManager.StartParticleSystem();
     }
 
     public void EnemyKick(Vector3 kickDirection)
     {
-        //rb.velocity = Vector3.zero;
         rb.constraints = RigidbodyConstraints.None;
         rb.AddForce(kickDirection, ForceMode.VelocityChange);
         StartCoroutine(EnemyDelay(timeBetweenResurrect, "die"));
@@ -325,7 +319,6 @@ public class PlayerManager : MonoBehaviour
 
     public void ResetEnemyToCheckPoint()
     {
-        StartCoroutine(enemyManager.EnemySkin2ToSkin1());
         StartCoroutine(EnemyDelay(timeBetweenResurrect, "die"));
     }
 

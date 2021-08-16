@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CapsuleSkinBtnClick : MonoBehaviour
 {
     public int number;
-
+    public int costToBuy;
     private GameObject outline;
     public Mesh mesh;
     public Material mat;
@@ -13,6 +14,8 @@ public class CapsuleSkinBtnClick : MonoBehaviour
     [SerializeField]private bool isBought;
     public PlayerLoadSkin playerLoadSkin;
     private ContentManager contentManager;
+
+    private Text costToBuyTxt;
     private void Awake()
     {
         outline = transform.parent.GetChild(3).gameObject;
@@ -34,6 +37,8 @@ public class CapsuleSkinBtnClick : MonoBehaviour
         {
             transform.parent.GetChild(2).gameObject.SetActive(false);
         }
+        costToBuyTxt = transform.parent.Find("Buy").transform.GetComponentInChildren<Text>();
+        costToBuyTxt.text = "" + costToBuy;
     }
 
     public void OnItemClick()
@@ -64,6 +69,7 @@ public class CapsuleSkinBtnClick : MonoBehaviour
         AudioManager.Instance.PlayAudio("tab");
 
         isBought = true;
+        GameDataManager.Instance.SetCoin(-costToBuy);
 
         SetOutline(true);
         contentManager.SetOutlineChildOff(number);

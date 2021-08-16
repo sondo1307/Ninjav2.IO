@@ -61,11 +61,11 @@ public class PlayerMovement : MonoBehaviour
         {
             if (MoveForward())
             {
-                rb.velocity = new Vector3(0, rb.velocity.y, Mathf.Clamp(1 * moveSpeed, 0, moveSpeed));
+                rb.velocity = new Vector3(0, rb.velocity.y, Mathf.Clamp(1 * moveSpeed, 3, moveSpeed));
                 //rb.position += Vector3.forward * Time.deltaTime * moveSpeed;
                 if (oneTime)
                 {
-                    AudioManager.Instance.PlayAudio("footstep");
+                    //AudioManager.Instance.PlayAudio("footstep");
                     oneTime = false;
                 }
             }
@@ -78,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (MyScene.Instance.gameIsStart == true && !isPushed && MyScene.Instance.bonusRun)
         {
-            rb.velocity = new Vector3(0, rb.velocity.y, Mathf.Clamp(1 * moveSpeed, 0, moveSpeed));
+            rb.velocity = new Vector3(0, rb.velocity.y, moveSpeed);
         }
     }
     public bool MoveForward()
@@ -95,16 +95,42 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public bool slow { get; set; }
-    public IEnumerator DelaySlowSpeed()
+    public Coroutine c { get; set; }
+
+    public void DSP()
     {
         if (!slow)
         {
-            slow = true;
-            moveSpeed = slowSpeed;
-            yield return new WaitForSeconds(0.5f);
+            c = StartCoroutine(DelaySlowSpeed());
+        }
+    }
+
+    public IEnumerator DelaySlowSpeed()
+    {
+        //if (!slow)
+        //{
+        slow = true;
+        moveSpeed = slowSpeed;
+        animator.SetBool("slow_run", true);
+        AudioManager.Instance.StopAudio("footstep");
+        yield return new WaitForSeconds(1f);
+        //AudioManager.Instance.PlayAudio("footstep");
+        animator.SetBool("slow_run", false);
+        moveSpeed = originMoveSpeed;
+        slow = false;
+        //}
+    }
+
+    public void StopDSP()
+    {
+        if (c!=null)
+        {
+            StopCoroutine(c);
+            animator.SetBool("slow_run", false);
             moveSpeed = originMoveSpeed;
             slow = false;
         }
+
     }
 
     public Vector2 WorldMousePos() => Input.mousePosition;
@@ -185,7 +211,7 @@ public class PlayerMovement : MonoBehaviour
             if (checkJump)
             {
                 animator.SetTrigger("roll");
-                AudioManager.Instance.PlayAudio("footstep");
+                //AudioManager.Instance.PlayAudio("footstep");
                 GetComponent<PlayerInput>().enabled = true;
                 checkJump = false;
                 playerManager.jumping = false;

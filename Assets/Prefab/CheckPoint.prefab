@@ -129,8 +129,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flags:
-  - {fileID: 1161010426344719136}
   - {fileID: 2475086968166874984}
+  - {fileID: 1161010426344719136}
   confettiParticle: {fileID: 4777693137976714930, guid: a9e8b2b34c4895b42819fb3d126f9a61, type: 3}
 --- !u!65 &2056054066
 BoxCollider:

@@ -21,7 +21,8 @@ public class Brick : MonoBehaviour
 
             Physics.IgnoreCollision(transform.GetComponent<BoxCollider>(), collision.transform.GetComponentInChildren<CapsuleCollider>());
             transform.GetComponent<BoxCollider>().isTrigger = true;
-            StartCoroutine(collision.transform.GetComponent<PlayerMovement>().DelaySlowSpeed());
+
+            collision.transform.GetComponent<PlayerMovement>().DSP();
             check = false;
         }
 
@@ -29,7 +30,8 @@ public class Brick : MonoBehaviour
         {
             rb.AddForce((transform.position - collision.transform.position) * 10, ForceMode.Impulse);
             Physics.IgnoreCollision(transform.GetComponent<BoxCollider>(), collision.transform.GetComponentInChildren<CapsuleCollider>());
-            StartCoroutine(collision.transform.GetComponent<EnemyMovement>().DelaySlowSpeed());
+
+            collision.transform.GetComponent<EnemyMovement>().DSP();
             transform.GetComponent<BoxCollider>().isTrigger = true;
             check = false;
         }

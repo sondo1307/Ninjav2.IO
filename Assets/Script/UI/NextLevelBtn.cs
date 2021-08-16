@@ -8,18 +8,15 @@ using TMPro;
 
 public class NextLevelBtn : MonoBehaviour
 {
-    private Text nextLevelTMP;
     public PlayerLoadSkin playerLoadSkin;
+    public GameObject coinsAfterLvGroups;
+    public GameObject coinTxt;
 
     private void Awake()
     {
         playerLoadSkin = FindObjectOfType<PlayerLoadSkin>();
     }
 
-    private void Start()
-    {
-        nextLevelTMP = GetComponentInChildren<Text>();
-    }
 
     private void Update()
     {
@@ -27,27 +24,33 @@ public class NextLevelBtn : MonoBehaviour
 
     public void NextLevelBtnClick()
     {
-        DOTween.KillAll();
-
+        StartCoroutine(CoinSound());
+        GameDataManager.Instance.SetCoin(PlayerData.Instance.coinEarnThisRun);
+        coinTxt.GetComponent<CoinTxt>().SetText(GameDataManager.Instance.gameDataScrObj.totalCoin);
+        coinsAfterLvGroups.SetActive(true);
         GameDataManager.Instance.SetSkin1Material(playerLoadSkin.skin1.sharedMaterial);
         GameDataManager.Instance.SetSkin1Mesh(playerLoadSkin.skin1.sharedMesh);
         GameDataManager.Instance.SetSkin2Mesh(playerLoadSkin.skin2_1.sharedMesh);
         GameDataManager.Instance.SetSkin2Material(playerLoadSkin.skin2_2.sharedMaterial);
 
-        //if (GameDataManager.Instance.gameDataScrObj.keys == 3)
-        //{
-        //    GameDataManager.Instance.ChestThreeKeyOpen();
-        //}
-        //else if (GameDataManager.Instance.gameDataScrObj.keys < 3)
-        //{
-        //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        //}
+        // save game phai de cuoi cung va trc chuyen scene
+        //GameDataManager.Instance.SaveGameData();
 
-        // save game phai de cuoi cung
-        GameDataManager.Instance.SaveGameData();
+        //StartCoroutine(SaveGame());
+    }
 
+    IEnumerator CoinSound()
+    {
+        AudioManager.Instance.PlayAudio("coin_after_1");
+        yield return new WaitForSecondsRealtime(1f);
+        AudioManager.Instance.PlayAudio("coin_after_2");
 
+    }
+
+    IEnumerator SaveGame()
+    {
+        yield return new WaitForSecondsRealtime(2);
+        DOTween.KillAll();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-
     }
 }

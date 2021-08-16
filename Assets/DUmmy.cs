@@ -7,7 +7,6 @@ public class DUmmy : MonoBehaviour
 {
     public GameObject finishRoad;
     private Animator animator;
-
     public enum myE
     {
         Case1,
@@ -51,17 +50,19 @@ public class DUmmy : MonoBehaviour
     public void EndRun()
     {
         PlayerData.Instance.SetTotalCoinThisRun();
+        VibrateManager.Instance.HeavyVibrate();
         animator.SetTrigger("Die");
         MyScene.Instance.StartParticleConfetti(transform.position );
         MyScene.Instance.StartParticleConfetti(transform.position );
         transform.parent.Find("WindParticle").gameObject.SetActive(false);
         StartCoroutine(Delay());
     }
-        public void EndRun2()
+    public void EndRun2()
     {
         PlayerData.Instance.SetTotalCoinThisRun();
-        MyScene.Instance.StartParticleConfetti(transform.position );
-        MyScene.Instance.StartParticleConfetti(transform.position );
+        VibrateManager.Instance.HeavyVibrate();
+        MyScene.Instance.StartParticleConfetti(transform.position);
+        MyScene.Instance.StartParticleConfetti(transform.position);
         transform.parent.Find("WindParticle").gameObject.SetActive(false);
         StartCoroutine(Delay());
     }

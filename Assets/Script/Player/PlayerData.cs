@@ -17,7 +17,7 @@ public class PlayerData : MonoBehaviour
 
     public void SetTotalCoinThisRun()
     {
-        multipleCoin = Mathf.Clamp(GetComponent<ShurikenControl>().totalShuriken, 1, 10);
+        multipleCoin = Mathf.Clamp(Mathf.FloorToInt(GetComponent<ShurikenControl>().totalShuriken/10), 1, 10);
         coinEarnThisRun *= multipleCoin;
     }
 }

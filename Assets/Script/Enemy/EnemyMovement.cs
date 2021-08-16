@@ -401,17 +401,44 @@ public class EnemyMovement : MonoBehaviour
 
     }
 
+    public Coroutine c { get; set; }
+
+    public void DSP()
+    {
+        if (!slow)
+        {
+            c = StartCoroutine(DelaySlowSpeed());
+        }
+    }
+
     public IEnumerator DelaySlowSpeed()
     {
         if (!slow)
         {
             slow = true;
             rbSpeed = slowSpeed;
-            yield return new WaitForSeconds(0.5f);
+            animator.SetBool("slow_run", true);
+
+            yield return new WaitForSeconds(1f);
+            animator.SetBool("slow_run", false);
+
             rbSpeed = rbSpeedOrigin;
             slow = false;
         }
     }
+
+    public void StopDSP()
+    {
+        if (c != null)
+        {
+            StopCoroutine(c);
+            animator.SetBool("slow_run", false);
+            rbSpeed = rbSpeedOrigin;
+            slow = false;
+        }
+
+    }
+
 
     private void OnDrawGizmos()
     {

@@ -67,7 +67,27 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: key
     clip: {fileID: 8300000, guid: 21373a90052db0e4a89d4f35211ca8a8, type: 3}
-    volume: 0.35
+    volume: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: checkpoint
+    clip: {fileID: 8300000, guid: 21373a90052db0e4a89d4f35211ca8a8, type: 3}
+    volume: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: coin_after_1
+    clip: {fileID: 8300000, guid: 07fe19d23b088ac47b68dbe26e78a188, type: 3}
+    volume: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: coin_after_2
+    clip: {fileID: 8300000, guid: 397594221e556114aae1bf50dcfdbdcf, type: 3}
+    volume: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: bonus
+    clip: {fileID: 8300000, guid: 3204bdc41fd07cc428afa7a70437afc3, type: 3}
+    volume: 1
     loop: 0
     source: {fileID: 0}
 --- !u!114 &490020050

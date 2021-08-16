@@ -32,4 +32,26 @@ public class FasterSlower : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (mode == Mode.Slower)
+        {
+            if ((other.transform.CompareTag("Player") || other.transform.CompareTag("Enemy")) && other.transform.GetComponent<Animator>()!=null)
+            {
+                other.transform.GetComponent<Animator>().SetBool("slow_run", true);
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (mode == Mode.Slower)
+        {
+            if ((other.transform.CompareTag("Player") || other.transform.CompareTag("Enemy")) && other.transform.GetComponent<Animator>() != null)
+            {
+                other.transform.GetComponent<Animator>().SetBool("slow_run", false);
+            }
+        }
+    }
 }

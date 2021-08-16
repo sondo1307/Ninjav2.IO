@@ -24,6 +24,7 @@ public class CheckPoint : MonoBehaviour
             {
                 Physics.IgnoreCollision(transform.GetComponent<BoxCollider>(), other.transform.parent.gameObject.GetComponentsInChildren<CapsuleCollider>()[i]);
             }
+            AudioManager.Instance.PlayAudio("checkpoint");
         }
         if (other.transform.tag == "Enemy")
         {
@@ -43,8 +44,8 @@ public class CheckPoint : MonoBehaviour
 
     void Delay(Vector3 position1, Vector3 position2)
     {
-        GameObject a = Instantiate(confettiParticle, position1, Quaternion.Euler(-45, 0, 0));
-        GameObject b = Instantiate(confettiParticle, position2, Quaternion.Euler(-45, 0, 0));
-        GameObject c = Instantiate(confettiParticle, transform.position, Quaternion.Euler(-45, 0, 0));
+        GameObject a = Instantiate(confettiParticle, position1, Quaternion.Euler(-45, 20, 0));
+        GameObject b = Instantiate(confettiParticle, position2, Quaternion.Euler(-45, -20, 0));
+        //GameObject c = Instantiate(confettiParticle, transform.position, Quaternion.Euler(-45, 0, 0));
     }
 }

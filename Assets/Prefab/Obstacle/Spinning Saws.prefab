@@ -230,8 +230,8 @@ GameObject:
   - component: {fileID: 2494008810653711306}
   - component: {fileID: 1442635978283985140}
   - component: {fileID: 2018524244186505306}
-  - component: {fileID: 1856680141618121143}
   - component: {fileID: 6044066515245834435}
+  - component: {fileID: 3205359976170125327}
   m_Layer: 8
   m_Name: Cylinder.010
   m_TagString: Untagged
@@ -317,20 +317,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 250
---- !u!64 &1856680141618121143
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4015304803822447151}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5731547941117289742, guid: 1823c26c2292d4845bcca3fab0faefe8, type: 3}
 --- !u!114 &6044066515245834435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,6 +329,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eca76b347b8e242418630bce7bd20e8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &3205359976170125327
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4015304803822447151}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.0292583, y: 0.29271173, z: 0.60680187}
+  m_Center: {x: -0.00024032593, y: 0.00019448996, z: -0.00006169081}
 --- !u!1 &7288863924557729555
 GameObject:
   m_ObjectHideFlags: 0

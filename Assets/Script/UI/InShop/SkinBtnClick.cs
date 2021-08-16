@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class SkinBtnClick : MonoBehaviour
 {
     public int number;
-
+    public int costToBuy;
     private GameObject outline;
     [SerializeField] private PlayerSkinUI playerSkinUI;
     private PlayerLoadSkin playerLoadSkin;
@@ -16,6 +16,8 @@ public class SkinBtnClick : MonoBehaviour
     private ContentManager contentManager;
 
     public Animator animator;
+
+    private Text costToBuyTxt;
     private void Awake()
     {
         playerLoadSkin = FindObjectOfType<PlayerLoadSkin>();
@@ -36,6 +38,8 @@ public class SkinBtnClick : MonoBehaviour
         {
             transform.parent.GetChild(2).gameObject.SetActive(false);
         }
+        costToBuyTxt = transform.parent.Find("Buy").transform.GetComponentInChildren<Text>();
+        costToBuyTxt.text = "" + costToBuy;
     }
 
     public void OnItemClick()
@@ -52,8 +56,6 @@ public class SkinBtnClick : MonoBehaviour
         {
             playerLoadSkin.SetRealSkin(mesh, mat);
 
-            //outline.GetComponent<OutlineScript>().currentFatherObj = gameObject;
-
             GameDataManager.Instance.gameDataScrObj.skin1Mesh = mesh;
             GameDataManager.Instance.gameDataScrObj.skin1Material = mat;
             GameDataManager.Instance.gameDataScrObj.outlineSkin1Cur = number;
@@ -67,8 +69,10 @@ public class SkinBtnClick : MonoBehaviour
 
     public void SetSkinIsBought()
     {
-        isBought = true;
+        AudioManager.Instance.PlayAudio("tab");
 
+        isBought = true;
+        GameDataManager.Instance.SetCoin(-costToBuy);
         SetOutline(true);
         contentManager.SetOutlineChildOff(number);
 

@@ -9,9 +9,13 @@ public class FinishLine : MonoBehaviour
     {
         if (other.transform.CompareTag("Player"))
         {
+            StartCoroutine(other.GetComponentInParent<PlayerInput>().Skin2ToSkin1());
+            other.GetComponentInParent<PlayerInput>().enabled = false;
+            other.GetComponentInParent<PlayerDoEndRun>().FreezeY();
             MyScene.Instance.placeCount++;
 
             VibrateManager.Instance.LongVibrate();
+            AudioManager.Instance.PlayAudio("bonus");
             Collider[] list = other.transform.parent.GetComponentsInChildren<Collider>();
             for (int i = 0; i < list.Length; i++)
             {
@@ -20,11 +24,10 @@ public class FinishLine : MonoBehaviour
             StartParticle(transform.position - Vector3.right * 2.5f, transform.position + Vector3.right * 2.5f);
             int a =  MyScene.Instance.placeCount;
             PlayerData.Instance.place = a;
-            UIManager.Instance.ReachFinishLine();
             FindObjectOfType<BonusGroupControl>().GetBonus(a);
+            UIManager.Instance.ReachFinishLine();
             MyScene.Instance.bonusRun = true;
-            other.GetComponentInParent<PlayerInput>().enabled = false;
-            other.GetComponentInParent<PlayerDoEndRun>().FreezeY();
+
         }
         else if (other.transform.CompareTag("Enemy"))
         {
@@ -47,9 +50,8 @@ public class FinishLine : MonoBehaviour
 
     public void StartParticle(Vector3 position1, Vector3 position2)
     {
-         Instantiate(confettiParticle, position1, Quaternion.Euler(-45, 0, 0));
-         Instantiate(confettiParticle, position2, Quaternion.Euler(-45, 0, 0));
-         Instantiate(confettiParticle, transform.position, Quaternion.Euler(-45, 0, 0));
+         Instantiate(confettiParticle, position1, Quaternion.Euler(-45, 20, 0));
+         Instantiate(confettiParticle, position2, Quaternion.Euler(-45, -20, 0));
     }
 
 }

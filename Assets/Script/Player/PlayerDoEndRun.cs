@@ -67,6 +67,8 @@ public class PlayerDoEndRun : MonoBehaviour
     }
     public IEnumerator PlayerEndRun()
     {
+        DOTween.CompleteAll();
+        DOTween.KillAll();
         AudioManager.Instance.StopAudio("footstep");
         //Destroy(GetComponentInChildren<BoxCollider>());
         transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);

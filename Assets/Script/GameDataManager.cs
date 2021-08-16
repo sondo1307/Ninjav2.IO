@@ -40,22 +40,7 @@ public class GameDataManager : MonoBehaviour
 
     public void SetCoin(int a)
     {
-        if (a==1)
-        {
-            gameDataScrObj.totalCoin += 700;
-        }
-        else if (a == 2)
-        {
-            gameDataScrObj.totalCoin += 500;
-        }
-        else if (a == 3)
-        {
-            gameDataScrObj.totalCoin += 300;
-        }
-        else
-        {
-            gameDataScrObj.totalCoin += a;
-        }
+        gameDataScrObj.totalCoin += a;
     }
 
     public void SetSkin1Mesh(Mesh a)

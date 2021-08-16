@@ -97,7 +97,10 @@ public class UIManager : MonoBehaviour
         AudioManager.Instance.PlayAudio("tab");
     }
 
-
+    public void ReachFinishLine()
+    {
+        sliders.SetActive(false);
+    }
 
     public void StartGame()
     {
@@ -115,8 +118,9 @@ public class UIManager : MonoBehaviour
 
     public IEnumerator LevelComplete()
     {
-        holdTxt.SetActive(false);
+        //holdTxt.SetActive(false);
         backGrounds.SetActive(true);
+        coinGroup.SetActive(true);
         Tween a = levelCompleteImg.DOAnchorPosX(0, 0.5f, true).SetEase(Ease.Linear).SetUpdate(true);
         yield return a.WaitForCompletion();
         Tween b = levelCompleteTxt.DOAnchorPosY(14f, 1, true).SetEase(Ease.OutBounce).SetUpdate(true);
@@ -143,12 +147,9 @@ public class UIManager : MonoBehaviour
         holdTxt.SetActive(false);
     }
 
-    public void ReachFinishLine()
+    public void EndBonusRoad()
     {
-        sliders.SetActive(false);
         coinInGame.SetActive(false);
-        levelTxt.SetActive(false);
-        //shurikenInGame.SetActive(false);
     }
 
     public void SetNextLevelTxt()

@@ -8,6 +8,7 @@ public class EndRunTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            UIManager.Instance.EndBonusRoad();
             StartCoroutine(other.GetComponentInParent<PlayerDoEndRun>().PlayerEndRun());
             CameraFollow.Instance.transferToLate = true;
         }
