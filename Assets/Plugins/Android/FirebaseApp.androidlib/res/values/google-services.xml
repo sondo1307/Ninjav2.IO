@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:keep="@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_android_client_id,@string/default_web_client_id">
+  <string name="gcm_defaultSenderId" translatable="false">607033887938</string>
+  <string name="google_storage_bucket" translatable="false">ninja-dash-51fb0.appspot.com</string>
+  <string name="project_id" translatable="false">ninja-dash-51fb0</string>
+  <string name="google_api_key" translatable="false">AIzaSyDAwhMac5F_k6MGBnP_QPDiUwkf9vA8BEA</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDAwhMac5F_k6MGBnP_QPDiUwkf9vA8BEA</string>
+  <string name="google_app_id" translatable="false">1:607033887938:android:4f053bfb4e7ba18cbd3f5b</string>
+  <string name="default_android_client_id" translatable="false">607033887938-hqjfn3vfpu2n3ulajkg0qjin9rv94m5j.apps.googleusercontent.com</string>
+  <string name="default_web_client_id" translatable="false">607033887938-f3hijbeuu20is9krqfi3raas9rumkk63.apps.googleusercontent.com</string>
+</resources>

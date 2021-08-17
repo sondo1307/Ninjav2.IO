@@ -34,9 +34,8 @@ public class NextLevelBtn : MonoBehaviour
         GameDataManager.Instance.SetSkin2Material(playerLoadSkin.skin2_2.sharedMaterial);
 
         // save game phai de cuoi cung va trc chuyen scene
-        //GameDataManager.Instance.SaveGameData();
-
-        //StartCoroutine(SaveGame());
+        GameDataManager.Instance.SaveGameData();
+        StartCoroutine(SaveGame());
     }
 
     IEnumerator CoinSound()

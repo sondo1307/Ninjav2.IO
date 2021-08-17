@@ -4,18 +4,22 @@ using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEditor;
+using UnityEngine.SceneManagement;
 
 public class GameDataManager : MonoBehaviour
 {
     public static GameDataManager Instance;
     public GameDataScrObj gameDataScrObj;
 
-    public GameObject newCanvas;
     private void Awake()
     {
         Instance = this;
         gameDataScrObj = Resources.Load("data") as GameDataScrObj;
         LoadGameData();
+    }
+
+    private void Start()
+    {
     }
 
     public void SetKey()
@@ -63,7 +67,10 @@ public class GameDataManager : MonoBehaviour
         gameDataScrObj.skin2MeshRendererMat = a;
     }
 
-
+    public void SetSkin1VideoCount(int a)
+    {
+        gameDataScrObj.listOfSkin1BuyByVideo[a]++;
+    }
     public void SaveGameData()
     {
         SetLevel();

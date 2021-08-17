@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "607033887938",
+    "project_id": "ninja-dash-51fb0",
+    "storage_bucket": "ninja-dash-51fb0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:607033887938:android:4f053bfb4e7ba18cbd3f5b",
+        "android_client_info": {
+          "package_name": "com.abi.ninja.dash.race"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "607033887938-hqjfn3vfpu2n3ulajkg0qjin9rv94m5j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.abi.ninja.dash.race",
+            "certificate_hash": "e7d4094d8a8239586b1059bfd7893463c520eeba"
+          }
+        },
+        {
+          "client_id": "607033887938-f3hijbeuu20is9krqfi3raas9rumkk63.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAwhMac5F_k6MGBnP_QPDiUwkf9vA8BEA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "607033887938-f3hijbeuu20is9krqfi3raas9rumkk63.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

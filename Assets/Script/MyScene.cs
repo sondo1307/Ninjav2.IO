@@ -89,6 +89,6 @@ public class MyScene : MonoBehaviour
 
     public void StartParticleConfetti(Vector3 position)
     {
-        Instantiate(confettiPrefab, position, Quaternion.Euler(-90, 0, 0));
+        Instantiate(confettiPrefab, position, Quaternion.Euler(-45, 20, 0));
     }
 }

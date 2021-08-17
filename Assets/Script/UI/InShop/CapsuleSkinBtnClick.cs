@@ -75,7 +75,7 @@ public class CapsuleSkinBtnClick : MonoBehaviour
         contentManager.SetOutlineChildOff(number);
 
         capsuleSkinUI.SetCapsuleSkin(mesh, mat);
-        transform.parent.GetChild(1).gameObject.SetActive(false);
+        transform.parent.GetChild(2).gameObject.SetActive(false);
         playerLoadSkin.SetRealCapsuleSkin(mesh, mat);
 
         GameDataManager.Instance.gameDataScrObj.skin2MeshFilterMesh = mesh;

@@ -88,4 +88,16 @@ public class PlayerInput : MonoBehaviour
         playerManager.skin1.transform.localScale = skin1OriginSize;
 
     }
+
+    public void ResetAllTrigger()
+    {
+        animator.ResetTrigger("jump");
+        animator.ResetTrigger("idle");
+        animator.ResetTrigger("die");
+        animator.ResetTrigger("angry");
+        animator.ResetTrigger("fall_idle");
+        animator.ResetTrigger("run");
+        animator.ResetTrigger("roll");
+
+    }
 }

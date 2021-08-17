@@ -43,4 +43,9 @@ public class VibrateManager : MonoBehaviour
     {
         MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
     }
+
+    public void SuccesVibrate()
+    {
+        MMVibrationManager.Haptic(HapticTypes.Success);
+    }
 }

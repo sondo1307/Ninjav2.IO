@@ -67,17 +67,18 @@ public class PlayerManager : MonoBehaviour
         if (!playerIsDead)
         {
             transform.GetComponent<PlayerMovement>().StopDSP();
-
             AudioManager.Instance.StopAudio("footstep");
             StartCoroutine(playerInput.Skin2ToSkin1());
             canMove = false;
+            GetComponent<PlayerInput>().ResetAllTrigger();
+            animator.Rebind();
             VibrateManager.Instance.HeavyVibrate();
             animator.SetTrigger("angry");
             playerIsDead = true;
             gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Default");
             rb.velocity = new Vector3(0, rb.velocity.y, 0);
             rb.useGravity = false;
-
+            transform.GetComponent<PlayerMovement>().enabled = false;
             transform.GetComponent<PlayerInput>().enabled = false;
 
             yield return new WaitForSeconds(0.5f);
@@ -111,12 +112,14 @@ public class PlayerManager : MonoBehaviour
             VibrateManager.Instance.RigidBibrate();
             Instantiate(MyScene.Instance.smokeEffectNoSmokeUp, checkPointPosition + Vector3.up*0.25f, Quaternion.Euler(90, 0, 0));
             yield return new WaitForSeconds(2f);
+            GetComponent<PlayerInput>().ResetAllTrigger();
+            animator.Rebind();
             myCamera.player = transform.gameObject;
             rb.velocity = new Vector3(0, 0, 0);
             animator.SetTrigger("idle");
             playerInput.oneTime = true;
             transform.GetComponent<PlayerInput>().enabled = true;
-
+            transform.GetComponent<PlayerMovement>().enabled = true;
             canMove = true;
             playerIsDead = false;
             GetComponent<PlayerMovement>().oneTime = true;
@@ -151,7 +154,8 @@ public class PlayerManager : MonoBehaviour
         if (!playerIsDead)
         {
             transform.GetComponent<PlayerMovement>().StopDSP();
-
+            GetComponent<PlayerInput>().ResetAllTrigger();
+            animator.Rebind();
             AudioManager.Instance.StopAudio("footstep");
             VibrateManager.Instance.HeavyVibrate();
             StartCoroutine(playerInput.Skin2ToSkin1());
@@ -172,7 +176,8 @@ public class PlayerManager : MonoBehaviour
 
             //animator.SetBool("slow_run", false);
             //transform.GetComponent<PlayerMovement>().moveSpeed = transform.GetComponent<PlayerMovement>().originMoveSpeed;
-
+            GetComponent<PlayerInput>().ResetAllTrigger();
+            animator.Rebind();
             animator.SetTrigger("idle");
             rb.velocity = new Vector3(0, 0, 0);
             transform.GetComponent<PlayerInput>().enabled = true;
@@ -182,14 +187,11 @@ public class PlayerManager : MonoBehaviour
             myCamera.transform.position = checkPointPosition + myCamera.offset;
             transform.rotation = Quaternion.Euler(0, 0, 0);
             transform.position = checkPointPosition;
-
+            GetComponent<PlayerInput>().ResetAllTrigger();
             b[0].enabled = true;
-
             rb.constraints = constraintAllRotation;
-
             yield return new WaitForSeconds(0.5f);
             playerInput.oneTime = true;
-
             canMove = true;
             playerIsDead = false;
             GetComponent<PlayerMovement>().oneTime = true;
@@ -209,7 +211,8 @@ public class PlayerManager : MonoBehaviour
             GetComponent<EnemyDodge>().enabled = false;
             GetComponent<EnemyMovement>().enabled = false;
             StartCoroutine(enemyManager.EnemySkin2ToSkin1());
-
+            GetComponent<EnemyManager>().ResetAllTrigger();
+            animator.Rebind();
             animator.SetTrigger("angry");
             enemyIsDead = true;
             gameObject.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Default");
@@ -241,6 +244,8 @@ public class PlayerManager : MonoBehaviour
             rb.constraints = constraintAllRotation;
 
             yield return new WaitForSeconds(0.7f);
+            GetComponent<EnemyManager>().ResetAllTrigger();
+            animator.Rebind();
             Instantiate(MyScene.Instance.smokeEffectNoSmokeUp, checkPointPosition + Vector3.up * 0.25f, Quaternion.Euler(90, 0, 0));
             yield return new WaitForSeconds(2);
             rb.velocity = Vector3.zero;
@@ -264,7 +269,8 @@ public class PlayerManager : MonoBehaviour
         if (!enemyIsDead)
         {
             transform.GetComponent<EnemyMovement>().StopDSP();
-
+            GetComponent<EnemyManager>().ResetAllTrigger();
+            animator.Rebind();
             DOTween.Kill(transform);
             enemyIsDead = true;
             GetComponent<EnemyDodge>().enabled = false;
@@ -286,7 +292,8 @@ public class PlayerManager : MonoBehaviour
             rb.velocity = new Vector3(0, 0, 0);
 
             b[0].enabled = true;
-
+            GetComponent<EnemyManager>().ResetAllTrigger();
+            animator.Rebind();
             animator.SetTrigger("idle");
             rb.constraints = constraintAllRotation;
             transform.rotation = Quaternion.Euler(0, 0, 0);

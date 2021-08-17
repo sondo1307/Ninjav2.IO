@@ -192,22 +192,10 @@ public class PlayerMovement : MonoBehaviour
         StartCoroutine(Delay());
     }
 
-    //public bool jump { get; set; }
-    //public bool superJump { get; set; }
-
     public void CheckGround()
     {
         if (Physics.Raycast(child.transform.position, Vector3.down, 0.11f, layer))
         {
-            //if (checkJump && jump)
-            //{
-            //    animator.SetBool("jump", false);
-            //    //AudioManager.Instance.PlayAudio("footstep");
-            //    GetComponent<PlayerInput>().enabled = true;
-            //    checkJump = false;
-            //    playerManager.jumping = false;
-            //    jump = false;
-            //}
             if (checkJump)
             {
                 animator.SetTrigger("roll");
@@ -216,11 +204,15 @@ public class PlayerMovement : MonoBehaviour
                 checkJump = false;
                 playerManager.jumping = false;
                 //superJump = false;
-
+                StartCoroutine(ResetRoll());
             }
         }
     }
-
+    IEnumerator ResetRoll()
+    {
+        yield return new WaitForEndOfFrame();
+        animator.ResetTrigger("roll");
+    }
     public IEnumerator DelayFreezeY()
     {
         yield return new WaitForSeconds(0.5f);
@@ -237,12 +229,5 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("stun", false);
         isPushed = false;
         rb.velocity = new Vector3(0, rb.velocity.y, Mathf.Clamp(1 * moveSpeed, 0, moveSpeed));
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawRay(child.transform.position, transform.forward * 0.25f);
-        Gizmos.DrawRay(child.transform.position, Vector3.left * 2f);
-        Gizmos.DrawRay(child.transform.position, Vector3.right * 2f);
     }
 }

@@ -21,4 +21,7 @@ public class GameDataScrObj : ScriptableObject
 
     public int outlineSkin1Cur;
     public int outlineSkin2Cur;
+
+    public List<int> listOfSkin1BuyByVideo = new List<int> { 0,0,0};
+
 }

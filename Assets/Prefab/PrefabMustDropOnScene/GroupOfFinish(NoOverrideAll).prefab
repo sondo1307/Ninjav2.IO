@@ -617,10 +617,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Polygonal Golem Blue 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1950857120261156, guid: 4f5b23dfff41e8e4dbe82d0441a67b98, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4188072599102264, guid: 4f5b23dfff41e8e4dbe82d0441a67b98, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -687,10 +683,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cute Devil Purple 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1901966040948950, guid: 64e3e700cc3e5d544b43ae61b3681f5e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4862746234840220, guid: 64e3e700cc3e5d544b43ae61b3681f5e, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -735,10 +727,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 95914898657981864, guid: 64e3e700cc3e5d544b43ae61b3681f5e, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: c1919e5e21572c741a064d1b025d763c, type: 2}
     - target: {fileID: 332060478574204279, guid: 64e3e700cc3e5d544b43ae61b3681f5e, type: 3}
       propertyPath: finishRoad
       value: 
@@ -831,10 +819,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Polygonal Robot Hermit Purple 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1524812444174584, guid: 8f81784b4d42c5d4f85d9da6cc448b06, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4331938976386512, guid: 8f81784b4d42c5d4f85d9da6cc448b06, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -901,10 +885,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Polygonal King Cobra Black 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1900050543388296, guid: 852fd141e7072644e8f5a494364ca6ce, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4492295918115996, guid: 852fd141e7072644e8f5a494364ca6ce, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -967,25 +947,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 601746147674905298}
     m_Modifications:
-    - target: {fileID: 1793250055, guid: 6f7e4f57a804dda4b936963f6f4e7db3, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 1793250056, guid: 6f7e4f57a804dda4b936963f6f4e7db3, type: 3}
       propertyPath: finishRoad
       value: 
       objectReference: {fileID: 7920954870716332361}
-    - target: {fileID: 1793250057, guid: 6f7e4f57a804dda4b936963f6f4e7db3, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1601102971137874, guid: 6f7e4f57a804dda4b936963f6f4e7db3, type: 3}
       propertyPath: m_Name
       value: Polygonal Frightfly 04-s
-      objectReference: {fileID: 0}
-    - target: {fileID: 1601102971137874, guid: 6f7e4f57a804dda4b936963f6f4e7db3, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4758002792964466, guid: 6f7e4f57a804dda4b936963f6f4e7db3, type: 3}
       propertyPath: m_RootOrder
@@ -1049,10 +1017,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hell Creeper-Purple 1
       objectReference: {fileID: 0}
-    - target: {fileID: 100130, guid: ee3745d2af1da24468839b395d5659f7, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 400130, guid: ee3745d2af1da24468839b395d5659f7, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -1097,10 +1061,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: ee3745d2af1da24468839b395d5659f7, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 43cac6e5f88be5e4da649d0ef780bc98, type: 2}
     - target: {fileID: 5075236994056437396, guid: ee3745d2af1da24468839b395d5659f7, type: 3}
       propertyPath: finishRoad
       value: 

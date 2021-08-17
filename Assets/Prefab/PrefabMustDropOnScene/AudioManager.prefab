@@ -66,7 +66,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: key
-    clip: {fileID: 8300000, guid: 21373a90052db0e4a89d4f35211ca8a8, type: 3}
+    clip: {fileID: 8300000, guid: 0304f5ad8dee8c644b6896ebad4102f7, type: 3}
     volume: 1
     loop: 0
     source: {fileID: 0}

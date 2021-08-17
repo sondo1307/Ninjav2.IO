@@ -50,26 +50,30 @@ public class DUmmy : MonoBehaviour
     public void EndRun()
     {
         PlayerData.Instance.SetTotalCoinThisRun();
-        VibrateManager.Instance.HeavyVibrate();
+        VibrateManager.Instance.SuccesVibrate();
         animator.SetTrigger("Die");
-        MyScene.Instance.StartParticleConfetti(transform.position );
-        MyScene.Instance.StartParticleConfetti(transform.position );
+        Instantiate(MyScene.Instance.confettiPrefab, transform.position - Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, 20, 0));
+        Instantiate(MyScene.Instance.confettiPrefab, transform.position - Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, 20, 0));
+        Instantiate(MyScene.Instance.confettiPrefab, transform.position + Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, -20, 0));
+        Instantiate(MyScene.Instance.confettiPrefab, transform.position + Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, -20, 0));
         transform.parent.Find("WindParticle").gameObject.SetActive(false);
         StartCoroutine(Delay());
     }
     public void EndRun2()
     {
         PlayerData.Instance.SetTotalCoinThisRun();
-        VibrateManager.Instance.HeavyVibrate();
-        MyScene.Instance.StartParticleConfetti(transform.position);
-        MyScene.Instance.StartParticleConfetti(transform.position);
+        VibrateManager.Instance.SuccesVibrate();
+        Instantiate(MyScene.Instance.confettiPrefab, transform.position - Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, 20, 0));
+        Instantiate(MyScene.Instance.confettiPrefab, transform.position - Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, 20, 0));
+        Instantiate(MyScene.Instance.confettiPrefab, transform.position + Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, -20, 0));
+        Instantiate(MyScene.Instance.confettiPrefab, transform.position + Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, -20, 0));
         transform.parent.Find("WindParticle").gameObject.SetActive(false);
         StartCoroutine(Delay());
     }
 
     IEnumerator Delay()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(3.5f);
         Time.timeScale = 0;
         StartCoroutine(UIManager.Instance.LevelComplete());
     }

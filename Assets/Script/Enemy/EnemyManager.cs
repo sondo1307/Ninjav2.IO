@@ -103,4 +103,15 @@ public class EnemyManager : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void ResetAllTrigger()
+    {
+        animator.ResetTrigger("jump");
+        animator.ResetTrigger("idle");
+        animator.ResetTrigger("die");
+        animator.ResetTrigger("angry");
+        animator.ResetTrigger("fall_idle");
+        animator.ResetTrigger("run");
+        animator.ResetTrigger("roll");
+
+    }
 }

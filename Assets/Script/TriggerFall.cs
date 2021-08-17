@@ -11,7 +11,8 @@ public class TriggerFall : MonoBehaviour
             other.GetComponent<Animator>().SetTrigger("fall_idle");
             AudioManager.Instance.StopAudio("footstep");
             other.GetComponentInParent<PlayerMovement>().checkJump = true;
-            Physics.IgnoreCollision(GetComponent<BoxCollider>(), other);
+            other.GetComponentInParent<PlayerInput>().enabled = false;
+            //Physics.IgnoreCollision(GetComponent<BoxCollider>(), other);
             //other.GetComponentInParent<PlayerMovement>().superJump = true;
         }
         else if (other.transform.CompareTag("Enemy"))

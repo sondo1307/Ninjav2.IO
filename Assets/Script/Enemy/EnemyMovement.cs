@@ -378,7 +378,6 @@ public class EnemyMovement : MonoBehaviour
                 animator.SetTrigger("roll");
                 checkJump = false;
                 //superJump = false;
-
             }
         }
     }
@@ -439,22 +438,4 @@ public class EnemyMovement : MonoBehaviour
 
     }
 
-
-    private void OnDrawGizmos()
-    {
-
-        Gizmos.color = Color.red;
-        float tempRotation = Y1Rotation;
-        float step = Mathf.Abs(Y1Rotation - Y2Rotation) / (numerOfRay - 1);
-        for (int i = 0; i < numerOfRay; i++)
-        {
-            Vector3 dir = Quaternion.Euler(0, tempRotation, 0) * Vector3.forward;
-            Vector3 dir2 = Quaternion.Euler(0, 0, 0) * dir;
-            Gizmos.DrawRay(child.transform.position, dir2 * raycastLength);
-            tempRotation += step;
-        }
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawRay(child.transform.position, Vector3.right*3f);
-        Gizmos.DrawRay(child.transform.position, -Vector3.right* 2.5f);
-    }
 }
