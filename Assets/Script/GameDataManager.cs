@@ -22,9 +22,9 @@ public class GameDataManager : MonoBehaviour
     {
     }
 
-    public void SetKey()
+    public void SetKey(int a)
     {
-        gameDataScrObj.keys++;
+        gameDataScrObj.keys += a;
     }
 
     public bool SetMusic()

@@ -32,7 +32,7 @@ public class DUmmy : MonoBehaviour
             s.Append(transform.DOLocalMoveY(8, 2f).SetEase(Ease.Linear)).Append(transform.DOLocalMoveY(1.5f, 1.5f).SetEase(Ease.OutBounce))
     .Append(transform.DOLocalMoveY(1, 0.5f).SetEase(Ease.Linear));
             transform.DOMoveZ(finishRoad.transform.GetChild(Mathf.Clamp(force, 1, 10)).transform.position.z, 4).SetEase(Ease.OutQuad)
-                .OnComplete(EndRun2);
+                .OnComplete(EndRun);
 
         }
         else if (dropDown == myE.Case2)
@@ -40,33 +40,38 @@ public class DUmmy : MonoBehaviour
             animator.SetTrigger("Take Damage");
             transform.DORotate(new Vector3(0, 3600, 0), 4f, RotateMode.LocalAxisAdd).SetEase(Ease.OutQuad);
             transform.DOMoveZ(finishRoad.transform.GetChild(Mathf.Clamp(force, 1, 10)).transform.position.z, 4).SetEase(Ease.OutQuad)
-                .OnComplete(EndRun);
+                .OnComplete(EndRun2);
 
         }
 
     }
 
 
-    public void EndRun()
-    {
-        PlayerData.Instance.SetTotalCoinThisRun();
-        VibrateManager.Instance.SuccesVibrate();
-        animator.SetTrigger("Die");
-        Instantiate(MyScene.Instance.confettiPrefab, transform.position - Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, 20, 0));
-        Instantiate(MyScene.Instance.confettiPrefab, transform.position - Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, 20, 0));
-        Instantiate(MyScene.Instance.confettiPrefab, transform.position + Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, -20, 0));
-        Instantiate(MyScene.Instance.confettiPrefab, transform.position + Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, -20, 0));
-        transform.parent.Find("WindParticle").gameObject.SetActive(false);
-        StartCoroutine(Delay());
-    }
     public void EndRun2()
     {
         PlayerData.Instance.SetTotalCoinThisRun();
         VibrateManager.Instance.SuccesVibrate();
-        Instantiate(MyScene.Instance.confettiPrefab, transform.position - Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, 20, 0));
-        Instantiate(MyScene.Instance.confettiPrefab, transform.position - Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, 20, 0));
-        Instantiate(MyScene.Instance.confettiPrefab, transform.position + Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, -20, 0));
-        Instantiate(MyScene.Instance.confettiPrefab, transform.position + Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, -20, 0));
+        animator.SetTrigger("Die");
+        //Instantiate(MyScene.Instance.confettiPrefab, transform.position - Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, 20, 0));
+        //Instantiate(MyScene.Instance.confettiPrefab, transform.position - Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, 20, 0));
+        //Instantiate(MyScene.Instance.confettiPrefab, transform.position + Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, -20, 0));
+        //Instantiate(MyScene.Instance.confettiPrefab, transform.position + Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, -20, 0));
+        Instantiate(MyScene.Instance.confettiPrefab2, transform.position + Vector3.up, Quaternion.identity);
+        Instantiate(MyScene.Instance.confettiPrefab2, transform.position + Vector3.up, Quaternion.identity);
+        transform.parent.Find("WindParticle").gameObject.SetActive(false);
+        StartCoroutine(Delay());
+    }
+    public void EndRun()
+    {
+        PlayerData.Instance.SetTotalCoinThisRun();
+        VibrateManager.Instance.SuccesVibrate();
+        //Instantiate(MyScene.Instance.confettiPrefab, transform.position - Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, 20, 0));
+        //Instantiate(MyScene.Instance.confettiPrefab, transform.position - Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, 20, 0));
+        //Instantiate(MyScene.Instance.confettiPrefab, transform.position + Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, -20, 0));
+        //Instantiate(MyScene.Instance.confettiPrefab, transform.position + Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, -20, 0));
+        Instantiate(MyScene.Instance.confettiPrefab2, transform.position + Vector3.up, Quaternion.identity);
+        Instantiate(MyScene.Instance.confettiPrefab2, transform.position + Vector3.up, Quaternion.identity);
+
         transform.parent.Find("WindParticle").gameObject.SetActive(false);
         StartCoroutine(Delay());
     }

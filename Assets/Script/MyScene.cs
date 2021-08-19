@@ -22,6 +22,7 @@ public class MyScene : MonoBehaviour
 
     [Header("Particle")]
     public GameObject confettiPrefab;
+    public GameObject confettiPrefab2;
     public GameObject hitEffect;
     public GameObject smokeEffect;
     public GameObject smokeEffectNoSmokeUp;

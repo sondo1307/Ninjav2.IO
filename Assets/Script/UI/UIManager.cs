@@ -17,7 +17,6 @@ public class UIManager : MonoBehaviour
     public GameObject coinGroup;
     public GameObject countDown;
     public GameObject levelTxt;
-
     [Header("In Game")]
     public GameObject sliders;
     public GameObject coinInGame;
@@ -35,6 +34,7 @@ public class UIManager : MonoBehaviour
     [Header("Groups")]
     public GameObject menu;
     public GameObject shop;
+    public GameObject chestOpenGroup;
 
     [Header("Shop")]
     public ShopGroupManager shopGroupManager;
@@ -67,6 +67,7 @@ public class UIManager : MonoBehaviour
         StartMenu();
         menu.SetActive(true);
         StartCoroutine(Delay());
+        chestOpenGroup.SetActive(true);
     }
 
     IEnumerator Delay()
@@ -74,6 +75,8 @@ public class UIManager : MonoBehaviour
         yield return new WaitForEndOfFrame();
         blackPanel.SetActive(false);
         shop.SetActive(false);
+        chestOpenGroup.SetActive(false);
+
     }
 
     public void StartMenu()
@@ -118,7 +121,6 @@ public class UIManager : MonoBehaviour
 
     public IEnumerator LevelComplete()
     {
-        //holdTxt.SetActive(false);
         backGrounds.SetActive(true);
         coinGroup.SetActive(true);
         Tween a = levelCompleteImg.DOAnchorPosX(0, 0.5f, true).SetEase(Ease.Linear).SetUpdate(true);
@@ -134,6 +136,14 @@ public class UIManager : MonoBehaviour
         nextLevelBtn.gameObject.SetActive(true);
         Tween d = nextLevelBtn.GetComponentInChildren<Text>().DOFade(1, 1).SetEase(Ease.Linear).SetUpdate(true);
         Time.timeScale = 0;
+    }
+
+    public IEnumerator LevelCompleteThreeKey()
+    {
+        yield return new WaitForSecondsRealtime(2);
+        coinGroup.SetActive(false);
+        chestOpenGroup.SetActive(true);
+        menu.SetActive(false);
     }
 
     public void ShowHoldTxt()

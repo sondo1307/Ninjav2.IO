@@ -50,6 +50,7 @@ MonoBehaviour:
   finishLine: {fileID: 0}
   placeCount: 0
   confettiPrefab: {fileID: 4777693137976714930, guid: a9e8b2b34c4895b42819fb3d126f9a61, type: 3}
+  confettiPrefab2: {fileID: 4777693137976714930, guid: 1efae0356f7387241a248e5549323834, type: 3}
   hitEffect: {fileID: 100000, guid: 3156817f64ec68948ad6bb26569b9ef5, type: 3}
   smokeEffect: {fileID: 1965343156803978, guid: e589125f4f683604cbed1b5a7c6e16b2, type: 3}
   smokeEffectNoSmokeUp: {fileID: 1965343156803978, guid: 5b3999da54bf19c45a8a15c6294a0f61, type: 3}
@@ -68,4 +69,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameDataScrObj: {fileID: 0}
-  newCanvas: {fileID: 0}

@@ -15,7 +15,7 @@ public class Key : MonoBehaviour
     {
         if (other.transform.CompareTag("Player"))
         {
-            GameDataManager.Instance.SetKey();
+            GameDataManager.Instance.SetKey(1);
             AudioManager.Instance.PlayAudio("key");
             DOTween.Kill(transform);
             Destroy(gameObject.transform.parent.gameObject);
