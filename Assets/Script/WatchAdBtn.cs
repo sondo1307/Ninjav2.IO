@@ -10,7 +10,6 @@ public class WatchAdBtn : MonoBehaviour
     }
     public void OnClick()
     {
-        //AdsManager.instance.ShowVideoAds(FirebaseAnalystic.RewardPos.SuckMoney);
-        AdsManager.instance.ShowInterAd();
+        AdsManager.instance.ShowVideoAds(FirebaseAnalystic.RewardPos.SuckMoney);
     }
 }

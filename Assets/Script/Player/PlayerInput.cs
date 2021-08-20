@@ -22,7 +22,9 @@ public class PlayerInput : MonoBehaviour
         playerManager = GetComponent<PlayerManager>();
         skin1OriginSize = playerManager.skin1.transform.localScale;
         skin2OriginSize = playerManager.skin2.transform.localScale;
+        fireBaseTrackerPlay = false;
     }
+    private bool fireBaseTrackerPlay;
     private void Update()
     {
         if (MyScene.Instance.gameIsStart == true)
@@ -32,6 +34,11 @@ public class PlayerInput : MonoBehaviour
                 animator.SetTrigger("run");
                 oneTime = false;
                 checkAnimationRun = false;
+            }
+            if (Input.GetKey(KeyCode.Mouse0)&&!fireBaseTrackerPlay)
+            {
+                FirebaseAnalystic.Instance.PlayLevel(GameDataManager.Instance.gameDataScrObj.level);
+                fireBaseTrackerPlay = true;
             }
             InputReceive();
         }

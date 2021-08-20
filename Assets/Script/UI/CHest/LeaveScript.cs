@@ -8,6 +8,8 @@ public class LeaveScript : MonoBehaviour
 {
     public void LeaveBtnOnClick()
     {
+        AdsManager.instance.ShowInterAd();
+
         GameDataManager.Instance.SetKey(-3);
 
         // save game phai de cuoi cung va trc chuyen scene

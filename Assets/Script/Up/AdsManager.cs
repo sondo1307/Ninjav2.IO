@@ -10,9 +10,9 @@ public class AdsManager : MonoBehaviour
     private Action callbackAds;
 
     //MAX
-    string interId = "28937d207c418390";
-    string videoId = "94784e23cfa71aed";
-    string bannerId = "7d5e43f92b2ff331";
+    string interId = "9f262b7c77e21242";
+    string videoId = "c17fd9a6872df21a";
+    string bannerId = "e930a4209cb431e3";
     int retryAttempt;
 
     int reloadAds;

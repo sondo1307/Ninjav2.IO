@@ -66,6 +66,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (!playerIsDead)
         {
+            FirebaseAnalystic.Instance.LoseLevel(GameDataManager.Instance.gameDataScrObj.level);
             transform.GetComponent<PlayerMovement>().StopDSP();
             AudioManager.Instance.StopAudio("footstep");
             StartCoroutine(playerInput.Skin2ToSkin1());
@@ -153,6 +154,8 @@ public class PlayerManager : MonoBehaviour
     {
         if (!playerIsDead)
         {
+            FirebaseAnalystic.Instance.LoseLevel(GameDataManager.Instance.gameDataScrObj.level);
+
             transform.GetComponent<PlayerMovement>().StopDSP();
             GetComponent<PlayerInput>().ResetAllTrigger();
             animator.Rebind();

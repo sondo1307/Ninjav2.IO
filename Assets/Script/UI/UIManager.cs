@@ -72,7 +72,7 @@ public class UIManager : MonoBehaviour
 
     IEnumerator Delay()
     {
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(0.5f);
         blackPanel.SetActive(false);
         shop.SetActive(false);
         chestOpenGroup.SetActive(false);

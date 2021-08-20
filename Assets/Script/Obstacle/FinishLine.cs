@@ -9,6 +9,7 @@ public class FinishLine : MonoBehaviour
     {
         if (other.transform.CompareTag("Player"))
         {
+            FirebaseAnalystic.Instance.WinLevel(GameDataManager.Instance.gameDataScrObj.level);
             StartCoroutine(other.GetComponentInParent<PlayerInput>().Skin2ToSkin1());
             other.GetComponentInParent<PlayerInput>().enabled = false;
             other.GetComponentInParent<PlayerDoEndRun>().FreezeY();
