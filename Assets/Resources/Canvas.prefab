@@ -1723,8 +1723,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4067c1c55057efb4ba33d1c19208f6a8, type: 2}
+  m_sharedMaterial: {fileID: 4680360212964090376, guid: 4067c1c55057efb4ba33d1c19208f6a8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -12377,7 +12377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -13115,8 +13115,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5336866415596166895}
   m_HandleRect: {fileID: 5548604883241150384}
   m_Direction: 0
-  m_Value: 0.00000010345832
-  m_Size: 0.6193741
+  m_Value: 0
+  m_Size: 0.6193751
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -22985,7 +22985,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5899407337368116688
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27069,8 +27069,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4428921982652455342}
   m_HandleRect: {fileID: 7921572483780464373}
   m_Direction: 0
-  m_Value: 0.00000010345832
-  m_Size: 0.6193741
+  m_Value: 0
+  m_Size: 0.6193751
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

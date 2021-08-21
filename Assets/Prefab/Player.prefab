@@ -194,7 +194,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   place: 0
-  coinEarnThisRun: 0
 --- !u!114 &8443736471117452376
 MonoBehaviour:
   m_ObjectHideFlags: 0
