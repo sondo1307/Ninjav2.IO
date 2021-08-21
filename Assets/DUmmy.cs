@@ -56,8 +56,6 @@ public class DUmmy : MonoBehaviour
         //Instantiate(MyScene.Instance.confettiPrefab, transform.position - Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, 20, 0));
         //Instantiate(MyScene.Instance.confettiPrefab, transform.position + Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, -20, 0));
         //Instantiate(MyScene.Instance.confettiPrefab, transform.position + Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, -20, 0));
-        Instantiate(MyScene.Instance.confettiPrefab2, transform.position + Vector3.up, Quaternion.identity);
-        Instantiate(MyScene.Instance.confettiPrefab2, transform.position + Vector3.up, Quaternion.identity);
         transform.parent.Find("WindParticle").gameObject.SetActive(false);
         StartCoroutine(Delay());
     }
@@ -69,8 +67,7 @@ public class DUmmy : MonoBehaviour
         //Instantiate(MyScene.Instance.confettiPrefab, transform.position - Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, 20, 0));
         //Instantiate(MyScene.Instance.confettiPrefab, transform.position + Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, -20, 0));
         //Instantiate(MyScene.Instance.confettiPrefab, transform.position + Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, -20, 0));
-        Instantiate(MyScene.Instance.confettiPrefab2, transform.position + Vector3.up, Quaternion.identity);
-        Instantiate(MyScene.Instance.confettiPrefab2, transform.position + Vector3.up, Quaternion.identity);
+
 
         transform.parent.Find("WindParticle").gameObject.SetActive(false);
         StartCoroutine(Delay());
@@ -78,7 +75,12 @@ public class DUmmy : MonoBehaviour
 
     IEnumerator Delay()
     {
-        yield return new WaitForSeconds(3.5f);
+        Instantiate(MyScene.Instance.confettiPrefab2, transform.position + Vector3.up * 3.5f, Quaternion.identity);
+        yield return new WaitForSeconds(0.5f);
+        Instantiate(MyScene.Instance.confettiPrefab2, transform.position + Vector3.up * 3.5f + Vector3.right*1.5f, Quaternion.identity);
+        yield return new WaitForSeconds(0.5f);
+        Instantiate(MyScene.Instance.confettiPrefab2, transform.position + Vector3.up * 3.5f - Vector3.right * 1.5f, Quaternion.identity);
+        yield return new WaitForSeconds(2.5f);
         Time.timeScale = 0;
         StartCoroutine(UIManager.Instance.LevelComplete());
     }
