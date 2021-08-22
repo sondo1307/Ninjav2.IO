@@ -42,6 +42,13 @@ public class GameDataManager : MonoBehaviour
         gameDataScrObj.level++;
     }
 
+    public enum RewardAdMode
+    {
+        X5,
+        PlusCoin,
+        Key,
+    };
+
     public void SetCoin(int a)
     {
         gameDataScrObj.totalCoin += a;

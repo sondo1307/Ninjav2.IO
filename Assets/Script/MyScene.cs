@@ -88,8 +88,14 @@ public class MyScene : MonoBehaviour
         }
     }
 
-    public void StartParticleConfetti(Vector3 position)
+    public enum RewardAdMode
     {
-        Instantiate(confettiPrefab, position, Quaternion.Euler(-45, 20, 0));
+        X5,
+        Key,
+        PlusCoin,
+        BuySkin,
     }
+
+    public RewardAdMode lastRewardAdMode;
+    public int lastSkin1BuyByVideoClicked;
 }

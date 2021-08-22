@@ -288,10 +288,26 @@ public class AdsManager : MonoBehaviour
             callbackAds();
         }
         Debug.Log("ADS:OnRewardedAdReceivedRewardEvent");
-
+        if (MyScene.Instance.lastRewardAdMode == MyScene.RewardAdMode.PlusCoin)
+        {
+            GameDataManager.Instance.SetCoin(500);
+            FindObjectOfType<CoinTxt>().SetText(GameDataManager.Instance.gameDataScrObj.totalCoin);
+        }
+        else if (MyScene.Instance.lastRewardAdMode == MyScene.RewardAdMode.X5)
+        {
+            GameDataManager.Instance.SetCoin(PlayerData.Instance.coinEarnThisRun * 5);
+        }
+        else if (MyScene.Instance.lastRewardAdMode == MyScene.RewardAdMode.Key)
+        {
+            GameDataManager.Instance.SetKey(3);
+        }
+        else if (MyScene.Instance.lastRewardAdMode == MyScene.RewardAdMode.BuySkin)
+        {
+            SkinBtnClick[] a = FindObjectsOfType<SkinBtnClick>();
+            a[FindObjectsOfType<SkinBtnClick>().Length - MyScene.Instance.lastSkin1BuyByVideoClicked-1].SetAfterSawRewardAd();
+        }
         FirebaseAnalystic.Instance.ShowAdsSuccess(FirebaseAnalystic.AdsType.Video);
     }
-
     private void OnBannedExpandedEvent(string obj)
     {
         throw new NotImplementedException();

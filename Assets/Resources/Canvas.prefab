@@ -2277,6 +2277,7 @@ GameObject:
   - component: {fileID: 7816822113891473629}
   - component: {fileID: 4343566298344112702}
   - component: {fileID: 4907616384104980215}
+  - component: {fileID: 8641161960272729106}
   m_Layer: 5
   m_Name: Buy
   m_TagString: Untagged
@@ -2399,6 +2400,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8641161960272729106}
+        m_TargetAssemblyTypeName: WatchAdBtn, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8641161960272729106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252387632762412242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a8d8c0094cf5fd46ade0bcde4906a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 3
 --- !u!1 &261824243881358523
 GameObject:
   m_ObjectHideFlags: 0
@@ -10253,7 +10279,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2607551576822880423}
-        m_TargetAssemblyTypeName: ItemBtnClick, Assembly-CSharp
+        m_TargetAssemblyTypeName: SkinBtnClick, Assembly-CSharp
         m_MethodName: OnItemClick
         m_Mode: 1
         m_Arguments:
@@ -13115,8 +13141,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5336866415596166895}
   m_HandleRect: {fileID: 5548604883241150384}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 0.6193751
+  m_Value: 0.00000010345832
+  m_Size: 0.61936295
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -13552,7 +13578,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5566617669279785064}
-        m_TargetAssemblyTypeName: ItemBtnClick, Assembly-CSharp
+        m_TargetAssemblyTypeName: SkinBtnClick, Assembly-CSharp
         m_MethodName: OnItemClick
         m_Mode: 1
         m_Arguments:
@@ -13596,6 +13622,7 @@ GameObject:
   - component: {fileID: 3490231588329062152}
   - component: {fileID: 1873315283358697918}
   - component: {fileID: 9088029106133123494}
+  - component: {fileID: 6428527673288348732}
   m_Layer: 5
   m_Name: Buy
   m_TagString: Untagged
@@ -13718,6 +13745,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6428527673288348732}
+        m_TargetAssemblyTypeName: WatchAdBtn, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6428527673288348732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3980030122829318238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a8d8c0094cf5fd46ade0bcde4906a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 3
 --- !u!1 &4001752379237121738
 GameObject:
   m_ObjectHideFlags: 0
@@ -18194,6 +18246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a8d8c0094cf5fd46ade0bcde4906a6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mode: 0
 --- !u!1 &5845128366775860848
 GameObject:
   m_ObjectHideFlags: 0
@@ -18392,7 +18445,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 401516885806381388}
-        m_TargetAssemblyTypeName: ItemBtnClick, Assembly-CSharp
+        m_TargetAssemblyTypeName: SkinBtnClick, Assembly-CSharp
         m_MethodName: OnItemClick
         m_Mode: 1
         m_Arguments:
@@ -18546,7 +18599,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7110671741882264958}
-        m_TargetAssemblyTypeName: ItemBtnClick, Assembly-CSharp
+        m_TargetAssemblyTypeName: SkinBtnClick, Assembly-CSharp
         m_MethodName: OnItemClick
         m_Mode: 1
         m_Arguments:
@@ -19080,7 +19133,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 390717928410331886}
-        m_TargetAssemblyTypeName: ItemBtnClick, Assembly-CSharp
+        m_TargetAssemblyTypeName: SkinBtnClick, Assembly-CSharp
         m_MethodName: OnItemClick
         m_Mode: 1
         m_Arguments:
@@ -19587,6 +19640,7 @@ GameObject:
   - component: {fileID: 6141712172711491829}
   - component: {fileID: 5050266971596488293}
   - component: {fileID: 937659199787659099}
+  - component: {fileID: 7069517510048082870}
   m_Layer: 5
   m_Name: WatchAdBtn
   m_TagString: Untagged
@@ -19696,7 +19750,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6141712172711491829}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7069517510048082870}
+        m_TargetAssemblyTypeName: WatchAdBtn, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &937659199787659099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19709,6 +19775,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fab10a5b5d19b3478d4cd525f52c793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7069517510048082870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6166790731827201709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a8d8c0094cf5fd46ade0bcde4906a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 2
 --- !u!1 &6175870315513703765
 GameObject:
   m_ObjectHideFlags: 0
@@ -21854,6 +21933,7 @@ GameObject:
   - component: {fileID: 609800659573677465}
   - component: {fileID: 7337911573682180943}
   - component: {fileID: 9030733564221459122}
+  - component: {fileID: 8756050340505719295}
   m_Layer: 5
   m_Name: Buy
   m_TagString: Untagged
@@ -21976,6 +22056,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8756050340505719295}
+        m_TargetAssemblyTypeName: WatchAdBtn, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8756050340505719295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7308908081735356878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a8d8c0094cf5fd46ade0bcde4906a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 3
 --- !u!1 &7330398054550755615
 GameObject:
   m_ObjectHideFlags: 0
@@ -23471,6 +23576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a8d8c0094cf5fd46ade0bcde4906a6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mode: 1
 --- !u!1 &8018882512052620824
 GameObject:
   m_ObjectHideFlags: 0
@@ -23593,7 +23699,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8217439717178379190}
-        m_TargetAssemblyTypeName: ItemBtnClick, Assembly-CSharp
+        m_TargetAssemblyTypeName: SkinBtnClick, Assembly-CSharp
         m_MethodName: OnItemClick
         m_Mode: 1
         m_Arguments:
@@ -25241,7 +25347,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5445271438611628266}
-        m_TargetAssemblyTypeName: ItemBtnClick, Assembly-CSharp
+        m_TargetAssemblyTypeName: SkinBtnClick, Assembly-CSharp
         m_MethodName: OnItemClick
         m_Mode: 1
         m_Arguments:
@@ -27069,8 +27175,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4428921982652455342}
   m_HandleRect: {fileID: 7921572483780464373}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 0.6193751
+  m_Value: 0.00000010345832
+  m_Size: 0.61936295
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -27617,13 +27723,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerInGUI2
       objectReference: {fileID: 0}
+    - target: {fileID: 7678240666567451697, guid: 7a35b7a7ace15874387c863ad9f75488, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7975157344349567218, guid: 7a35b7a7ace15874387c863ad9f75488, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a35b7a7ace15874387c863ad9f75488, type: 3}
---- !u!4 &4813760397103130293 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 564572456169107237, guid: 7a35b7a7ace15874387c863ad9f75488, type: 3}
-  m_PrefabInstance: {fileID: 4978775825190029712}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7155181626352399760 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2761944606552882176, guid: 7a35b7a7ace15874387c863ad9f75488, type: 3}
@@ -27635,6 +27744,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34058edc9aef5094c9af10d6cd60dc2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &4813760397103130293 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 564572456169107237, guid: 7a35b7a7ace15874387c863ad9f75488, type: 3}
+  m_PrefabInstance: {fileID: 4978775825190029712}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9091088076539150074
 PrefabInstance:
   m_ObjectHideFlags: 0

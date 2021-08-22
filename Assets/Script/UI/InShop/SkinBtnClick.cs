@@ -27,6 +27,7 @@ public class SkinBtnClick : MonoBehaviour
     };
 
     public BuyMode buyMode;
+    //public bool a;
 
     private void Awake()
     {
@@ -88,7 +89,28 @@ public class SkinBtnClick : MonoBehaviour
 
     public void SetSkinIsBought()
     {
-        if (buyMode == BuyMode.Coin)
+        if (buyMode == BuyMode.Video)
+        {
+            MyScene.Instance.lastSkin1BuyByVideoClicked = number;
+            if (GameDataManager.Instance.gameDataScrObj.listOfSkin1BuyByVideo[theOrderInListSkin1Scrip] == 2)
+            {
+                isBought = true;
+                SetOutline(true);
+                contentManager.SetOutlineChildOff(number);
+
+                playerSkinUI.SetSkin(mesh, mat);
+                transform.parent.GetChild(2).gameObject.SetActive(false);
+                playerLoadSkin.SetRealSkin(mesh, mat);
+
+                GameDataManager.Instance.gameDataScrObj.skin1Mesh = mesh;
+                GameDataManager.Instance.gameDataScrObj.skin1Material = mat;
+                GameDataManager.Instance.gameDataScrObj.outlineSkin1Cur = number;
+                GameDataManager.Instance.gameDataScrObj.numberOfSkin1Unlocked.Add(number);
+
+                //SetAfterSawRewardAd()
+            }
+        }
+        else if (buyMode == BuyMode.Coin)
         {
             AudioManager.Instance.PlayAudio("tab");
             isBought = true;
@@ -105,26 +127,11 @@ public class SkinBtnClick : MonoBehaviour
             GameDataManager.Instance.gameDataScrObj.outlineSkin1Cur = number;
             GameDataManager.Instance.gameDataScrObj.numberOfSkin1Unlocked.Add(number);
         }
-        else if (buyMode == BuyMode.Video)
-        {
-            if (GameDataManager.Instance.gameDataScrObj.listOfSkin1BuyByVideo[theOrderInListSkin1Scrip]==2)
-            {
-                isBought = true;
-                SetOutline(true);
-                contentManager.SetOutlineChildOff(number);
+    }
 
-                playerSkinUI.SetSkin(mesh, mat);
-                transform.parent.GetChild(2).gameObject.SetActive(false);
-                playerLoadSkin.SetRealSkin(mesh, mat);
-
-                GameDataManager.Instance.gameDataScrObj.skin1Mesh = mesh;
-                GameDataManager.Instance.gameDataScrObj.skin1Material = mat;
-                GameDataManager.Instance.gameDataScrObj.outlineSkin1Cur = number;
-                GameDataManager.Instance.gameDataScrObj.numberOfSkin1Unlocked.Add(number);
-            }
-            GameDataManager.Instance.SetSkin1VideoCount(theOrderInListSkin1Scrip);
-            costToBuyTxt.text = "" + GameDataManager.Instance.gameDataScrObj.listOfSkin1BuyByVideo[theOrderInListSkin1Scrip] + "/" + 3;
-        }
-
+    public void SetAfterSawRewardAd()
+    {
+        GameDataManager.Instance.SetSkin1VideoCount(theOrderInListSkin1Scrip);
+        costToBuyTxt.text = "" + GameDataManager.Instance.gameDataScrObj.listOfSkin1BuyByVideo[theOrderInListSkin1Scrip] + "/" + 3;
     }
 }

@@ -39,6 +39,7 @@ public class NextLevelBtn : MonoBehaviour
             // save game phai de cuoi cung va trc chuyen scene
             GameDataManager.Instance.SaveGameData();
             StartCoroutine(SaveGame());
+            AdsManager.instance.ShowInterAd();
         }
         else if(GameDataManager.Instance.gameDataScrObj.keys == 3)
         {
