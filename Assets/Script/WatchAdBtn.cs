@@ -29,7 +29,6 @@ public class WatchAdBtn : MonoBehaviour
         else if (mode == RewardAdMode.Key)
         {
             MyScene.Instance.lastRewardAdMode = MyScene.RewardAdMode.Key;
-
             AdsManager.instance.ShowVideoAds(FirebaseAnalystic.RewardPos.X2_Gold);
         }
         else if (mode == RewardAdMode.BuySkin)
