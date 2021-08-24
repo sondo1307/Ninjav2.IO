@@ -129,8 +129,6 @@ public class SkinBtnClick : MonoBehaviour
 
     public void SetAfterSawRewardAd()
     {
-        GameDataManager.Instance.SetSkin1VideoCount(theOrderInListSkin1Scrip);
-        costToBuyTxt.text = "" + GameDataManager.Instance.gameDataScrObj.listOfSkin1BuyByVideo[theOrderInListSkin1Scrip] + "/" + 3;
         if (GameDataManager.Instance.gameDataScrObj.listOfSkin1BuyByVideo[theOrderInListSkin1Scrip] == 2)
         {
             isBought = true;
@@ -146,5 +144,7 @@ public class SkinBtnClick : MonoBehaviour
             GameDataManager.Instance.gameDataScrObj.outlineSkin1Cur = number;
             GameDataManager.Instance.gameDataScrObj.numberOfSkin1Unlocked.Add(number);
         }
+        GameDataManager.Instance.SetSkin1VideoCount(theOrderInListSkin1Scrip);
+        costToBuyTxt.text = "" + GameDataManager.Instance.gameDataScrObj.listOfSkin1BuyByVideo[theOrderInListSkin1Scrip] + "/" + 3;
     }
 }

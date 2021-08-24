@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keys: 0
   level: 1
-  totalCoin: 0
-  skin1Mesh: {fileID: 4300000, guid: 2cc72a53887f4544a98a86c523c6ad2a, type: 2}
-  skin1Material: {fileID: 2100000, guid: 366cb5460970a614aba2483c6724b6ef, type: 2}
+  totalCoin: 720
+  skin1Mesh: {fileID: 4300000, guid: 05c08b0ee2420884e8df40ed0c6a3fe3, type: 2}
+  skin1Material: {fileID: 2100000, guid: e5a7d4d91e45a334dae786d6954904df, type: 2}
   skin2MeshFilterMesh: {fileID: 6865981403698351632, guid: 1ec3a62aef209c14684e6f8718cdd95e, type: 3}
   skin2MeshRendererMat: {fileID: -3721096122249686530, guid: 1ec3a62aef209c14684e6f8718cdd95e, type: 3}
   vibrateOn: 1
   musicOn: 1
   numberOfSkin1Unlocked: 00000000
   numberOfSkin2Unlocked: 00000000
-  outlineSkin1Cur: 1
+  outlineSkin1Cur: 0
   outlineSkin2Cur: 0
   listOfSkin1BuyByVideo: 000000000000000000000000
