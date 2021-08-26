@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: inShop
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 8
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 1b1b000715bee95438242911479c953d, type: 3}
+    totalSpriteSurfaceArea: 1983700
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 766149206ec5d074ab10a8549b49493a, type: 3}
+  - {fileID: 21300000, guid: b663846122aae0043a593a7dbc6e506e, type: 3}
+  - {fileID: 21300000, guid: 623900f10f84b834aafc68586122a5f7, type: 3}
+  - {fileID: 21300000, guid: 8a278903b0092254ebcddbd936e13172, type: 3}
+  - {fileID: 21300000, guid: 9f3c326356bd68847b8b180f0beae8ef, type: 3}
+  - {fileID: 21300000, guid: 802e64b38002f114b8e0002594ce5a45, type: 3}
+  - {fileID: 21300000, guid: c1e2ede3228e9954f9fb4bda837a7060, type: 3}
+  - {fileID: 21300000, guid: 3edae54476ab8c94fb469838520a69c9, type: 3}
+  - {fileID: 21300000, guid: 5c5bd3d42b0ef2945b049f8bd31c65d8, type: 3}
+  - {fileID: 21300000, guid: 1ae603057aed94946b0ab576843813e7, type: 3}
+  - {fileID: 21300000, guid: 40cf2f05f6f3442499e00859acfd6081, type: 3}
+  - {fileID: 21300000, guid: 4a99eb25d807a4a448ec902f9238bf26, type: 3}
+  - {fileID: 21300000, guid: 65726255bed30b24b82ca905abc43acb, type: 3}
+  - {fileID: 21300000, guid: 1d0a108559d57c1459a8531d8049f49e, type: 3}
+  - {fileID: 21300000, guid: 761938263a178a440b417c62ce3b6987, type: 3}
+  - {fileID: 21300000, guid: 1020fe36f89d9b042aa84d117e43a6e7, type: 3}
+  - {fileID: 21300000, guid: 6225d55603414414e8df8f9a6a09999a, type: 3}
+  - {fileID: 21300000, guid: 7bafe41792652a344b8009b5d960a254, type: 3}
+  - {fileID: 21300000, guid: f3f01418c563c04479a42a474b465cbd, type: 3}
+  - {fileID: 21300000, guid: fd0529da0ba13be48be1f1daa011a169, type: 3}
+  - {fileID: 21300000, guid: e8c3d2ea59614374daa6f7c003795aa8, type: 3}
+  - {fileID: 21300000, guid: 2a2ecdfab2221314abe6c687e43ba7c3, type: 3}
+  - {fileID: 21300000, guid: ec03782b643f5df438f0b34b1c98943e, type: 3}
+  - {fileID: 21300000, guid: 4cc512ab7a770744aa71792ead93b7f8, type: 3}
+  - {fileID: 21300000, guid: ba9b48fc902edcb4d9b0f00aaa030a6b, type: 3}
+  - {fileID: 21300000, guid: 575c12cdc1f1acb4abee5e363524b069, type: 3}
+  - {fileID: 21300000, guid: ea2e42fdf8ac0d54aba3d6a68f5cbda7, type: 3}
+  - {fileID: 21300000, guid: 4975e02e203f8dc4f8d4d8195a2d60fd, type: 3}
+  - {fileID: 21300000, guid: 66d361ee40d828548974be33248b7b12, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - out_line_BG_shop
+  - box
+  - _0005_skin_ninja_green
+  - BNT_green
+  - shit
+  - _0004_skin_trump
+  - BG_skin
+  - BG_skin_video
+  - _0001_skin_blackwidow
+  - _0002_skin_ninja
+  - BG_level_completed
+  - BNT_video
+  - BNT_buy
+  - BNT_orange
+  - BG_blue_shop
+  - icon_shop
+  - _0003_skin_batman
+  - tap_shop_off
+  - _0000_skin_thanos
+  - BNT_shop
+  - tap_shop_on
+  - Rounded Rectangle 6 copy 3
+  - pattern_BG_shop
+  - icon_video_shop
+  - pig
+  - BG_shop
+  - statue
+  - outline_pick
+  - BNT_setting_home
+  m_RenderDataMap: {}
+  m_Tag: inShop
+  m_IsVariant: 0
