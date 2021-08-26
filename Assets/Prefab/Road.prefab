@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3986250389815689856
 Transform:
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9c21dbdf784d89541afa54ad73cb5c07, type: 2}
+  - {fileID: 2100000, guid: afa73313a90b586498a12d93a37c88f0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -155,10 +155,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6265567232614729149, guid: 63569289a5bd9f8418942637c0a86aff, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 9c21dbdf784d89541afa54ad73cb5c07, type: 2}
     - target: {fileID: 6265567232614729151, guid: 63569289a5bd9f8418942637c0a86aff, type: 3}
       propertyPath: m_Name
       value: RoadQuad
@@ -166,10 +162,6 @@ PrefabInstance:
     - target: {fileID: 6265567232614729151, guid: 63569289a5bd9f8418942637c0a86aff, type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6265567232614729151, guid: 63569289a5bd9f8418942637c0a86aff, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63569289a5bd9f8418942637c0a86aff, type: 3}

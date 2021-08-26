@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Slower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2198794964983030382
 Transform:
@@ -45,10 +45,6 @@ PrefabInstance:
     - target: {fileID: 8975685688916202474, guid: 7a213ca53e3a06249a06c3ccd8ba8111, type: 3}
       propertyPath: m_Name
       value: Slower
-      objectReference: {fileID: 0}
-    - target: {fileID: 8975685688916202474, guid: 7a213ca53e3a06249a06c3ccd8ba8111, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 8975685688916202475, guid: 7a213ca53e3a06249a06c3ccd8ba8111, type: 3}
       propertyPath: speed
