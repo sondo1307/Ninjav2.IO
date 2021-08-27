@@ -15,6 +15,6 @@ public class LeaveScript : MonoBehaviour
         DOTween.KillAll();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
-        AdsManager.instance.ShowInterAd();
+        //AdsManager.instance.ShowInterAd();
     }
 }

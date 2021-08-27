@@ -37,7 +37,7 @@ public class AdsManager : MonoBehaviour
 
     private void Update()
     {
-        if( timeCooldownShowAds > 0)
+        if (timeCooldownShowAds > 0)
         {
             timeCooldownShowAds -= Time.deltaTime;
         }
@@ -142,7 +142,7 @@ public class AdsManager : MonoBehaviour
 #if UNITY_ANDROID || UNITY_IOS
         FirebaseAnalystic.Instance.ClickAds();
 
-        if(timeCooldownShowAds <= 0)
+        if (timeCooldownShowAds <= 0)
         {
             if (MaxSdk.IsInterstitialReady(interId))
             {
@@ -180,7 +180,7 @@ public class AdsManager : MonoBehaviour
             MaxSdk.ShowRewardedAd(videoId);
         }
 
-        
+
 #endif
     }
 
@@ -304,7 +304,7 @@ public class AdsManager : MonoBehaviour
         else if (MyScene.Instance.lastRewardAdMode == MyScene.RewardAdMode.BuySkin)
         {
             SkinBtnClick[] a = FindObjectsOfType<SkinBtnClick>();
-            a[FindObjectsOfType<SkinBtnClick>().Length - MyScene.Instance.lastSkin1BuyByVideoClicked-1].SetAfterSawRewardAd();
+            a[FindObjectsOfType<SkinBtnClick>().Length - MyScene.Instance.lastSkin1BuyByVideoClicked - 1].SetAfterSawRewardAd();
         }
         FirebaseAnalystic.Instance.ShowAdsSuccess(FirebaseAnalystic.AdsType.Video);
     }

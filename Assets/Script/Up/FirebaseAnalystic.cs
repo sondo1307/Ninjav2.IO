@@ -22,7 +22,7 @@ public class FirebaseAnalystic : MonoBehaviour
         BuyHealth,
         TrySkinInGame,
         SuckMoney
-    }    
+    }
 
     private void Awake()
     {
@@ -76,13 +76,13 @@ public class FirebaseAnalystic : MonoBehaviour
     }
     #endregion
 
-//    public void ShowInterAdsSuccess()
-//    {
-//#if UNITY_ANDROID || UNITY_IOS
+    //    public void ShowInterAdsSuccess()
+    //    {
+    //#if UNITY_ANDROID || UNITY_IOS
 
-//        Firebase.Analytics.FirebaseAnalytics.LogEvent("Show_Inter_Ads_success");
-//#endif
-//    }
+    //        Firebase.Analytics.FirebaseAnalytics.LogEvent("Show_Inter_Ads_success");
+    //#endif
+    //    }
 
 
 
@@ -93,7 +93,7 @@ public class FirebaseAnalystic : MonoBehaviour
 
         Firebase.Analytics.FirebaseAnalytics.LogEvent("Show_Ads", "Ads_Type", adsType.ToString());
 
-        if(adsType == AdsType.Inter)
+        if (adsType == AdsType.Inter)
         {
             Firebase.Analytics.FirebaseAnalytics.LogEvent("Show_Inter");
         }

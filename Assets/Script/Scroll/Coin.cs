@@ -21,7 +21,7 @@ public class Coin : MonoBehaviour
         {
             AudioManager.Instance.PlayAudio("coin");
             Instantiate(particle, transform.position, Quaternion.identity);
-            VibrateManager.Instance.RigidBibrate();
+            //VibrateManager.Instance.RigidBibrate();
             PlayerData.Instance.coinEarnThisRun++;
             Destroy(transform.parent.gameObject);
         }

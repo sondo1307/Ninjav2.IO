@@ -11,7 +11,7 @@ public class ShurikenItem : MonoBehaviour
         if (other.transform.CompareTag("Player"))
         {
             AudioManager.Instance.PlayAudio("shuriken");
-            VibrateManager.Instance.RigidBibrate();
+            //VibrateManager.Instance.RigidBibrate();
             other.GetComponentInParent<ShurikenControl>().shuriken+=plus;
             DOTween.Kill(transform);
             Destroy(transform.parent.gameObject);

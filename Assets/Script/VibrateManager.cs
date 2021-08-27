@@ -1,51 +1,51 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using MoreMountains.NiceVibrations;
+//using System.Collections;
+//using System.Collections.Generic;
+//using UnityEngine;
+//using MoreMountains.NiceVibrations;
 
-public class VibrateManager : MonoBehaviour
-{
-    public static VibrateManager Instance;
+//public class VibrateManager : MonoBehaviour
+//{
+//    public static VibrateManager Instance;
 
-    private void Awake()
-    {
-        Instance = this;
-    }
+//    private void Awake()
+//    {
+//        Instance = this;
+//    }
 
-    private void Start()
-    {
-        if (GameDataManager.Instance.gameDataScrObj.vibrateOn)
-        {
-            MMVibrationManager.SetHapticsActive(true);
-        }
-        else
-        {
-            MMVibrationManager.SetHapticsActive(false);
-        }
-    }
+//    private void Start()
+//    {
+//        if (GameDataManager.Instance.gameDataScrObj.vibrateOn)
+//        {
+//            MMVibrationManager.SetHapticsActive(true);
+//        }
+//        else
+//        {
+//            MMVibrationManager.SetHapticsActive(false);
+//        }
+//    }
 
-    public void SmallVibrate()
-    {
-        MMVibrationManager.Haptic(HapticTypes.LightImpact);
-    }
+//    public void SmallVibrate()
+//    {
+//        MMVibrationManager.Haptic(HapticTypes.LightImpact);
+//    }
 
-    public void RigidBibrate()
-    {
-        MMVibrationManager.Haptic(HapticTypes.RigidImpact);
-    }
+//    public void RigidBibrate()
+//    {
+//        MMVibrationManager.Haptic(HapticTypes.RigidImpact);
+//    }
 
-    public void LongVibrate()
-    {
-        MMVibrationManager.Haptic(HapticTypes.SoftImpact);
-    }
+//    public void LongVibrate()
+//    {
+//        MMVibrationManager.Haptic(HapticTypes.SoftImpact);
+//    }
 
-    public void HeavyVibrate()
-    {
-        MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
-    }
+//    public void HeavyVibrate()
+//    {
+//        MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+//    }
 
-    public void SuccesVibrate()
-    {
-        MMVibrationManager.Haptic(HapticTypes.Success);
-    }
-}
+//    public void SuccesVibrate()
+//    {
+//        MMVibrationManager.Haptic(HapticTypes.Success);
+//    }
+//}

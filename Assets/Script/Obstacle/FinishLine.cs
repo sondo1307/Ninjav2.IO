@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FinishLine : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class FinishLine : MonoBehaviour
             other.GetComponentInParent<PlayerDoEndRun>().FreezeY();
             MyScene.Instance.placeCount++;
 
-            VibrateManager.Instance.LongVibrate();
+            //VibrateManager.Instance.LongVibrate();
             AudioManager.Instance.PlayAudio("bonus");
             Collider[] list = other.transform.parent.GetComponentsInChildren<Collider>();
             for (int i = 0; i < list.Length; i++)

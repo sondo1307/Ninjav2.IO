@@ -50,7 +50,7 @@ public class DUmmy : MonoBehaviour
     public void EndRun2()
     {
         PlayerData.Instance.SetTotalCoinThisRun();
-        VibrateManager.Instance.SuccesVibrate();
+        //VibrateManager.Instance.SuccesVibrate();
         animator.SetTrigger("Die");
         //Instantiate(MyScene.Instance.confettiPrefab, transform.position - Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, 20, 0));
         //Instantiate(MyScene.Instance.confettiPrefab, transform.position - Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, 20, 0));
@@ -62,7 +62,7 @@ public class DUmmy : MonoBehaviour
     public void EndRun()
     {
         PlayerData.Instance.SetTotalCoinThisRun();
-        VibrateManager.Instance.SuccesVibrate();
+        //VibrateManager.Instance.SuccesVibrate();
         //Instantiate(MyScene.Instance.confettiPrefab, transform.position - Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, 20, 0));
         //Instantiate(MyScene.Instance.confettiPrefab, transform.position - Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, 20, 0));
         //Instantiate(MyScene.Instance.confettiPrefab, transform.position + Vector3.right * 2 - Vector3.forward * 2, Quaternion.Euler(-45, -20, 0));

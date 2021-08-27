@@ -15,10 +15,13 @@ MonoBehaviour:
   selectedAppIndex: 0
   clientTokens:
   - 
+  - 
   appIds:
   - 182698747153009
+  - 0
   appLabels:
-  - Ninja Race
+  - App Name
+  - New App
   cookie: 1
   logging: 1
   status: 1
@@ -27,6 +30,7 @@ MonoBehaviour:
   androidKeystorePath: 
   iosURLSuffix: 
   appLinkSchemes:
+  - list: []
   - list: []
   uploadAccessToken: 
   autoLogAppEventsEnabled: 1

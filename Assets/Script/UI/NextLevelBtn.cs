@@ -35,11 +35,11 @@ public class NextLevelBtn : MonoBehaviour
         GameDataManager.Instance.SetSkin2Material(playerLoadSkin.skin2_2.sharedMaterial);
         if (GameDataManager.Instance.gameDataScrObj.keys!=3)
         {
-            AdsManager.instance.ShowInterAd();
+            //AdsManager.instance.ShowInterAd();
             // save game phai de cuoi cung va trc chuyen scene
             GameDataManager.Instance.SaveGameData();
             StartCoroutine(SaveGame());
-            AdsManager.instance.ShowInterAd();
+            //AdsManager.instance.ShowInterAd();
         }
         else if(GameDataManager.Instance.gameDataScrObj.keys == 3)
         {
